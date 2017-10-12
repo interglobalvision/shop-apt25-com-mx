@@ -597,47 +597,22 @@ template {
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
-.grid-test .container {
-  background: #ffffe0;
-  border: #ff0 2px solid;
-}
-.grid-test .grid-item {
-  background: #d3d3d3;
-  border: #808080 2px;
-}
-.grid-test .grid-row {
-  border: #f00 2px solid;
-  background: #ffc0cb;
-}
-.grid-test .grid-column {
-  border: #00f 2px solid;
-  background: #add8e6;
-}
-.grid-test .grid-item {
-  border-style: dashed;
-}
-html {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: 0.001em;
-}
-body {
-  line-height: 1.35;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 p {
   margin-bottom: 1rem;
 }
-.font-sans {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-.font-serif {
-  font-family: Georgia, Times, "Times New Roman", serif;
-}
-.font-larger {
-  font-size: 1.3rem;
-}
+em,
 .font-italic {
   font-style: italic;
 }
+strong,
 .font-bold {
   font-weight: bold;
 }
@@ -671,6 +646,32 @@ a:visited {
   color: inherit;
   text-decoration: none;
 }
+a.link-underline,
+p a {
+  text-decoration: underline;
+}
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.001em;
+}
+body {
+  line-height: 1.35;
+}
+.font-sans {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.font-serif {
+  font-family: Georgia, Times, "Times New Roman", serif;
+}
+.font-larger {
+  font-size: 1.3rem;
+}
+.line-tighter {
+  line-height: 1.15;
+}
+.line-larger {
+  line-height: 1.45;
+}
 html {
   background-color: #fff;
   color: #000;
@@ -691,9 +692,10 @@ img {
 .grid-item {
   padding: 0 7px;
 }
-.grid-item.no-gutter {
-  padding-left: 0;
-  padding-right: 0;
+.text-columns {
+  -webkit-column-gap: 14px;
+  -moz-column-gap: 14px;
+  column-gap: 14px;
 }
 .grid-row .offset-s-0 {
   margin-left: 0%;
@@ -875,6 +877,26 @@ img {
 .grid-column > .item-s-12 {
   max-height: 100%;
 }
+.text-columns-s-1 {
+  -webkit-column-count: 1;
+  -moz-column-count: 1;
+  column-count: 1;
+}
+.text-columns-s-2 {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+}
+.text-columns-s-3 {
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+}
+.text-columns-s-4 {
+  -webkit-column-count: 4;
+  -moz-column-count: 4;
+  column-count: 4;
+}
 .margin-top-micro {
   margin-top: 4.666666666666667px;
 }
@@ -1048,9 +1070,10 @@ html,
   .grid-item {
     padding: 0 10.5px;
   }
-  .grid-item.no-gutter {
-    padding-left: 0;
-    padding-right: 0;
+  .text-columns {
+    -webkit-column-gap: 21px;
+    -moz-column-gap: 21px;
+    column-gap: 21px;
   }
   .grid-row .offset-m-0 {
     margin-left: 0%;
@@ -1232,8 +1255,25 @@ html,
   .grid-column > .item-m-12 {
     max-height: 100%;
   }
-  .mobile-only {
-    display: none !important;
+  .text-columns-m-1 {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
+  .text-columns-m-2 {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+  .text-columns-m-3 {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+  .text-columns-m-4 {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -1243,9 +1283,10 @@ html,
   .grid-item {
     padding: 0 12px;
   }
-  .grid-item.no-gutter {
-    padding-left: 0;
-    padding-right: 0;
+  .text-columns {
+    -webkit-column-gap: 24px;
+    -moz-column-gap: 24px;
+    column-gap: 24px;
   }
   .grid-row .offset-l-0 {
     margin-left: 0%;
@@ -1427,6 +1468,26 @@ html,
   .grid-column > .item-l-12 {
     max-height: 100%;
   }
+  .text-columns-l-1 {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
+  .text-columns-l-2 {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+  .text-columns-l-3 {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+  .text-columns-l-4 {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+  }
   .margin-top-micro {
     margin-top: 8px;
   }
@@ -1498,6 +1559,9 @@ html,
   }
   .padding-bottom-large {
     padding-bottom: 120px;
+  }
+  .mobile-only {
+    display: none !important;
   }
   .desktop-only {
     display: initial !important;
