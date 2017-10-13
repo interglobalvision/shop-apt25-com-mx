@@ -24,20 +24,31 @@
   {{ '//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js' | script_tag }}
 </head>
 <body id="{{ page_title | handle }}" class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
-  <header id="header">
+  <header id="header" class="padding-top-small padding-bottom-small">
     <h1 class="u-visuallyhidden">{{ shop.name }}</h1>
     <div class="container">
-      <nav class="grid-row font-uppercase">
-        <div class="grid-item item-s-4">
-          <a href="/about">About</a>
+      <div class="grid-row justify-between">
+        <div class="grid-item">
+          <a href="/"><img class="logo" src="{{ 'apt25-logo.svg' | asset_url }}"></a>
         </div>
-        <div class="grid-item item-s-4 text-align-center">
-          <a href="/">Shop</a>
-        </div>
-        <div class="grid-item item-s-4 text-align-right">
-          <a href="/cart">{% if cart.item_count > 0%}<span>{{ cart.item_count }}</span> {% endif %}Cart</a>
-        </div>
-      </nav>
+        <nav class="grid-item no-gutter font-uppercase grid-row font-heavy-condensed">
+          <div class="grid-item">
+            <a href="/collections/men">Men</a>
+          </div>
+          <div class="grid-item">
+            <a href="/collections/women">Women</a>
+          </div>
+          <div class="grid-item">
+            <a href="/collections/life">Life</a>
+          </div>
+          <div class="grid-item">
+            <a href="/blog">Blog</a>
+          </div>
+          <div class="grid-item">
+            <a href="/cart">Cart</a>
+          </div>
+        </nav>
+      </div>
     </div>
   </header>
 
