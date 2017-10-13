@@ -25,8 +25,33 @@
       }
     ]
   }, {
-    "name": "Contact",
+    "name": "Footer",
     "settings": [
+      {
+        "type": "text",
+        "label": "Address",
+        "id": "contact_address"
+      },
+      {
+        "type": "text",
+        "label": "Hours Week",
+        "id": "hours_week"
+      },
+      {
+        "type": "text",
+        "label": "Hours Weekend",
+        "id": "hours_weekend"
+      },
+      {
+        "type": "text",
+        "label": "Mailchimp action",
+        "id": "mailchimp_action"
+      },
+      {
+        "type": "text",
+        "label": "Mailchimp hidden",
+        "id": "mailchimp_hidden"
+      },
       {
         "type": "text",
         "label": "Email",
@@ -34,8 +59,18 @@
       },
       {
         "type": "text",
+        "label": "Facebook URL",
+        "id": "social_facebook"
+      },
+      {
+        "type": "text",
+        "label": "Twitter handle",
+        "id": "social_twitter"
+      },
+      {
+        "type": "text",
         "label": "Instagram handle",
-        "id": "contact_instagram"
+        "id": "social_instagram"
       }
     ]
   }

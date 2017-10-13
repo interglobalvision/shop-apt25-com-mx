@@ -56,22 +56,59 @@
 
   <footer id="footer">
     <div class="container">
-      <div class="grid-row">
-        <div class="grid-item item-s-12 text-align-center">
-          <h2 class="font-uppercase">Contact</h2>
+      <div class="grid-row justify-between">
+        <div class="grid-item item-s-12 item-m-4">
+        {% if settings.contact_address != blank %}
+          <div class="font-bold">
+            {{ settings.contact_address }}
+          </div>
+        {% endif %}
+        {% if settings.hours_week != blank %}
+          <div>
+            {{ settings.hours_week }}{% if settings.hours_weekend != blank %}, {% endif %}
+          </div>
+        {% endif %}
+        {% if settings.hours_weekend != blank %}
+          <div>
+            {{ settings.hours_weekend }}
+          </div>
+        {% endif %}
         </div>
-      </div>
-      <div class="grid-row justify-end text-align-right">
+
+        <div class="grid-item item-s-12 item-m-4">
         {% if settings.contact_email != blank %}
-        <div class="grid-item item-s-6 item-m-4 item-l-3">
-          <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
-        </div>
+          <div>
+            <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
+          </div>
         {% endif %}
-        {% if settings.contact_instagram != blank %}
-        <div class="grid-item item-s-6 item-m-4 item-l-3">
-          <a href="https://instagram.com/{{ settings.contact_instagram }}">@{{ settings.contact_instagram }}</a>
-        </div>
+        {% if settings.mailchimp_action != blank and settings.mailchimp_hidden != blank %}
+          <form action="{{ settings.mailchimp_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+            <input placeholder="your email address" type="email" name="EMAIL" id="mce-EMAIL">
+
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="{{ settings.mailchimp_hidden }}" tabindex="-1" value=""></div>
+
+            <button type="submit" class="font-uppercase font-bold">Subscribe</button>
+          </form>
         {% endif %}
+        </div>
+
+        <div class="grid-item item-s-12 item-m-4 grid-row no-gutter">
+          {% if settings.social_facebook != blank %}
+          <div class="grid-item">
+            <a href="{{ settings.social_facebook }}">F</a>
+          </div>
+          {% endif %}
+          {% if settings.social_twitter != blank %}
+          <div class="grid-item">
+            <a href="https://twitter.com/{{ settings.social_twitter }}">T</a>
+          </div>
+          {% endif %}
+          {% if settings.social_instagram != blank %}
+          <div class="grid-item">
+            <a href="https://instagram.com/{{ settings.social_instagram }}">I</a>
+          </div>
+          {% endif %}
+        </div>
       </div>
     </div>
   </footer>
