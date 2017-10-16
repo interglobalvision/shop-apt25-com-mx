@@ -27,26 +27,51 @@
   <header id="header" class="padding-top-small padding-bottom-small">
     <h1 class="u-visuallyhidden">{{ shop.name }}</h1>
     <div class="container">
-      <div class="grid-row justify-between">
+      <div class="grid-row justify-between align-items-start">
         <div class="grid-item">
           <a href="/"><img class="logo" src="{{ 'apt25-logo.svg' | asset_url }}"></a>
         </div>
-        <nav class="grid-item no-gutter font-uppercase grid-row font-heavy-condensed">
-          <div class="grid-item">
-            <a href="/collections/men">Men</a>
+        <nav id="main-nav" class="grid-item no-gutter flex-grow">
+          <div class="font-uppercase grid-row font-heavy-condensed justify-end">
+            {% if collections.'men' != blank %}
+            {% assign collection = collections.'men' %}
+            {% include 'nav-collection' %}
+            {% endif %}
+
+            {% if collections.'women' != blank %}
+            {% assign collection = collections.'women' %}
+            {% include 'nav-collection' %} 
+            {% endif %}
+
+            {% if collections.'life' != blank %}
+            {% assign collection = collections.'life' %}
+            {% include 'nav-collection' %}
+            {% endif %}
+
+            <div class="grid-item">
+              <a href="/blog">Blog</a>
+            </div>
+
+            <div class="grid-item">
+              <a href="/cart">Cart</a>
+            </div>
+
           </div>
-          <div class="grid-item">
-            <a href="/collections/women">Women</a>
-          </div>
-          <div class="grid-item">
-            <a href="/collections/life">Life</a>
-          </div>
-          <div class="grid-item">
-            <a href="/blog">Blog</a>
-          </div>
-          <div class="grid-item">
-            <a href="/cart">Cart</a>
-          </div>
+
+          {% if collections.'men' != blank %}
+          {% assign collection = collections.'men' %}
+          {% include 'nav-types' %}
+          {% endif %}
+
+          {% if collections.'women' != blank %}
+          {% assign collection = collections.'women' %}
+          {% include 'nav-types' %}
+          {% endif %}
+
+          {% if collections.'life' != blank %}
+          {% assign collection = collections.'life' %}
+          {% include 'nav-types' %}
+          {% endif %}
         </nav>
       </div>
     </div>
