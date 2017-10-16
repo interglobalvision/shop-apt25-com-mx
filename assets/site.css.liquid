@@ -994,6 +994,31 @@ html,
 #header .logo {
   height: 70px;
 }
+#main-nav {
+  position: relative;
+}
+.nav-types-holder {
+  position: absolute;
+  width: 100%;
+}
+.nav-types {
+  position: relative;
+  background-color: #fff;
+  border-bottom: 2px solid #000;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  pointer-events: none;
+  width: 80%;
+  margin-left: 10%;
+}
+.nav-types.show {
+  -ms-filter: none;
+  -webkit-filter: none;
+          filter: none;
+  opacity: 1;
+  pointer-events: auto;
+}
 @media screen and (min-width: 720px) {
   .margin-top-micro {
     margin-top: 7px;

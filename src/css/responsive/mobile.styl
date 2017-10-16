@@ -1,3 +1,24 @@
+$border-style = 2px solid $color-black
+
 #header
   .logo
     height: 70px
+
+#main-nav
+  position: relative
+
+.nav-types-holder
+  position: absolute
+  width: 100%
+
+.nav-types
+  position: relative
+  background-color: $color-white
+  border-bottom: $border-style
+  opacity: 0
+  pointer-events: none
+  width: 80%
+  margin-left: 10%
+  &.show
+    opacity: 1
+    pointer-events: auto
