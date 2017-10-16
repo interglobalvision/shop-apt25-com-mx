@@ -10,6 +10,7 @@
 
       <div class="grid-item item-s-12 item-m-auto grid-row no-gutter align-content-start">
         <div class="grid-item item-s-6 item-m-12 margin-bottom-tiny">
+          {% comment %}Types List{% endcomment %}
           <h3 class="font-bold font-uppercase font-size-small">Type</h3>
           <ul>
           {% for product_type in collection.all_types %}
@@ -19,7 +20,7 @@
           {% endfor %}
           </ul>
         </div>
-
+        {% comment %}Brands List{% endcomment %}
         <div class="grid-item item-s-6 item-m-12">
           <h3 class="font-bold font-uppercase font-size-small">Brand</h3>
           <ul>
@@ -35,6 +36,8 @@
   {% endif %}
 
       <div class="grid-item flex-grow no-gutter grid-row">
+
+        {% comment %}Breadcrumbs{% endcomment %}
         <div class="grid-item item-s-12 font-bold font-size-small font-uppercase">
           {% if current_tags != blank %}
           <a href="{{ collection.url }}">{{ collection.handle }}</a> > {{ current_tags }}
@@ -44,7 +47,7 @@
         </div>
 
   {% for product in collection.products %}
-
+        {% comment %}Product{% endcomment %}
         <div class="grid-item item-s-6 item-l-4 item-xl-3 font-size-small">
 
           <a href="{{ product.url }}">
@@ -57,7 +60,7 @@
 
   {% endfor %}
 
-
+      {% comment %}Pagination{% endcomment %}
       {% if paginate.pages > 1 %}
         <div class="grid-item item-s-12 no-gutter grid-row">
           <div class="grid-item item-s-6">
