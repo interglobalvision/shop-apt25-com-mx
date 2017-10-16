@@ -10,6 +10,8 @@ Site = {
       _this.onResize();
     });
 
+    _this.Header.init();
+
     if ($('body').hasClass('template-product')) {
       _this.Product.init();
     }
@@ -34,6 +36,38 @@ Site = {
   },
 
 
+};
+
+Site.Header = {
+  init: function() {
+    var _this = this;
+
+    _this.bindCollectionHover();
+  },
+
+  bindCollectionHover: function() {
+    var _this = this;
+
+    $('.nav-collection').on('mouseenter', function() {
+      var collection = $(this).attr('data-collection');
+
+      _this.hideTypes();
+      _this.showTypes(collection);
+    });
+
+    $('#main-nav').on('mouseleave', function() {
+
+      _this.hideTypes();
+    });
+  },
+
+  showTypes: function(collection) {
+    $('.nav-types[data-collection="' + collection + '"]').addClass('show');
+  },
+
+  hideTypes: function(collection) {
+    $('.nav-types.show').removeClass('show');
+  },
 };
 
 Site.Product = {
