@@ -35,6 +35,14 @@
   {% endif %}
 
       <div class="grid-item flex-grow no-gutter grid-row">
+        <div class="grid-item item-s-12 font-bold font-size-small font-uppercase">
+          {% if current_tags != blank %}
+          <a href="{{ collection.url }}">{{ collection.handle }}</a> > {{ current_tags }}
+          {% else %}
+          {{ collection.handle }}
+          {% endif %}
+        </div>
+
   {% for product in collection.products %}
 
         <div class="grid-item item-s-6 item-l-4 item-xl-3 font-size-small">
