@@ -43,6 +43,8 @@ Site.Header = {
     var _this = this;
 
     _this.bindCollectionHover();
+
+    _this.bindMobileToggle();
   },
 
   bindCollectionHover: function() {
@@ -69,6 +71,12 @@ Site.Header = {
   hideTypes: function(collection) {
     $('.nav-collection.active').addClass('active');
     $('.nav-types.show').removeClass('show');
+  },
+
+  bindMobileToggle: function() {
+    $('.js-menu-toggle').on('click', function() {
+      $('#mobile-nav').toggleClass('show');
+    });
   },
 };
 

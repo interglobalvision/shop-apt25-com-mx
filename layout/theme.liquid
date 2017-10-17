@@ -31,8 +31,17 @@
         <div class="grid-item">
           <a href="/"><img class="logo" src="{{ 'apt25-logo.svg' | asset_url }}"></a>
         </div>
+        <div class="mobile-nav-toggle-holder">
+          <div class="container">
+            <div class="grid-row padding-top-small justify-end">
+              <div class="grid-item">
+                <div class="js-menu-toggle u-pointer">MENU</div>
+              </div>
+            </div>
+          </div>
+        </div>
         <nav id="main-nav" class="grid-item no-gutter flex-grow">
-          <div class="font-uppercase grid-row font-heavy-condensed justify-end">
+          <div class="font-uppercase grid-row justify-end">
             {% if collections.'men' != blank %}
             {% assign collection = collections.'men' %}
             {% include 'nav-collection' %}
@@ -75,6 +84,46 @@
         </nav>
       </div>
     </div>
+    <nav id="mobile-nav">
+      <div class="mobile-nav-toggle-holder">
+        <div class="container">
+          <div class="grid-row padding-top-small justify-end">
+            <div class="grid-item">
+              <div class="js-menu-toggle u-pointer">CLOSE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="font-uppercase grid-row">
+          {% assign mobile = true %}
+
+          {% if collections.'men' != blank %}
+          {% assign collection = collections.'men' %}
+          {% include 'nav-collection' %}
+          {% endif %}
+
+          {% if collections.'women' != blank %}
+          {% assign collection = collections.'women' %}
+          {% include 'nav-collection' %}
+          {% endif %}
+
+          {% if collections.'life' != blank %}
+          {% assign collection = collections.'life' %}
+          {% include 'nav-collection' %}
+          {% endif %}
+
+          <div class="grid-item item-s-6">
+            <div class="padding-bottom-basic">
+              <a href="/cart">{% if cart.item_count > 0%}<span id="nav-cart-count">{{ cart.item_count }}</span> {% endif %}Cart</a>
+            </div>
+            <div>
+              <a href="/blog">Blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
   </header>
 
   {{ content_for_layout }}
