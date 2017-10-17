@@ -62,10 +62,12 @@ Site.Header = {
   },
 
   showTypes: function(collection) {
+    $('.nav-collection[data-collection="' + collection + '"]').addClass('active');
     $('.nav-types[data-collection="' + collection + '"]').addClass('show');
   },
 
   hideTypes: function(collection) {
+    $('.nav-collection.active').addClass('active');
     $('.nav-types.show').removeClass('show');
   },
 };
