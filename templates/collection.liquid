@@ -1,6 +1,6 @@
 <section id="collection">
   <div class="container">
-    <div class="grid-row">
+    <div id="collection-row" class="grid-row">
 
 {% paginate collection.products by 24 %}
 
@@ -44,10 +44,21 @@
 
   {% for product in collection.products %}
         {% comment %}Product{% endcomment %}
-        <div class="grid-item item-s-6 item-l-4 item-xl-3 font-size-small">
+        <div class="grid-item item-s-6 item-m-4 item-l-4 item-xl-3 font-size-small">
 
           <a href="{{ product.url }}">
-            <div class="text-align-center"><img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" /></div>
+            <div class="text-align-center">
+              {% assign image = product.featured_image %}
+              <img src="{{ image.src | img_url: '480x' }}" alt="{{ image.alt | escape }}"
+              srcset="
+              {% if image.width > 640 %}{{ image.src | img_url: '640x' }} 640w{% endif %}
+              {% if image.width > 720 %},{{ image.src | img_url: '720x' }} 720w{% endif %}
+              {% if image.width > 320 %},{{ image.src | img_url: '320x' }} 320w{% endif %}
+              {% if image.width > 390 %},{{ image.src | img_url: '390x' }} 390w{% endif %}
+              "
+              sizes="(min-width: 960px) 450px, (min-width: 720px) 50vw, 100vw"
+              />
+            </div>
             <div class="font-bold font-size-basic">{{ product.vendor }}</div>
             <h2 class="u-inline-block">{{ product.title }}</h2> &mdash;{% if product.compare_at_price > product.price %} <span class="u-inline-block font-line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</span>{% endif %} <span class="u-inline-block">{{ product.price | money_without_trailing_zeros }}</span>
           </a>
