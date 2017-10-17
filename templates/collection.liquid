@@ -1,9 +1,99 @@
+<section id="collection">
+  <div class="container">
+    <div id="collection-row" class="grid-row">
+
+{% paginate collection.products by 24 %}
+
 {% if collection.all_products_count > 0 %}
-{% for product in collection.products %}
-<h2><a href="{{ product.url }}">{{ product.title }}</a></h2>
-{{ product.description }}
-<img src="{{ product.featured_image | product_img_url: 'grande' }}" alt="{{ product.title | escape }}" />
-{% endfor %}
+
+      <div id="collection-filters" class="grid-item item-s-12 item-m-auto grid-row no-gutter align-content-start padding-bottom-small">
+        <div class="grid-item item-s-6 item-m-12 margin-bottom-tiny">
+          {% comment %}Types List{% endcomment %}
+          <h3 class="font-bold font-uppercase font-size-small">Type</h3>
+          <ul>
+          {% for product_type in collection.all_types %}
+          <li>
+            <a href="{{ collection.url }}/{{ product_type | handle }}">{{ product_type }}</a>
+          </li>
+          {% endfor %}
+          </ul>
+        </div>
+        {% comment %}Brands List{% endcomment %}
+        <div class="grid-item item-s-6 item-m-12">
+          <h3 class="font-bold font-uppercase font-size-small">Brand</h3>
+          <ul>
+          {% for product_vendor in collection.all_vendors %}
+            <li>
+              <a href="{{ collection.url }}/{{ product_vendor | handle }}">{{ product_vendor }}</a>
+            </li>
+          {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-item flex-grow no-gutter grid-row">
+
+        {% comment %}Breadcrumbs{% endcomment %}
+        <div class="grid-item item-s-12 font-bold font-size-small font-uppercase">
+          {% if current_tags != blank %}
+          <a href="{{ collection.url }}">{{ collection.handle }}</a> &mdash; {{ current_tags }}
+          {% else %}
+          {{ collection.handle }}
+          {% endif %}
+        </div>
+
+  {% for product in collection.products %}
+        {% comment %}Product{% endcomment %}
+        <div class="collection-product-item grid-item item-m-4 item-l-4 item-xl-3 font-size-small">
+
+          <a href="{{ product.url }}">
+            <div class="text-align-center">
+              {% assign image = product.featured_image %}
+              <img src="{{ image.src | img_url: '240x' }}" alt="{{ product.title | escape }}"
+              srcset="
+              {% if image.width > 240 %}{{ image.src | img_url: '240x' }} 240w{% endif %}
+              {% if image.width > 310 %},{{ image.src | img_url: '310x' }} 310w{% endif %}
+              {% if image.width > 390 %},{{ image.src | img_url: '370x' }} 370w{% endif %}
+              "
+              sizes="(min-width: 1280px) 370px, (min-width: 1024px) 310px, (min-width: 720px) 240px, 50vw"
+              />
+            </div>
+            <div class="font-bold font-size-basic">{{ product.vendor }}</div>
+            <h2 class="u-inline-block">{{ product.title }}</h2> &mdash;{% if product.compare_at_price > product.price %} <span class="u-inline-block font-line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</span>{% endif %} <span class="u-inline-block">{{ product.price | money_without_trailing_zeros }}</span>
+          </a>
+
+        </div>
+
+  {% endfor %}
+
+      {% comment %}Pagination{% endcomment %}
+      {% if paginate.pages > 1 %}
+        <div class="grid-item item-s-12 no-gutter grid-row">
+          <div class="grid-item item-s-6">
+          {% if paginate.previous.is_link %}
+            <a href="{{ paginate.previous.url }}"><-</a>
+          {% endif %}
+          </div>
+          <div class="grid-item item-s-6 text-align-right">
+          {% if paginate.next.is_link %}
+            <a href="{{ paginate.next.url }}">-></a>
+          {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      </div>
+
 {% else %}
-<p>Sorry, there are no products in this collection</p>
+
+      <div class="grid-item item-s-12">
+        <p>Sorry, there are no products in this collection</p>
+      </div>
+
 {% endif %}
+
+    </div>
+  </div>
+</section>
+
+{% endpaginate %}
