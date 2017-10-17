@@ -26,7 +26,7 @@
           <ul>
           {% for product_vendor in collection.all_vendors %}
             <li>
-          		<a href="{{ collection.url }}/{{ product_vendor | handle }}">{{ product_vendor }}</a>
+              <a href="{{ collection.url }}/{{ product_vendor | handle }}">{{ product_vendor }}</a>
             </li>
           {% endfor %}
           </ul>
