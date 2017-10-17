@@ -1141,6 +1141,27 @@ html,
 #header .logo {
   height: 70px;
 }
+#collection-filters {
+  white-space: nowrap;
+}
+@media screen and (orientation: landscape) {
+  .collection-product-item {
+    -ms-flex-basis: calc(33.333333333333336%);
+    -webkit-flex-basis: calc(33.333333333333336%);
+        -ms-flex-preferred-size: calc(33.333333333333336%);
+            flex-basis: calc(33.333333333333336%);
+    max-width: calc(33.333333333333336%);
+  }
+}
+@media screen and (orientation: portrait) {
+  .collection-product-item {
+    -ms-flex-basis: 50%;
+    -webkit-flex-basis: 50%;
+        -ms-flex-preferred-size: 50%;
+            flex-basis: 50%;
+    max-width: 50%;
+  }
+}
 @media screen and (min-width: 720px) {
   .margin-top-micro {
     margin-top: 7px;

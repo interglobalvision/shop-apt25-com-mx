@@ -1,3 +1,16 @@
 #header
   .logo
     height: 70px
+
+#collection-filters
+  white-space: nowrap
+
+@media screen and (orientation: landscape)
+ .collection-product-item
+   flex-basis: calc(100% / 3)
+   max-width: calc(100% / 3)
+
+@media screen and (orientation: portrait)
+ .collection-product-item
+   flex-basis: 50%
+   max-width: 50%
