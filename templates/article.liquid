@@ -1,3 +1,18 @@
 <h2>{{ article.title }}</h2>
 <p>{{ article.published_at | date: '%d %B %Y' }}</p>
-{{ article.content }}
+{% if blog.handle == 'lookbook' %}
+
+  {% if article.content contains "<img" %}
+    {% assign gallery-src = article.content | split: 'src="' %}
+    {% assign gallery-size = gallery-src.size | minus:1 %}
+    {% for i in (1..gallery-size) %}
+      <h3>This is a lookbook</h3>
+      <li class="lookbook-image">
+        <img src="{{gallery-src[i]}}" />
+      </li>
+    {% endfor %}
+  {% endif %}
+
+{% else %}
+  {{ article.content }}
+{% endif %}
