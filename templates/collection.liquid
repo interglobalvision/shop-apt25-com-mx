@@ -6,7 +6,7 @@
 
 {% if collection.all_products_count > 0 %}
 
-      <div class="grid-item item-s-12 item-m-auto grid-row no-gutter align-content-start">
+      <div id="collection-filters" class="grid-item item-s-12 item-m-auto grid-row no-gutter align-content-start padding-bottom-small">
         <div class="grid-item item-s-6 item-m-12 margin-bottom-tiny">
           {% comment %}Types List{% endcomment %}
           <h3 class="font-bold font-uppercase font-size-small">Type</h3>
@@ -44,19 +44,18 @@
 
   {% for product in collection.products %}
         {% comment %}Product{% endcomment %}
-        <div class="grid-item item-s-6 item-m-4 item-l-4 item-xl-3 font-size-small">
+        <div class="collection-product-item grid-item item-m-4 item-l-4 item-xl-3 font-size-small">
 
           <a href="{{ product.url }}">
             <div class="text-align-center">
               {% assign image = product.featured_image %}
-              <img src="{{ image.src | img_url: '480x' }}" alt="{{ image.alt | escape }}"
+              <img src="{{ image.src | img_url: '240x' }}" alt="{{ product.title | escape }}"
               srcset="
-              {% if image.width > 640 %}{{ image.src | img_url: '640x' }} 640w{% endif %}
-              {% if image.width > 720 %},{{ image.src | img_url: '720x' }} 720w{% endif %}
-              {% if image.width > 320 %},{{ image.src | img_url: '320x' }} 320w{% endif %}
-              {% if image.width > 390 %},{{ image.src | img_url: '390x' }} 390w{% endif %}
+              {% if image.width > 240 %}{{ image.src | img_url: '240x' }} 240w{% endif %}
+              {% if image.width > 310 %},{{ image.src | img_url: '310x' }} 310w{% endif %}
+              {% if image.width > 390 %},{{ image.src | img_url: '370x' }} 370w{% endif %}
               "
-              sizes="(min-width: 960px) 450px, (min-width: 720px) 50vw, 100vw"
+              sizes="(min-width: 1280px) 370px, (min-width: 1024px) 310px, (min-width: 720px) 240px, 50vw"
               />
             </div>
             <div class="font-bold font-size-basic">{{ product.vendor }}</div>
