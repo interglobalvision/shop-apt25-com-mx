@@ -5,5 +5,15 @@
 #main-nav
   display: block
 
+.mobile-nav-toggle-holder
+  display: none
+
+#mobile-nav
+  &.show
+    opacity: 0
+    pointer-events: none
+  .mobile-nav-toggle-holder
+    display: block
+
 #collection-row
   flex-wrap: nowrap

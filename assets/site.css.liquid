@@ -1174,6 +1174,10 @@ html,
 #main-nav .nav-types li {
   display: inline-block;
 }
+.mobile-nav-toggle-holder {
+  position: fixed;
+  z-index: 800;
+}
 #mobile-nav {
   position: fixed;
   top: 0;
@@ -1187,15 +1191,19 @@ html,
   filter: alpha(opacity=0);
   opacity: 0;
   transition: opacity 200ms ease-in-out;
+  pointer-events: none;
 }
 #mobile-nav.show {
   -ms-filter: none;
   -webkit-filter: none;
           filter: none;
   opacity: 1;
+  pointer-events: auto;
 }
-#mobile-nav-toggle-holder {
+#mobile-nav .mobile-nav-toggle-holder {
   position: absolute;
+}
+.mobile-nav-toggle-holder {
   top: 0;
   left: 0;
   width: 100%;
@@ -1675,6 +1683,18 @@ html,
     height: 105px;
   }
   #main-nav {
+    display: block;
+  }
+  .mobile-nav-toggle-holder {
+    display: none;
+  }
+  #mobile-nav.show {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    pointer-events: none;
+  }
+  #mobile-nav .mobile-nav-toggle-holder {
     display: block;
   }
   #collection-row {

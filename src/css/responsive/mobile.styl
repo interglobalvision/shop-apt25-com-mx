@@ -33,6 +33,10 @@ $transition-duration = 200ms
     li
       display: inline-block
 
+.mobile-nav-toggle-holder
+  position: fixed
+  z-index: 800
+
 #mobile-nav
   position: fixed
   top: 0
@@ -44,11 +48,15 @@ $transition-duration = 200ms
   padding-top: 102px
   opacity: 0
   transition: opacity $transition-duration ease-in-out
+  pointer-events: none
   &.show
     opacity: 1
+    pointer-events: auto
 
-#mobile-nav-toggle-holder
-  position: absolute
+  .mobile-nav-toggle-holder
+    position: absolute
+
+.mobile-nav-toggle-holder
   top: 0
   left: 0
   width: 100%
