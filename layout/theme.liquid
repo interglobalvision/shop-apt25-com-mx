@@ -31,8 +31,14 @@
         <div class="grid-item">
           <a href="/"><img class="logo" src="{{ 'apt25-logo.svg' | asset_url }}"></a>
         </div>
-        <div class="grid-item">
-          <div class="js-menu-toggle">MENU</div>
+        <div class="mobile-nav-toggle-holder">
+          <div class="container">
+            <div class="grid-row padding-top-small justify-end">
+              <div class="grid-item">
+                <div class="js-menu-toggle u-pointer">MENU</div>
+              </div>
+            </div>
+          </div>
         </div>
         <nav id="main-nav" class="grid-item no-gutter flex-grow">
           <div class="font-uppercase grid-row justify-end">
@@ -79,11 +85,11 @@
       </div>
     </div>
     <nav id="mobile-nav">
-      <div id="mobile-nav-toggle-holder">
+      <div class="mobile-nav-toggle-holder">
         <div class="container">
           <div class="grid-row padding-top-small justify-end">
             <div class="grid-item">
-              <div class="js-menu-toggle">CLOSE</div>
+              <div class="js-menu-toggle u-pointer">CLOSE</div>
             </div>
           </div>
         </div>
