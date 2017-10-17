@@ -40,7 +40,7 @@
         {% comment %}Breadcrumbs{% endcomment %}
         <div class="grid-item item-s-12 font-bold font-size-small font-uppercase">
           {% if current_tags != blank %}
-          <a href="{{ collection.url }}">{{ collection.handle }}</a> > {{ current_tags }}
+          <a href="{{ collection.url }}">{{ collection.handle }}</a> &mdash; {{ current_tags }}
           {% else %}
           {{ collection.handle }}
           {% endif %}
