@@ -1,5 +1,75 @@
-<ul>
+{% assign dash = '&nbsp;&nbsp;&mdash;&nbsp;&nbsp;' %}
+
+{% paginate blog.articles by 10 %}
   {% for article in blog.articles %}
-  <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+    <article class="margin-bottom-large">
+      {% if article.tags contains 'lookbook' %}
+        <div class="container container-medium">
+          <div class="grid-row">
+            <div class="grid-item item-s-12">
+              <a href="{{ article.url }}">
+                {% if article.image %}<img class="margin-bottom-tiny" src="{{ article | img_url: 'master' }}">{% endif %}
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="container container-small">
+          <div class="grid-row">
+            <div class="grid-item item-s-12 item-m-6">
+              <h2>
+                <a href="{{ article.url }}">{{ article.title }}</a>
+              </h2>
+              <span class="date">{{ article.published_at | date: '%b %e, %Y' }}</span>
+            </div>
+            <div class="grid-item item-s-12 item-m-6">
+              <p>{{ article.excerpt }}{{ dash }}<a href="{{ blog.url }}"><span class="fa fa-eye"></span></a></p>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <div class="container container-small">
+          <div class="grid-row">
+            <div class="grid-item item-s-12 item-m-6">
+              <a href="{{ article.image }}">
+                {% if article.image %}<img class="margin-bottom-tiny" src="{{ article | img_url: 'original' }}">{% endif %}
+              </a>
+            </div>
+            <div class="grid-item item-s-12 item-m-6">
+              <span class="date">{{ article.published_at | date: '%b %e, %Y' }}</span>
+              <h2 class="margin-bottom-tiny">
+                <a href="{{ article.url }}">{{ article.title }}</a>
+              </h2>
+              <p class="margin-bottom-tiny">{{ article.excerpt }}{{ dash }}<span class="fa fa-eye"></span></p>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </article>
   {% endfor %}
-</ul>
+
+  {% if paginate.pages > 1 %}
+
+    <!-- post pagination -->
+    <nav id="pagination">
+      <div class="container container-small">
+        <div class="grid-row">
+          <div class="grid-item item-s-6">
+            {% if paginate.previous.is_link %}
+              <a href="{{ paginate.previous.url }}">
+                <img class="logo" src="{{ 'arrow-left.svg' | asset_url }}">
+              </a>
+            {% endif %}
+          </div>
+          <div class="grid-item item-s-6 text-align-right">
+            {% if paginate.next.is_link %}
+              <a href="{{ paginate.next.url }}">
+                <img class="logo" src="{{ 'arrow-right.svg' | asset_url }}">
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+  {% endif %}
+{% endpaginate %}
+
