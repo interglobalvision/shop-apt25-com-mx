@@ -1,18 +1,87 @@
-<h2>{{ article.title }}</h2>
-<p>{{ article.published_at | date: '%d %B %Y' }}</p>
-{% if blog.handle == 'lookbook' %}
+{% assign dash = '&nbsp;&nbsp;&mdash;&nbsp;&nbsp;' %}
 
-  {% if article.content contains "<img" %}
-    {% assign gallery-src = article.content | split: 'src="' %}
-    {% assign gallery-size = gallery-src.size | minus:1 %}
-    {% for i in (1..gallery-size) %}
-      <h3>This is a lookbook</h3>
-      <li class="lookbook-image">
-        <img src="{{gallery-src[i]}}" />
-      </li>
-    {% endfor %}
-  {% endif %}
+<article class="container">
+  <div class="grid-row justify-center">
+    <div class="grid-item item-s-12  item-m-7">
+      <div class="single-post-details margin-bottom-small">
+        <span class="date">{{ article.published_at | date: '%b %e, %Y' }}</span>
+        <h1 class="article-title margin-bottom-small">
+          {{ article.title }}
+        </h1>
+        <p>
+          {{ article.excerpt }}{{ dash }}
+          {% if article.tags contains 'lookbook' %}
+            <img class="icon" src="{{ 'eye.svg' | asset_url }}">
+          {% else %}
+            <img class="icon" src="{{ 'thumb-tack.svg' | asset_url }}">
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
 
-{% else %}
-  {{ article.content }}
-{% endif %}
+  <div class="grid-row justify-center margin-bottom-basic">
+    <div class="grid-item item-s-12 item-m-9">
+
+      {% comment %} LOOKBOOK {% endcomment %}
+      {% if article.tags contains 'lookbook' %}
+
+        {% comment %} Get the paragraphs as an array, we would use it 4 outputing only the ones without images {% endcomment %}
+        {% assign paragraphs = article.content | split: '<p>' %}
+          {% assign paragraphs_size = paragraphs.size | minus: 1 %}
+
+        {% if article.content contains "<img" %}
+
+          {% comment %} Get the images as an array {% endcomment %}
+          {% assign gallery-src = article.content | split: 'src="' %}
+          {% assign gallery-size = gallery-src.size | minus: 1 %}
+
+          { Iterate thru all images }
+          {% for i in (1..gallery-size) %}
+            {% assign src = gallery-src[i] | split: '"' | first  %}
+            <img class="lookbook-image" src="{{src}}">
+          {% endfor %}
+
+          {% comment %} Iterate thru all paragraphs {% endcomment %}
+          {% for i in (1..paragraphs_size) %}
+
+            {% comment %} Only output paragraphs without images {% endcomment %}
+            {% if  paragraphs[i] contains "<img" %}
+            {% else %}
+              <p>{{ paragraphs[i] }}</p>
+            {% endif %}
+
+          {% endfor %}
+        {% endif %}
+
+      {% else %}
+
+      {% comment %} ARTICLE {% endcomment %}
+
+        <div class="grid-item item-s-12">
+          <div class="type-post-content">
+            {{ article.content }}
+          </div>
+        </div>
+
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="grid-row justify-center">
+    <div class="grid-item item-s-12 item-m-7 single-post-footer">
+      <p class="post-tags">
+        <span class="u-bold-cn">TAGGED: </span>
+        {% for tag in article.tags %}
+          <a href="{{ blog.url }}/tagged/{{ tag }}" rel="tag">{{ tag }}</a>{% if forloop.last != true %},{% endif %}
+        {% endfor %}
+      </p>
+      <p class="post-share">
+        <span class="u-bold-cn">SHARE: </span>
+        <a href="https://twitter.com/home?status={{ article.title | url_encode }}%20via%20%40apt25mx%20{{ shop.url }}{{ article.url }}"><img class="icon" src="{{ 'twitter.svg' | asset_url }}"></a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ article.url }}"><img class="icon" src="{{ 'facebook.svg' | asset_url }}"></a>
+      </p>
+    </div>
+  </div>
+
+</article>
