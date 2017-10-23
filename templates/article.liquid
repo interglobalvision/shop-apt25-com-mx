@@ -2,7 +2,7 @@
 
 <article class="container">
   <div class="grid-row justify-center">
-    <div class="grid-item item-s-12  item-m-7">
+    <div class="grid-item offset-m-1 item-s-12 item-m-6">
       <div class="single-post-details margin-bottom-small">
         <span class="date">{{ article.published_at | date: '%b %e, %Y' }}</span>
         <h1 class="article-title margin-bottom-small">
@@ -21,10 +21,11 @@
   </div>
 
   <div class="grid-row justify-center margin-bottom-basic">
-    <div class="grid-item item-s-12 item-m-9">
 
-      {% comment %} LOOKBOOK {% endcomment %}
-      {% if article.tags contains 'lookbook' %}
+    {% comment %} LOOKBOOK {% endcomment %}
+    {% if article.tags contains 'lookbook' %}
+
+      <div class="grid-item item-s-12 item-m-9">
 
         {% comment %} Get the paragraphs as an array, we would use it 4 outputing only the ones without images {% endcomment %}
         {% assign paragraphs = article.content | split: '<p>' %}
@@ -36,7 +37,7 @@
           {% assign gallery-src = article.content | split: 'src="' %}
           {% assign gallery-size = gallery-src.size | minus: 1 %}
 
-          { Iterate thru all images }
+          {% comment %} Iterate thru all images {% endcomment %}
           {% for i in (1..gallery-size) %}
             {% assign src = gallery-src[i] | split: '"' | first  %}
             <img class="lookbook-image" src="{{src}}">
@@ -53,23 +54,24 @@
 
           {% endfor %}
         {% endif %}
+      </div>
 
-      {% else %}
+    {% else %}
 
-      {% comment %} ARTICLE {% endcomment %}
+    {% comment %} ARTICLE {% endcomment %}
 
-        <div class="grid-item item-s-12">
-          <div class="type-post-content">
-            {{ article.content }}
-          </div>
+      <div class="grid-item offset-m-1 item-s-12 item-m-6">
+        <div class="type-post-content">
+          {{ article.content }}
         </div>
+      </div>
 
-      {% endif %}
-    </div>
+    {% endif %}
+
   </div>
 
   <div class="grid-row justify-center">
-    <div class="grid-item item-s-12 item-m-7 single-post-footer">
+    <div class="single-post-footer grid-item offset-m-1 item-s-12 item-m-6">
       <p class="post-tags">
         <span class="u-bold-cn">TAGGED: </span>
         {% for tag in article.tags %}
