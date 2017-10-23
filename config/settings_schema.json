@@ -14,8 +14,23 @@
       },
       {
         "type": "image_picker",
-        "id": "image_option",
-        "label": "Image option"
+        "id": "banner_image",
+        "label": "Banner Image"
+      },
+      {
+        "type": "text",
+        "id": "banner_link",
+        "label": "Banner Link"
+      },
+      {
+        "type": "text",
+        "id": "banner_title",
+        "label": "Banner Title"
+      },
+      {
+        "type": "text",
+        "id": "banner_text",
+        "label": "Banner Text"
       },
       {
         "type": "video_url",
