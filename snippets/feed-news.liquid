@@ -1,11 +1,9 @@
 <div class="grid-item item-s-12 no-gutter grid-row nowrap">
-  <div class="grid-item item-s-12 no-gutter grid-row nowrap">
-    <div class="grid-item no-gutter item-s-4">
-      <img src="{{ news.image.src | img_url: '300x300', crop: 'center' }}">
-    </div>
-    <div class="grid-item no-gutter item-s-8">
-      <h2>{{ news.title }}</h2>
-      {{ news.excerpt }}
-    </div>
+  <div class="grid-item no-gutter item-s-4">
+    <img src="{{ news.image.src | img_url: '300x300', crop: 'center' }}">
+  </div>
+  <div class="grid-item no-gutter item-s-8">
+    <h2>{{ news.title }}</h2>
+    {{ news.excerpt }}
   </div>
 </div>

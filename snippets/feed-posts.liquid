@@ -14,14 +14,14 @@
 
 <div class="grid-item item-s-12 item-m-6 no-gutter grid-row">
   {% if lookbook != blank %}
-  <div class="grid-item item-s-6 item-m-12 feed-lookbook-holder">
+  <div class="grid-item item-s-12 feed-lookbook-holder">
 
     <img src="{{ lookbook.image.src | img_url: '900x540', crop: 'center' }}">
     <h2 class="feed-lookbook-title">{{ lookbook.title }}</h2>
 
   </div>
   {% endif %}
-  <div class="grid-item item-s-6 item-m-12 no-gutter grid-row">
+  <div class="grid-item item-s-12 no-gutter grid-row">
 
     {% assign news = news1 %}
     {% if news != blank %}
