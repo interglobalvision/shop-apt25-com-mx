@@ -60,8 +60,9 @@
     <div class="grid-row justify-between align-items-start">
     {% for i in (0..2) %}
       {% if life[i] != blank %}
-      <div class="grid-item item-s-12 item-m-4">
-        {{ life[i].title }}
+      {% assign product = life[i] %}
+      <div class="grid-item item-s-12 item-m-4 item-l-3">
+        {% include 'feed-product' %}
       </div>
       {% endif %}
     {% endfor %}
