@@ -72,7 +72,10 @@
 
     {% if product1 != blank or product2 != blank or news != blank %}
       {% assign articles = news %}
+
+      {% comment %} Offset of 3 articles {% endcomment %}
       {% assign newsOffset = 3 %}
+
       <div class="grid-row margin-bottom-mid">
         {% include 'feed-articles' %}
       </div>
