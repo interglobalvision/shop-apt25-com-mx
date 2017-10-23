@@ -3,84 +3,79 @@
 {% assign clothing = collections['feed-clothes'].products %}
 {% assign life = collections['feed-life'].products %}
 {% assign news = blogs['news'].articles %}
-{% assign lookbooks = blogs['lookbooks'].articles %}
 
-{% assign bannerImage = settings.banner_image %}
-{% assign bannerLink = settings.banner_link %}
-{% assign bannerTitle = settings.banner_title %}
 {% assign bannerText = settings.banner_text %}
 
 <section id="feed">
   <div class="container">
     {% assign product1 = clothing[0] %}
     {% assign product2 = clothing[1] %}
-    {% assign lookbook = lookbooks[0] %}
-    {% assign news1 = news[0] %}
-    {% assign news2 = news[1] %}
-    {% if product1 != blank or product2 != blank or lookbook != blank or news1 != blank or news2 != blank %}
-    <div class="grid-row margin-bottom-mid">
-      {% include 'feed-posts' %}
-    </div>
+
+    {% if product1 != blank or product2 != blank or news != blank %}
+      {% assign articles = news %}
+      <div class="grid-row margin-bottom-mid">
+        {% include 'feed-articles' %}
+      </div>
     {% endif %}
   </div>
 
   {% if bannerImage != blank %}
-  {% assign image = bannerImage %}
-  {% if bannerLink != blank %}<a href="{{ bannerLink }}">{% endif %}
-  <div id="feed-banner" class="margin-bottom-mid">
-    <img id="feed-banner-bg" src="{{ image.src | img_url: '720x' }}" alt="{{ product.title | escape }}"
-    srcset="
-    {% if image.width > 720 %}{{ image.src | img_url: '720x' }} 720w{% endif %}
-    {% if image.width > 1024 %},{{ image.src | img_url: '1024x' }} 1024w{% endif %}
-    {% if image.width > 1280 %},{{ image.src | img_url: '1280x' }} 1280w{% endif %}
-    {% if image.width > 1440 %},{{ image.src | img_url: '1440x' }} 1440w{% endif %}
-    {% if image.width > 1700 %},{{ image.src | img_url: '1700x' }} 1700w{% endif %}
-    {% if image.width > 1920 %},{{ image.src | img_url: '1920x' }} 1920w{% endif %}
-    "
-    sizes="(min-width: 1700px) 1920px, (min-width: 1440px) 1700px, (min-width: 1280px) 1440px, (min-width: 1024px) 1280px, (min-width: 720px) 1024px, 720px"
-    />
-    <div class="container">
-      <div class="grid-row align-items-center padding-top-basic padding-bottom-basic">
+    {% assign image = bannerImage %}
+    {% if bannerLink != blank %}<a href="{{ bannerLink }}">{% endif %}
+      <div id="feed-banner" class="margin-bottom-mid">
+        <img id="feed-banner-bg" src="{{ image.src | img_url: '720x' }}" alt="{{ product.title | escape }}"
+        srcset="
+        {% if image.width > 720 %}{{ image.src | img_url: '720x' }} 720w{% endif %}
+        {% if image.width > 1024 %},{{ image.src | img_url: '1024x' }} 1024w{% endif %}
+        {% if image.width > 1280 %},{{ image.src | img_url: '1280x' }} 1280w{% endif %}
+        {% if image.width > 1440 %},{{ image.src | img_url: '1440x' }} 1440w{% endif %}
+        {% if image.width > 1700 %},{{ image.src | img_url: '1700x' }} 1700w{% endif %}
+        {% if image.width > 1920 %},{{ image.src | img_url: '1920x' }} 1920w{% endif %}
+        "
+        sizes="(min-width: 1700px) 1920px, (min-width: 1440px) 1700px, (min-width: 1280px) 1440px, (min-width: 1024px) 1280px, (min-width: 720px) 1024px, 720px"
+        />
+        <div class="container">
+          <div class="grid-row align-items-center padding-top-basic padding-bottom-basic">
 
-        {% if bannerTitle != %}
-        <div class="grid-item item-s-12 item-m-6 item-l-5 offset-l-1 margin-bottom-basic font-size-large font-bold">
-          {{bannerTitle}}
+            {% if bannerTitle != %}
+              <div class="grid-item item-s-12 item-m-6 item-l-5 offset-l-1 margin-bottom-basic font-size-large font-bold">
+                {{bannerTitle}}
+              </div>
+            {% endif %}
+
+            {% if bannerText != %}
+              <div class="grid-item item-s-12 item-m-6 font-size-mid">
+                {{bannerText}}
+              </div>
+            {% endif %}
+
+          </div>
         </div>
-        {% endif %}
-
-        {% if bannerText != %}
-        <div class="grid-item item-s-12 item-m-6 font-size-mid">
-          {{bannerText}}
-        </div>
-        {% endif %}
-
       </div>
-    </div>
-  </div>
-  {% if bannerLink != blank %}</a>{% endif %}
+      {% if bannerLink != blank %}</a>{% endif %}
   {% endif %}
 
   <div class="container">
     <div class="grid-row justify-between align-items-start margin-bottom-mid">
-    {% for i in (0..2) %}
-      {% if life[i] != blank %}
-      {% assign product = life[i] %}
-      <div class="grid-item item-s-12 item-m-4 item-l-3">
-        {% include 'feed-product' %}
-      </div>
-      {% endif %}
-    {% endfor %}
+      {% for i in (0..2) %}
+        {% if life[i] != blank %}
+          {% assign product = life[i] %}
+          <div class="grid-item item-s-12 item-m-4 item-l-3">
+            {% include 'feed-product' %}
+          </div>
+        {% endif %}
+      {% endfor %}
     </div>
 
     {% assign product1 = clothing[2] %}
     {% assign product2 = clothing[3] %}
-    {% assign lookbook = lookbooks[1] %}
-    {% assign news1 = news[2] %}
-    {% assign news2 = news[3] %}
-    {% if product1 != blank or product2 != blank or lookbook != blank or news1 != blank or news2 != blank %}
-    <div class="grid-row margin-bottom-mid">
-      {% include 'feed-posts' %}
-    </div>
+
+    {% if product1 != blank or product2 != blank or news != blank %}
+      {% assign articles = news %}
+      {% assign newsOffset = 3 %}
+      <div class="grid-row margin-bottom-mid">
+        {% include 'feed-articles' %}
+      </div>
     {% endif %}
   </div>
 </section>

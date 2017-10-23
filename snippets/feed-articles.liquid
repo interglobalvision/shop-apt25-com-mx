@@ -1,0 +1,31 @@
+{% assign product = product1 %}
+{% if product != blank %}
+<div class="grid-item item-s-6 item-m-3">
+  {% include 'feed-product' %}
+</div>
+{% endif %}
+
+{% assign product = product2 %}
+{% if product != blank %}
+<div class="grid-item item-s-6 item-m-3">
+  {% include 'feed-product' %}
+</div>
+{% endif %}
+
+<div class="grid-item item-s-12 item-m-6 no-gutter grid-row">
+  {% for article in articles limit: 3 offset: newsOffset %}
+    {% if article.tags contains 'lookbook' %}
+
+      <div class="grid-item item-s-12 feed-lookbook-holder">
+
+        <img src="{{ article.image.src | img_url: '900x540', crop: 'center' }}">
+        <h2 class="feed-lookbook-title">{{ article.title }}</h2>
+
+      </div>
+    {% else %}
+      <div class="grid-item item-s-12 no-gutter grid-row">
+        {% include 'feed-article' %}
+      </div>
+      {% endif %}
+  {% endfor %}
+</div>
