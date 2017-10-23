@@ -15,15 +15,15 @@
                 <img src="{{ image.src | img_url: '479x200', crop: 'center' }}" alt="{{ article.title | escape }}"
                 srcset="
                 {{ image.src | img_url: '479x200', crop: 'center' }} 479w
-                {% if image.width > 689 %},{{ image.src | img_url: '690x287', crop: 'center' }} 690w{% endif %}
-                {% if image.width > 743 %},{{ image.src | img_url: '768x310', crop: 'center' }} 744w{% endif %}
-                {% if image.width > 1025 %},{{ image.src | img_url: '1026x426', crop: 'center' }} 1026w{% endif %}
+                {% if image.width >= 700 %},{{ image.src | img_url: '700x292', crop: 'center' }} 700w{% endif %}
+                {% if image.width >= 744 %},{{ image.src | img_url: '744x310', crop: 'center' }} 744w{% endif %}
+                {% if image.width >= 1026 %},{{ image.src | img_url: '1026x426', crop: 'center' }} 1026w{% endif %}
                 "
                 sizes="
-                (max-width: 499px)479px,
-                (max-width: 719px)690px,
-                (max-width: 1365px)744px,
-                1026px
+                479px,
+                (min-width: 500px)700px,
+                (min-width: 720px)744px,
+                (min-width: 1366)1026px
                 "
                 width="{{ image.width }}"
                 />
