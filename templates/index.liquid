@@ -1,23 +1,66 @@
 {% assign page = pages.frontpage %}
-{{ page.content }}
-{% assign collection = collections.frontpage %}
 
-<section id="products">
+{% assign clothing = collections['feed-clothes'].products %}
+{% assign life = collections['feed-life'].products %}
+{% assign news = blogs['news'].articles %}
+{% assign lookbooks = blogs['lookbooks'].articles %}
+
+{% assign bannerImage = settings.banner_image %}
+{% assign bannerLink = settings.banner_link %}
+{% assign bannerTitle = settings.banner_title %}
+{% assign bannerText = settings.banner_text %}
+
+<section id="feed">
   <div class="container">
-    <div class="grid-row">
-      {% for product in collection.products %}
-      <div class="grid-item item-s-12 item-m-6 item-l-4 text-align-center">
-        <a href="{{ product.url }}">
-          <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
-          <h2>{{ product.title }}</h2>
-          <span>{{ product.price | money_without_trailing_zeros }}</span>
-        </a>
+    {% assign product1 = clothing[0] %}
+    {% assign product2 = clothing[1] %}
+    {% assign lookbook = lookbooks[0] %}
+    {% assign news1 = news[0] %}
+    {% assign news2 = news[1] %}
+    {% include 'feed-posts' %}
+  </div>
+
+  {% if bannerImage != blank %}
+  {% if bannerLink != blank %}<a href="{{ bannerLink }}">{% endif %}
+  <div id="feed-banner">
+    <img id="feed-banner-bg" src="{{ bannerImage | img_url: '1440x' }}">
+    <div class="container">
+      <div class="grid-row align-items-center padding-top-basic padding-bottom-basic">
+
+        {% if bannerTitle != %}
+        <div class="grid-item item-s-12 item-m-6 item-l-5 offset-l-1 margin-bottom-basic font-size-large font-bold">
+          {{bannerTitle}}
+        </div>
+        {% endif %}
+
+        {% if bannerText != %}
+        <div class="grid-item item-s-12 item-m-6 font-size-mid">
+          {{bannerText}}
+        </div>
+        {% endif %}
+
       </div>
-      {% else %}
-      <div class="grid-item item-s-12">
-        <p>You have no products in your Frontpage Collection</p>
-      </div>
-      {% endfor %}
     </div>
+  </div>
+  {% if bannerLink != blank %}</a>{% endif %}
+  {% endif %}
+
+  <div class="container">
+    <div class="grid-row justify-between align-items-start">
+    {% for i in (0..2) %}
+      {% if life[i] != blank %}
+      <div class="grid-item item-s-12 item-m-4">
+        {{ life[i].title }}
+      </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+
+    {% assign product1 = clothing[2] %}
+    {% assign product2 = clothing[3] %}
+    {% assign lookbook = lookbooks[1] %}
+    {% assign news1 = news[2] %}
+    {% assign news2 = news[3] %}
+    {% include 'feed-posts' %}
   </div>
 </section>
