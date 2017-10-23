@@ -21,9 +21,20 @@
   </div>
 
   {% if bannerImage != blank %}
+  {% assign image = bannerImage %}
   {% if bannerLink != blank %}<a href="{{ bannerLink }}">{% endif %}
   <div id="feed-banner">
-    <img id="feed-banner-bg" src="{{ bannerImage | img_url: '1440x' }}">
+    <img id="feed-banner-bg" src="{{ image.src | img_url: '720x' }}" alt="{{ product.title | escape }}"
+    srcset="
+    {% if image.width > 720 %}{{ image.src | img_url: '720x' }} 720w{% endif %}
+    {% if image.width > 1024 %},{{ image.src | img_url: '1024x' }} 1024w{% endif %}
+    {% if image.width > 1280 %},{{ image.src | img_url: '1280x' }} 1280w{% endif %}
+    {% if image.width > 1440 %},{{ image.src | img_url: '1440x' }} 1440w{% endif %}
+    {% if image.width > 1700 %},{{ image.src | img_url: '1700x' }} 1700w{% endif %}
+    {% if image.width > 1920 %},{{ image.src | img_url: '1920x' }} 1920w{% endif %}
+    "
+    sizes="(min-width: 1700px) 1920px, (min-width: 1440px) 1700px, (min-width: 1280px) 1440px, (min-width: 1024px) 1280px, (min-width: 720px) 1024px, 720px"
+    />
     <div class="container">
       <div class="grid-row align-items-center padding-top-basic padding-bottom-basic">
 
