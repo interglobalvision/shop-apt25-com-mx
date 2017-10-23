@@ -2,12 +2,16 @@
 
   {% assign product = product1 %}
   {% if product != blank %}
+  <div class="grid-item item-s-6 item-m-3">
     {% include 'feed-product' %}
+  </div>
   {% endif %}
 
   {% assign product = product2 %}
   {% if product != blank %}
+  <div class="grid-item item-s-6 item-m-3">
     {% include 'feed-product' %}
+  </div>
   {% endif %}
 
   <div class="grid-item item-s-12 item-m-6 no-gutter grid-row">
