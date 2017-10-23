@@ -7,13 +7,26 @@
       {% for article in blog.articles %}
         {% if article.tags contains 'lookbook' %}
         <article class="grid-item item-s-12 no-gutter margin-bottom-mid">
+          {% if article.image %}
+          {% assign image = article.image %}
           <div class="grid-row justify-center">
             <div class="grid-item item-s-12 item-l-9 item-xl-7 text-align-center">
               <a href="{{ article.url }}">
-                {% if article.image %}<img class="margin-bottom-tiny" src="{{ article | img_url: 'master' }}">{% endif %}
+                <img src="{{ image.src | img_url: '466x466' }}" alt="{{ product.title | escape }}"
+                srcset="
+                {% if image.width > 466 %}{{ image.src | img_url: '466x466' }} 466w{% endif %}
+                {% if image.width > 676 %},{{ image.src | img_url: '676x281' }} 676w{% endif %}
+                {% if image.width > 700 %},{{ image.src | img_url: '700x291' }} 700w{% endif %}
+                {% if image.width > 744 %},{{ image.src | img_url: '744x309' }} 744w{% endif %}
+                {% if image.width > 772 %},{{ image.src | img_url: '772x322' }} 772w{% endif %}
+                {% if image.width > 1026 %},{{ image.src | img_url: '1026x426' }} 1026w{% endif %}
+                "
+                sizes="(min-width: 1366px) 1026px, (min-width: 11280px) 772px, (min-width: 1024px) 744px, (min-width: 720px) 700px, (min-width: 500px) 676px, 466px"
+                />
               </a>
             </div>
           </div>
+          {% endif %}
           <div class="grid-row justify-center">
             <div class="grid-item item-s-12 item-m-6 item-l-4 item-xl-3">
               <h2>
@@ -29,11 +42,14 @@
         {% else %}
         <article class="grid-item item-s-12 no-gutter margin-bottom-mid">
           <div class="grid-row justify-center">
+            {% if article.image %}
+            {% assign image = article.image %}
             <div class="grid-item item-s-12 item-m-6 item-l-4 item-xl-3">
-              <a href="{{ article.image }}">
-                {% if article.image %}<img class="margin-bottom-tiny" src="{{ article | img_url: 'original' }}">{% endif %}
+              <a href="{{ article.url }}">
+                <img class="margin-bottom-tiny" src="{{ image.src | img_url: '465x465' }}" alt="{{ product.title | escape }}" />
               </a>
             </div>
+            {% endif %}
             <div class="grid-item item-s-12 item-m-6 item-l-4 item-xl-3">
               <span class="date">{{ article.published_at | date: '%b %e, %Y' }}</span>
               <h2 class="margin-bottom-tiny">
