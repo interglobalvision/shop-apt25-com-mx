@@ -53,7 +53,7 @@
               srcset="
               {% if image.width > 240 %}{{ image.src | img_url: '240x' }} 240w{% endif %}
               {% if image.width > 310 %},{{ image.src | img_url: '310x' }} 310w{% endif %}
-              {% if image.width > 390 %},{{ image.src | img_url: '370x' }} 370w{% endif %}
+              {% if image.width > 370 %},{{ image.src | img_url: '370x' }} 370w{% endif %}
               "
               sizes="(min-width: 1280px) 370px, (min-width: 1024px) 310px, (min-width: 720px) 240px, 50vw"
               />
