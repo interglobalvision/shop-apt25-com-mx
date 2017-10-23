@@ -17,13 +17,17 @@
     {% assign lookbook = lookbooks[0] %}
     {% assign news1 = news[0] %}
     {% assign news2 = news[1] %}
-    {% include 'feed-posts' %}
+    {% if product1 != blank or product2 != blank or lookbook != blank or news1 != blank or news2 != blank %}
+    <div class="grid-row margin-bottom-mid">
+      {% include 'feed-posts' %}
+    </div>
+    {% endif %}
   </div>
 
   {% if bannerImage != blank %}
   {% assign image = bannerImage %}
   {% if bannerLink != blank %}<a href="{{ bannerLink }}">{% endif %}
-  <div id="feed-banner">
+  <div id="feed-banner" class="margin-bottom-mid">
     <img id="feed-banner-bg" src="{{ image.src | img_url: '720x' }}" alt="{{ product.title | escape }}"
     srcset="
     {% if image.width > 720 %}{{ image.src | img_url: '720x' }} 720w{% endif %}
@@ -57,7 +61,7 @@
   {% endif %}
 
   <div class="container">
-    <div class="grid-row justify-between align-items-start">
+    <div class="grid-row justify-between align-items-start margin-bottom-mid">
     {% for i in (0..2) %}
       {% if life[i] != blank %}
       {% assign product = life[i] %}
@@ -73,6 +77,10 @@
     {% assign lookbook = lookbooks[1] %}
     {% assign news1 = news[2] %}
     {% assign news2 = news[3] %}
-    {% include 'feed-posts' %}
+    {% if product1 != blank or product2 != blank or lookbook != blank or news1 != blank or news2 != blank %}
+    <div class="grid-row margin-bottom-mid">
+      {% include 'feed-posts' %}
+    </div>
+    {% endif %}
   </div>
 </section>
