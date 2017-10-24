@@ -12,20 +12,16 @@
           <div class="grid-row justify-center">
             <div class="grid-item item-s-12 item-l-9 item-xl-7 text-align-center">
               <a href="{{ article.url }}">
-                <img src="{{ image.src | img_url: '479x200', crop: 'center' }}" alt="{{ article.title | escape }}"
-                srcset="
-                {{ image.src | img_url: '479x200', crop: 'center' }} 479w
-                {% if image.width >= 700 %},{{ image.src | img_url: '700x292', crop: 'center' }} 700w{% endif %}
-                {% if image.width >= 744 %},{{ image.src | img_url: '744x310', crop: 'center' }} 744w{% endif %}
-                {% if image.width >= 1026 %},{{ image.src | img_url: '1026x426', crop: 'center' }} 1026w{% endif %}
-                "
-                sizes="
-                479px,
-                (min-width: 500px)700px,
-                (min-width: 720px)744px,
-                (min-width: 1366)1026px
-                "
-                width="{{ image.width }}"
+                <img alt="{{ article.title | escape }}"
+                  src="{{ image.src | img_url: '479x200', crop: 'center' }}"
+
+                  srcset="{{ image.src | img_url: '479x200', crop: 'center' }} 479w
+                         {% if image.width >= 700 %},{{ image.src | img_url: '700x292', crop: 'center' }} 700w{% endif %}
+                         {% if image.width >= 744 %},{{ image.src | img_url: '744x310', crop: 'center' }} 744w{% endif %}
+                         {% if image.width >= 1026 %},{{ image.src | img_url: '1026x426', crop: 'center' }} 1026w{% endif %}
+                  "
+
+                  width="{{ image.width }}"
                 />
               </a>
             </div>
