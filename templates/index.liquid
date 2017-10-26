@@ -2,7 +2,7 @@
 
 {% assign clothing = collections['feed-clothes'].products %}
 {% assign life = collections['feed-life'].products %}
-{% assign news = blogs['news'].articles %}
+{% assign articles = blogs['news'].articles %}
 
 {% assign bannerImage = settings.banner_image %}
 {% assign bannerLink = settings.banner_link %}
@@ -14,8 +14,7 @@
     {% assign product1 = clothing[0] %}
     {% assign product2 = clothing[1] %}
 
-    {% if product1 != blank or product2 != blank or news != blank %}
-      {% assign articles = news %}
+    {% if product1 != blank or product2 != blank or articles != blank %}
       <div class="grid-row margin-bottom-mid">
         {% include 'feed-articles' %}
       </div>
@@ -35,7 +34,7 @@
         {% if image.width > 1700 %},{{ image.src | img_url: '1700x' }} 1700w{% endif %}
         {% if image.width > 1920 %},{{ image.src | img_url: '1920x' }} 1920w{% endif %}
         "
-        sizes="(min-width: 1700px) 1920px, (min-width: 1440px) 1700px, (min-width: 1280px) 1440px, (min-width: 1024px) 1280px, (min-width: 720px) 1024px, 720px"
+        width="{{image.width}}"
         />
         <div class="container">
           <div class="grid-row align-items-center padding-top-basic padding-bottom-basic">
@@ -73,11 +72,10 @@
     {% assign product1 = clothing[2] %}
     {% assign product2 = clothing[3] %}
 
-    {% if product1 != blank or product2 != blank or news != blank %}
-      {% assign articles = news %}
+    {% if product1 != blank or product2 != blank or articles != blank %}
 
       {% comment %} Offset of 3 articles {% endcomment %}
-      {% assign newsOffset = 3 %}
+      {% assign articlesOffset = 3 %}
 
       <div class="grid-row margin-bottom-mid">
         {% include 'feed-articles' %}

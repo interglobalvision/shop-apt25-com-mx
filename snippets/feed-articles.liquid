@@ -16,7 +16,7 @@
 
 {% comment %} ARTICLES {% endcomment %}
 <div class="grid-item item-s-12 item-m-6 no-gutter grid-row">
-  {% for article in articles limit: 3 offset: newsOffset %}
+  {% for article in articles limit: 3 offset: articlesOffset %}
     {% if article.tags contains 'lookbook' %}
       {% comment %} LOOKBOOK {% endcomment %}
 
