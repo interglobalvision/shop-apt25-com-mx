@@ -1,0 +1,14 @@
+{% assign image = product.featured_image %}
+
+<img src="{{ image.src | img_url: '240x' }}" alt="{{ product.title | escape }}"
+srcset="
+{% if image.width > 240 %}{{ image.src | img_url: '240x' }} 240w{% endif %}
+{% if image.width > 310 %},{{ image.src | img_url: '310x' }} 310w{% endif %}
+{% if image.width > 390 %},{{ image.src | img_url: '370x' }} 370w{% endif %}
+"
+sizes="(min-width: 1280px) 370px, (min-width: 1024px) 310px, (min-width: 720px) 240px, 50vw"
+/>
+
+<div class="font-bold font-size-basic">{{ product.vendor }}</div>
+
+<h2 class="u-inline-block">{{ product.title }}</h2> &mdash;{% if product.compare_at_price > product.price %} <span class="u-inline-block font-line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</span>{% endif %} <span class="u-inline-block">{{ product.price | money_without_trailing_zeros }}</span>
