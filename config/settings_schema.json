@@ -1,16 +1,11 @@
 [
   {
-    "name": "Front page",
+    "name": "Banner",
     "settings": [
       {
-        "type":      "radio",
-        "id":        "radio_option",
-        "label":     "Select Option",
-        "options": [
-          { "value": "option1", "label": "Option 1" },
-          { "value": "option2", "label": "Option 2" }
-        ],
-        "default":   "option1"
+        "type": "checkbox",
+        "id": "banner_display",
+        "label": "Display Banner"
       },
       {
         "type": "image_picker",
@@ -33,10 +28,16 @@
         "label": "Banner Text"
       },
       {
-        "type": "video_url",
-        "id": "youtube_option",
-        "label": "YouTube Option",
-        "accept": ["youtube"]
+        "type": "color",
+        "id": "banner_text_color",
+        "label": "Banner Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "banner_bg_color",
+        "label": "Banner Background Color",
+        "default": "#000000"
       }
     ]
   }, {
