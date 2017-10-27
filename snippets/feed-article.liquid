@@ -1,9 +1,11 @@
-<div class="grid-item item-s-12 no-gutter grid-row nowrap">
-  <div class="grid-item no-gutter item-s-4">
-    <img src="{{ article.image.src | img_url: '300x300', crop: 'center' }}">
-  </div>
-  <div class="grid-item no-gutter item-s-8">
-    <h2>{{ article.title }}</h2>
+<div class="grid-item item-m-8 item-l-7 feed-article-text">
+  <a href="{{ article.url }}">
+    <h2 class="font-size-mid font-bold margin-bottom-tiny">{{ article.title }}</h2>
     {{ article.excerpt }}
-  </div>
+  </a>
+</div>
+<div class="grid-item item-m-4 item-l-5 feed-article-image-holder">
+  <a href="{{ article.url }}">
+    <img src="{{ article.image.src | img_url: '375x375', crop: 'center' }}">
+  </a>
 </div>

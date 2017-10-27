@@ -92,7 +92,7 @@ img
 
 // MEDIA QUERIES
 
-$gutter = 14px
+$gutter = 18px
 
 $margin-micro = ($gutter / 3)
 $margin-tiny = ($gutter / 2)
@@ -103,8 +103,8 @@ $margin-large = ($gutter * 5)
 
 $font-size-basic = 13px
 $font-size-extra = $font-size-basic * 2
-$font-size-large = $font-size-extra * 1.5
-$font-size-mid = $font-size-extra * 1.2
+$font-size-large = $font-size-basic * 1.5
+$font-size-mid = $font-size-basic * 1.2
 $font-size-small = $font-size-basic * .8
 $font-size-tiny = $font-size-basic * .5
 $font-size-micro = $font-size-basic * .3
@@ -123,7 +123,7 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
 @media screen and (min-width: 720px)
 
-  $gutter = 21px
+  $gutter = 24px
 
   $margin-micro = ($gutter / 3)
   $margin-tiny = ($gutter / 2)
@@ -134,15 +134,15 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
   $font-size-basic = 15px
   $font-size-extra = $font-size-basic * 2
-  $font-size-large = $font-size-extra * 1.5
-  $font-size-mid = $font-size-extra * 1.2
+  $font-size-large = $font-size-basic * 1.5
+  $font-size-mid = $font-size-basic * 1.2
   $font-size-small = $font-size-basic * .8
   $font-size-tiny = $font-size-basic * .5
   $font-size-micro = $font-size-basic * .3
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
-  grid-maker(720px, $gutter, m)
+  grid-maker(96%, $gutter, m)
 
   font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny, $font-size-micro)
 
@@ -150,7 +150,7 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
 @media screen and (min-width: 1024px)
 
-  $gutter = 24px
+  $gutter = 48px
 
   $margin-micro = ($gutter / 3)
   $margin-tiny = ($gutter / 2)
@@ -161,13 +161,13 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
   $font-size-basic = 17px
   $font-size-extra = $font-size-basic * 2
-  $font-size-large = $font-size-extra * 1.5
-  $font-size-mid = $font-size-extra * 1.2
+  $font-size-large = $font-size-basic * 1.5
+  $font-size-mid = $font-size-basic * 1.2
   $font-size-small = $font-size-basic * .8
   $font-size-tiny = $font-size-basic * .5
   $font-size-micro = $font-size-basic * .3
 
-  grid-maker(1024px, $gutter, l)
+  grid-maker(96%, $gutter, l)
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
@@ -183,18 +183,40 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
 @media screen and (min-width: 1280px)
 
-  $gutter = 24px
+  $gutter = 64px
 
-  grid-maker(1280px, $gutter, xl)
+  $font-size-basic = 19px
+  $font-size-extra = $font-size-basic * 2
+  $font-size-large = $font-size-basic * 1.5
+  $font-size-mid = $font-size-basic * 1.2
+  $font-size-small = $font-size-basic * .8
+  $font-size-tiny = $font-size-basic * .5
+  $font-size-micro = $font-size-basic * .3
+
+  grid-maker(96%, $gutter, xl)
+
+  font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny, $font-size-micro)
 
   @import 'responsive/laptop'
 
-@media screen and (min-width: 1366px)
+@media screen and (min-width: 1440px)
+
+  $font-size-basic = 21px
+  $font-size-extra = $font-size-basic * 2
+  $font-size-large = $font-size-basic * 1.5
+  $font-size-mid = $font-size-basic * 1.2
+  $font-size-small = $font-size-basic * .8
+  $font-size-tiny = $font-size-basic * .5
+  $font-size-micro = $font-size-basic * .3
+
+  grid-maker(96%)
+
+  font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny, $font-size-micro)
 
   @import 'responsive/desktop'
 
-  grid-maker(1366px)
-
 @media screen and (min-width: 1800px)
 
-  grid-maker(1800px)
+  $gutter = 80px
+
+  grid-maker(96%, $gutter, xxl)

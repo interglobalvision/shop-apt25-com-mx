@@ -1,33 +1,39 @@
-{% comment %} PRODUCT #1 {% endcomment %}
-{% assign product = product1 %}
-{% if product != blank %}
-<div class="grid-item item-s-6 item-m-3">
-  {% include 'feed-product' %}
-</div>
-{% endif %}
+{% if product1 != blank or product2 != blank %}
+<div class="grid item item-s-12 item-m-5 grid-row no-gutter feed-products-wrapper">
+  {% comment %} PRODUCT #1 {% endcomment %}
+  {% assign product = product1 %}
+  {% if product != blank %}
+  <div class="grid-item item-s-6 font-size-small">
+    {% include 'feed-product' %}
+  </div>
+  {% endif %}
 
-{% comment %} PRODUCT #2 {% endcomment %}
-{% assign product = product2 %}
-{% if product != blank %}
-<div class="grid-item item-s-6 item-m-3">
-  {% include 'feed-product' %}
+  {% comment %} PRODUCT #2 {% endcomment %}
+  {% assign product = product2 %}
+  {% if product != blank %}
+  <div class="grid-item item-s-6 font-size-small">
+    {% include 'feed-product' %}
+  </div>
+  {% endif %}
 </div>
 {% endif %}
 
 {% comment %} ARTICLES {% endcomment %}
-<div class="grid-item item-s-12 item-m-6 no-gutter grid-row">
+<div class="grid-item item-s-12 item-m-7 item-xxl-6 no-gutter grid-column justify-end feed-article-holder">
   {% for article in articles limit: 3 offset: articlesOffset %}
     {% if article.tags contains 'lookbook' %}
       {% comment %} LOOKBOOK {% endcomment %}
 
-      <div class="grid-item item-s-12 feed-lookbook-holder">
-        <img src="{{ article.image.src | img_url: '900x540', crop: 'center' }}">
-        <h2 class="feed-lookbook-title">{{ article.title }}</h2>
+      <div class="grid-item feed-lookbook-holder feed-article-item">
+        <a href="{{ article.url }}">
+          <img src="{{ article.image.src | img_url: '900x540', crop: 'center' }}">
+          <h2 class="font-size-large font-bold feed-lookbook-title grid-row justify-center align-items-center text-align-center"><span>{{ article.title }}</span></h2>
+        </a>
       </div>
 
     {% else %}
       {% comment %} ARTICLE {% endcomment %}
-      <div class="grid-item item-s-12 no-gutter grid-row">
+      <div class="grid-item grid-row feed-article-item">
         {% include 'feed-article' %}
       </div>
       {% endif %}

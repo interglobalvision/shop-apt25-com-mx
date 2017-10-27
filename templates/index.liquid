@@ -4,10 +4,13 @@
 {% assign life = collections['feed-life'].products %}
 {% assign articles = blogs['news'].articles %}
 
+{% assign bannerDisplay = settings.banner_display %}
 {% assign bannerImage = settings.banner_image %}
 {% assign bannerLink = settings.banner_link %}
 {% assign bannerTitle = settings.banner_title %}
 {% assign bannerText = settings.banner_text %}
+{% assign bannerTextColor = settings.banner_text_color %}
+{% assign bannerBgColor = settings.banner_bg_color %}
 
 <section id="feed">
   <div class="container">
@@ -15,16 +18,18 @@
     {% assign product2 = clothing[1] %}
 
     {% if product1 != blank or product2 != blank or articles != blank %}
-      <div class="grid-row margin-bottom-mid">
+      <div class="grid-row margin-bottom-section align-items-end justify-between">
         {% include 'feed-articles' %}
       </div>
     {% endif %}
   </div>
 
-  {% if bannerImage != blank %}
-    {% assign image = bannerImage %}
+  {% if bannerDisplay != false %}
     {% if bannerLink != blank %}<a href="{{ bannerLink }}">{% endif %}
-      <div id="feed-banner" class="margin-bottom-mid">
+    <div id="feed-banner" class="margin-bottom-section" style="background-color: {{ bannerBgColor }}">
+
+      {% if bannerImage != blank %}
+        {% assign image = bannerImage %}
         <img id="feed-banner-bg" src="{{ image.src | img_url: '720x' }}" alt="{{ product.title | escape }}"
         srcset="
         {% if image.width > 720 %}{{ image.src | img_url: '720x' }} 720w{% endif %}
@@ -36,33 +41,36 @@
         "
         width="{{image.width}}"
         />
-        <div class="container">
-          <div class="grid-row align-items-center padding-top-basic padding-bottom-basic">
+      {% endif %}
 
-            {% if bannerTitle != %}
-              <div class="grid-item item-s-12 item-m-6 item-l-5 offset-l-1 margin-bottom-basic font-size-large font-bold">
-                {{bannerTitle}}
-              </div>
-            {% endif %}
+      <div class="container">
+        <div class="grid-row align-items-center padding-top-basic padding-bottom-basic" style="color: {{ bannerTextColor }}">
 
-            {% if bannerText != %}
-              <div class="grid-item item-s-12 item-m-6 font-size-mid">
-                {{bannerText}}
-              </div>
-            {% endif %}
+          {% if bannerTitle != %}
+            <div id="feed-banner-title" class="grid-item item-s-12 item-m-6 item-l-5 offset-l-1 font-size-large font-bold">
+              {{bannerTitle}}
+            </div>
+          {% endif %}
 
-          </div>
+          {% if bannerText != %}
+            <div class="grid-item item-s-12 item-m-6 font-size-mid">
+              {{bannerText}}
+            </div>
+          {% endif %}
+
         </div>
       </div>
-      {% if bannerLink != blank %}</a>{% endif %}
+
+    </div>
+    {% if bannerLink != blank %}</a>{% endif %}
   {% endif %}
 
   <div class="container">
-    <div class="grid-row justify-between align-items-start margin-bottom-mid">
+    <div class="grid-row justify-between align-items-start margin-bottom-section">
       {% for i in (0..2) %}
         {% if life[i] != blank %}
           {% assign product = life[i] %}
-          <div class="grid-item item-s-12 item-m-4 item-l-3">
+          <div class="grid-item feed-life-item item-m-4 item-xxl-3 font-size-small">
             {% include 'feed-product' %}
           </div>
         {% endif %}
@@ -77,7 +85,7 @@
       {% comment %} Offset of 3 articles {% endcomment %}
       {% assign articlesOffset = 3 %}
 
-      <div class="grid-row margin-bottom-mid">
+      <div class="grid-row margin-bottom-mid align-items-end justify-between margin-bottom-section">
         {% include 'feed-articles' %}
       </div>
     {% endif %}

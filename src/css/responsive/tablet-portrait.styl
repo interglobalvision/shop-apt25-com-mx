@@ -1,4 +1,5 @@
 #header
+  padding-bottom: $margin-small
   .logo
     height: 105px
 
@@ -17,3 +18,31 @@
 
 #collection-row
   flex-wrap: nowrap
+
+.margin-bottom-section
+  margin-bottom: $margin-mid
+
+// ******************************************************
+
+// INDEX
+
+.feed-products-wrapper
+  margin-bottom: 0
+
+.feed-article-holder
+  .feed-article-item:not(:last-child)
+    margin-bottom: $margin-basic
+
+.feed-lookbook-title
+  width: calc('100% - ' + $margin-basic)
+  left: ($margin-basic / 2)
+
+.grid-item.feed-article-text
+  padding-right: 0
+  order: 0 
+
+#feed-banner-title
+  margin-bottom: 0
+
+.feed-life-item
+  margin-bottom: 0
