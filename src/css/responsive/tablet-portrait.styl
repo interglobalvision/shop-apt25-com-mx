@@ -33,16 +33,19 @@
   .feed-article-item:not(:last-child)
     margin-bottom: $margin-basic
 
+.feed-article-image-holder
+  font-size: 0
+
 .feed-lookbook-title
   width: calc('100% - ' + $margin-basic)
   left: ($margin-basic / 2)
 
 .grid-item.feed-article-text
   padding-right: 0
-  order: 0 
+  order: 0
 
 #feed-banner-title
   margin-bottom: 0
 
-.feed-life-item
+.feed-life-item:not(:last-of-type)
   margin-bottom: 0

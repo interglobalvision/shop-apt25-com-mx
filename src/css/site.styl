@@ -119,7 +119,7 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
 @media screen and (min-width: 500px)
 
-  grid-maker(96%, $gutter, m)
+  grid-maker(96%, $gutter, sm)
 
 @media screen and (min-width: 720px)
 
@@ -150,7 +150,7 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
 @media screen and (min-width: 1024px)
 
-  $gutter = 48px
+  $gutter = 32px
 
   $margin-micro = ($gutter / 3)
   $margin-tiny = ($gutter / 2)
@@ -183,7 +183,7 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
 @media screen and (min-width: 1280px)
 
-  $gutter = 64px
+  $gutter = 48px
 
   $font-size-basic = 19px
   $font-size-extra = $font-size-basic * 2
@@ -201,6 +201,8 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
 @media screen and (min-width: 1440px)
 
+  $gutter = 64px
+
   $font-size-basic = 21px
   $font-size-extra = $font-size-basic * 2
   $font-size-large = $font-size-basic * 1.5
@@ -209,7 +211,7 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
   $font-size-tiny = $font-size-basic * .5
   $font-size-micro = $font-size-basic * .3
 
-  grid-maker(96%)
+  grid-maker(96%, $gutter, xl)
 
   font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny, $font-size-micro)
 
