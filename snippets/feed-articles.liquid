@@ -26,14 +26,14 @@
 
       <div class="grid-item feed-lookbook-holder feed-article-item">
         <a href="{{ article.url }}">
-          <img src="{{ article.image.src | img_url: '900x540', crop: 'center' }}">
+          <img src="{{ article.image.src | img_url: '900x375', crop: 'center' }}">
           <h2 class="font-size-large font-bold feed-lookbook-title grid-row justify-center align-items-center text-align-center"><span>{{ article.title }}</span></h2>
         </a>
       </div>
 
     {% else %}
       {% comment %} ARTICLE {% endcomment %}
-      <div class="grid-item grid-row feed-article-item no-gutter">
+      <div class="grid-item grid-row feed-article-item no-gutter align-items-center">
         {% include 'feed-article' %}
       </div>
       {% endif %}
