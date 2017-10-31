@@ -24,7 +24,7 @@
   {{ '//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js' | script_tag }}
 </head>
 <body id="{{ page_title | handle }}" class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
-  <header id="header" class="padding-top-small padding-bottom-small">
+  <header id="header" class="padding-top-tiny padding-bottom-tiny">
     <h1 class="u-visuallyhidden">{{ shop.name }}</h1>
     <div class="container">
       <div class="grid-row justify-between align-items-start">
@@ -33,7 +33,7 @@
         </div>
         <div class="mobile-nav-toggle-holder">
           <div class="container">
-            <div class="grid-row padding-top-small justify-end">
+            <div class="grid-row padding-top-tiny justify-end">
               <div class="grid-item">
                 <div class="js-menu-toggle u-pointer">MENU</div>
               </div>
@@ -87,7 +87,7 @@
     <nav id="mobile-nav">
       <div class="mobile-nav-toggle-holder">
         <div class="container">
-          <div class="grid-row padding-top-small justify-end">
+          <div class="grid-row padding-top-tiny justify-end">
             <div class="grid-item">
               <div class="js-menu-toggle u-pointer">CLOSE</div>
             </div>
@@ -114,7 +114,7 @@
           {% endif %}
 
           <div class="grid-item item-s-6">
-            <div class="padding-bottom-basic">
+            <div class="padding-bottom-small">
               <a href="/cart">{% if cart.item_count > 0%}<span id="nav-cart-count">{{ cart.item_count }}</span> {% endif %}Cart</a>
             </div>
             <div>
