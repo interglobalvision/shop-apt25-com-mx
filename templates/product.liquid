@@ -1,56 +1,70 @@
-<div id="product-holder">
-  <div class="container">
-    <section id="product-header">
-      <div class="grid-row">
-        <div class="grid-item item-s-6 grid-column">
-          <h2 class="u-inline-block">{{ product.title }}</h2>
-          <div class="font-mid font-bold">{{ product.vendor }}</div>
-          <div>{{ product.price | money_without_trailing_zeros }}</div>
-        </div>
-        <div class="grid-item item-s-6">
-          <form action="/cart/add" method="post" enctype="multipart/form-data" id="product-form"  class="grid-column">
-            {% if product.options.size == 1 and product.variants[0].title == 'Default Title' %}
-              <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-            {% else %}
-              <select id="product-select" name="id">
-              {% for variant in product.variants %}
-                {% if variant.available == true %}
-                <option value="{{variant.id}}"> {{ variant.title }}</option>
-                {% else %}
-                <option disabled="disabled"> {{ variant.title }} - sold out!</option>
-                {% endif %}
-              {% endfor %}
-              </select>
-            {% endif %}
-
-            <div id="product-add-holder" class="font-size-basic">
-              <input type="submit" name="add" id="add" value="Add to Cart" class="button">
-              <div id="product-unavailable" class="font-size-small">Out of stock</div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="grid-row">
-        <div class="grid-item item-s-12">
-          {{ product.description }}
-        </div>
-      </div>
-    </section>
-
-    {% if product.images.size > 1 %}
-    <section id="product-gallery">
-      <div id="product-gallery-row" class="grid-row">
-        {% for image in product.images %}
-          {% unless image == product.featured_image %}
-          <div class="product-gallery-item grid-item no-gutter item-s-12">
-            <img class="product-gallery-image" src="{{ image.src | img_url: 'grande' }}" alt="{{ image.alt | escape }}">
+<div class="container">
+  <section id="product">
+    <div class="grid-row">
+      <div class="grid-item item-s-12 item-m-6 no-gutter" id="product-gallery-holder">
+        {% if product.images.size > 1 %}
+          <div id="product-gallery" class="grid-row justify-center">
+            {% for image in product.images %}
+              {% unless image == product.featured_image %}
+              <div class="product-gallery-item grid-item item-s-6 item-m-7 offset-m-6 item-l-6 offset-l-5">
+                <img class="product-gallery-image" src="{{ image.src | img_url: '240x' }}" alt="{{ product.title | escape }}"
+                srcset="
+                {% if image.width >= 240 %}{{ image.src | img_url: '240x' }} 240w{% endif %}
+                {% if image.width >= 310 %},{{ image.src | img_url: '310x' }} 310w{% endif %}
+                {% if image.width >= 370 %},{{ image.src | img_url: '370x' }} 370w{% endif %}
+                "
+                width="{% if image.width > 370 %}370{% else %}{{ image.width }}{% endif %}"
+                />
+              </div>
+              {% endunless %}
+            {% endfor %}
           </div>
-          {% endunless %}
-        {% endfor %}
+        {% endif %}
       </div>
-    </section>
-    {% endif %}
-  </div>
+
+      <div class="grid-item item-s-12 item-m-6 item-xl-5 offset-xl-1 no-gutter" id="product-header-holder">
+        <header id="product-header">
+          <div class="grid-row margin-bottom-small align-items-end">
+            <div class="grid-item item-s-7 grid-column">
+              <h2 class="u-inline-block margin-bottom-tiny">{{ product.title }}</h2>
+              <div class="font-mid font-bold margin-bottom-tiny font-size-large">{{ product.vendor }}</div>
+              <div>{{ product.price | money_without_trailing_zeros }}</div>
+            </div>
+
+            <div class="grid-item item-s-5">
+              {% if product.available %}
+              <form action="/cart/add" method="post" enctype="multipart/form-data" id="product-form"  class="grid-row">
+                {% if product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+                  <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                {% else %}
+                  <select id="product-select" name="id" class="form-element margin-bottom-tiny item-s-12">
+                  {% for variant in product.variants %}
+                    {% if variant.available == true %}
+                    <option value="{{variant.id}}"> {{ variant.title }}</option>
+                    {% else %}
+                    <option disabled="disabled"> {{ variant.title }} - sold out!</option>
+                    {% endif %}
+                  {% endfor %}
+                  </select>
+                {% endif %}
+
+                <input type="submit" name="add" id="add" value="Add to Cart" class="form-element button font-size-basic item-s-12">
+              </form>
+              {% else %}
+              <div id="product-unavailable">Out of stock</div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-item item-s-12">
+              {{ product.description }}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 </div>
 
 {% include 'related-products' %}
