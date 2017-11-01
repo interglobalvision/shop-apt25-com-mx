@@ -3,11 +3,11 @@
 <a href="{{ product.url }}">
   <img src="{{ image.src | img_url: '240x' }}" alt="{{ product.title | escape }}"
   srcset="
-  {% if image.width > 240 %}{{ image.src | img_url: '240x' }} 240w{% endif %}
-  {% if image.width > 310 %},{{ image.src | img_url: '310x' }} 310w{% endif %}
-  {% if image.width > 390 %},{{ image.src | img_url: '370x' }} 370w{% endif %}
+  {% if image.width >= 240 %}{{ image.src | img_url: '240x' }} 240w{% endif %}
+  {% if image.width >= 310 %},{{ image.src | img_url: '310x' }} 310w{% endif %}
+  {% if image.width >= 370 %},{{ image.src | img_url: '370x' }} 370w{% endif %}
   "
-  width="{{ image.width }}"
+  width="{% if image.width > 370 %}370{% else %}{{ image.width }}{% endif %}"
   />
 
   <div class="font-bold font-size-basic">{{ product.vendor }}</div>
