@@ -607,6 +607,43 @@ template {
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url("HelveticaNeueLTStd-Lt.eot");
+  src: url("HelveticaNeueLTStd-Lt.eot?#iefix") format('embedded-opentype'), url("HelveticaNeueLTStd-Lt.woff") format('woff'), url("HelveticaNeueLTStd-Lt.ttf") format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url("HelveticaNeueLTStd-LtIt.eot");
+  src: url("HelveticaNeueLTStd-LtIt.eot?#iefix") format('embedded-opentype'), url("HelveticaNeueLTStd-LtIt.woff") format('woff'), url("HelveticaNeueLTStd-LtIt.ttf") format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url("HelveticaNeueLTStd-LtCn.eot");
+  src: url("HelveticaNeueLTStd-LtCn.eot?#iefix") format('embedded-opentype'), url("HelveticaNeueLTStd-LtCn.woff") format('woff'), url("HelveticaNeueLTStd-LtCn.ttf") format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: condensed;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url("HelveticaNeueLTStd-Bd.eot");
+  src: url("HelveticaNeueLTStd-Bd.eot?#iefix") format('embedded-opentype'), url("HelveticaNeueLTStd-Bd.woff") format('woff'), url("HelveticaNeueLTStd-Bd.ttf") format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url("HelveticaNeueLTStd-BdCn.eot");
+  src: url("HelveticaNeueLTStd-BdCn.eot?#iefix") format('embedded-opentype'), url("HelveticaNeueLTStd-BdCn.woff") format('woff'), url("HelveticaNeueLTStd-BdCn.ttf") format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: condensed;
+}
 h1,
 h2,
 h3,
@@ -666,6 +703,7 @@ p a {
 html {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: 0.001em;
+  font-weight: 300;
 }
 body {
   line-height: 1.35;
@@ -678,6 +716,9 @@ body {
 }
 .font-larger {
   font-size: 1.3rem;
+}
+.font-condensed {
+  font-stretch: condensed;
 }
 .line-tighter {
   line-height: 1.15;
@@ -1186,6 +1227,7 @@ html,
           filter: none;
   opacity: 1;
   pointer-events: auto;
+  z-index: 700;
 }
 #main-nav .nav-types li {
   display: inline-block;

@@ -35,13 +35,13 @@
           <div class="container">
             <div class="grid-row padding-top-tiny justify-end">
               <div class="grid-item">
-                <div class="js-menu-toggle u-pointer">MENU</div>
+                <div class="js-menu-toggle u-pointer font-bold font-condensed font-uppercase">Menu</div>
               </div>
             </div>
           </div>
         </div>
         <nav id="main-nav" class="grid-item no-gutter flex-grow">
-          <div class="font-uppercase grid-row justify-end">
+          <div class="grid-row justify-end">
             {% if collections.'men' != blank %}
             {% assign collection = collections.'men' %}
             {% include 'nav-collection' %}
@@ -57,12 +57,12 @@
             {% include 'nav-collection' %}
             {% endif %}
 
-            <div class="grid-item">
+            <div class="grid-item font-bold font-condensed font-uppercase">
               <a href="/blogs/news">Blog</a>
             </div>
 
             <div class="grid-item">
-              <a href="/cart">{% if cart.item_count > 0%}<span id="nav-cart-count">{{ cart.item_count }}</span> {% endif %}Cart</a>
+              <a href="/cart">{% if cart.item_count > 0%}<span id="nav-cart-count">{{ cart.item_count }}</span> {% endif %}<span class="font-bold font-condensed font-uppercase">Cart</span></a>
             </div>
 
           </div>
@@ -89,13 +89,13 @@
         <div class="container">
           <div class="grid-row padding-top-tiny justify-end">
             <div class="grid-item">
-              <div class="js-menu-toggle u-pointer">CLOSE</div>
+              <div class="js-menu-toggle u-pointer font-bold font-condensed font-uppercase">Close</div>
             </div>
           </div>
         </div>
       </div>
       <div class="container">
-        <div class="font-uppercase grid-row">
+        <div class="grid-row">
           {% assign mobile = true %}
 
           {% if collections.'men' != blank %}
@@ -115,10 +115,10 @@
 
           <div class="grid-item item-s-6">
             <div class="padding-bottom-small">
-              <a href="/cart">{% if cart.item_count > 0%}<span id="nav-cart-count">{{ cart.item_count }}</span> {% endif %}Cart</a>
+              <a href="/cart">{% if cart.item_count > 0%}<span id="nav-cart-count">{{ cart.item_count }}</span> {% endif %}<span class="font-bold font-condensed font-uppercase">Cart</span></a>
             </div>
             <div>
-              <a href="/blog">Blog</a>
+              <a href="/blog" class="font-bold font-condensed font-uppercase">Blog</a>
             </div>
           </div>
         </div>
