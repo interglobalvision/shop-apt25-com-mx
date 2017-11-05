@@ -1398,6 +1398,17 @@ html,
   -ms-flex-order: 1;
       order: 1;
 }
+#product-gallery {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
 .form-element {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1410,6 +1421,35 @@ html,
   border-radius: 0;
   background-color: #fff;
   box-sizing: content-box;
+}
+#zoom-container {
+  background-color: #fff;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  transition: opacity 200ms;
+}
+#zoom-container.show {
+  -ms-filter: none;
+  -webkit-filter: none;
+          filter: none;
+  opacity: 1;
+  cursor: -webkit-grabbing;
+  pointer-events: all;
+}
+.product-gallery-item {
+  text-align: center;
+}
+.product-gallery-image-holder {
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
 }
 @media screen and (min-width: 500px) {
   .container {
@@ -2279,9 +2319,28 @@ html,
     -ms-flex-order: 0;
         order: 0;
   }
-  #product-header.fixed {
+  #product-gallery {
+    display: block;
+    margin-top: calc(-104px);
+  }
+  #product-header {
     position: fixed;
-    margin-right: 12px;
+  }
+  #product-header.bottom {
+    position: absolute;
+    bottom: 0;
+    margin-right: 0;
+  }
+  .product-gallery-item {
+    text-align: right;
+  }
+  .product-gallery-image {
+    max-height: calc(100vh - 68px);
+    width: auto;
+  }
+  .product-gallery-image-holder {
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -2758,6 +2817,12 @@ html,
   }
   #product-header.fixed {
     margin-right: 16px;
+  }
+  #product-gallery {
+    margin-top: calc(-142px);
+  }
+  .product-gallery-image {
+    max-height: calc(100vh - 86px);
   }
 }
 @media screen and (min-width: 1280px) {
