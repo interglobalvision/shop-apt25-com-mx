@@ -87,8 +87,6 @@ Site.Product = {
   init: function() {
     var _this = this;
 
-    _this.windowWidth = $(window).width();
-
     _this.$productHeader = $('#product-header');
     _this.$productGallery = $('#product-gallery');
 
@@ -109,6 +107,8 @@ Site.Product = {
 
     _this.$container = $('.container');
 
+    _this.windowWidth = $(window).width();
+
     _this.sizeImageHolder();
 
     if (_this.windowWidth >= _this.minWidth) {
@@ -123,6 +123,9 @@ Site.Product = {
         _this.toggleFixed();
       });
     } else {
+      _this.getFixedHeaderDimensions();
+      _this.toggleFixed();
+
       $(window).off('scroll');
     }
   },
@@ -133,7 +136,6 @@ Site.Product = {
     _this.galleryHeight = _this.$productGallery.outerHeight(true);
     _this.galleryOffset = _this.$productGallery.offset().top;
     _this.headerHeight = _this.$productHeader.outerHeight(true);
-    _this.headerOffset = _this.$productHeader.offset().top;
   },
 
   toggleFixed: function() {
@@ -166,7 +168,9 @@ Site.Product = {
 
   bindZoom: function() {
     var _this = this;
-    
+
+    _this.windowWidth = $(window).width();
+
     if (_this.windowWidth >= _this.minWidth) {
       $('.product-gallery-image-holder').zoom({
         target: _this.$zoomContainer,
