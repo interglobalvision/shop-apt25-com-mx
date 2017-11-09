@@ -78,6 +78,24 @@ $transition-duration = 200ms
   .margin-bottom-section
     margin-bottom: $margin-mid
 
+.nav-cart-link
+  position: relative
+  
+.nav-cart-count
+  position: absolute
+  border: $border-style
+  background-color: $color-white
+  bottom: -.8em
+  margin-left: 1.8em
+  width: 1.7em
+  height: 1.7em
+  border-radius: 1.7em
+  text-align: center
+  div
+    width: auto
+    height: auto
+    margin-top: .3em
+
 // ******************************************************
 
 // ARTICLE
@@ -176,3 +194,17 @@ $transition-duration = 200ms
 .blog-icon
   max-width: 25px
   max-height: 25px
+
+// ******************************************************
+
+// FOOTER
+
+#footer
+  border-top: $border-style
+
+#footer-social
+  img.social-icon
+    height: 1.2em
+  .grid-item:not(:last-child)
+    img.social-icon
+      margin-right: $margin-tiny
