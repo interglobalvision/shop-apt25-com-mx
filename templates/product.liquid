@@ -3,7 +3,7 @@
     <div class="grid-row">
       <div class="grid-item item-s-12 item-m-6 no-gutter" id="product-gallery-holder">
         {% if product.images.size > 1 %}
-          <div id="product-gallery">
+          <div id="product-gallery" class="min-height">
             {% for image in product.images %}
               {% unless image == product.featured_image %}
               <div class="product-gallery-item grid-item item-s-6 item-m-auto">
@@ -16,6 +16,7 @@
                   "
                   width="{% if image.width > 370 %}370{% else %}{{ image.width }}{% endif %}"
                   />
+                  <div class="zoom-container"></div>
                 </span>
               </div>
               {% endunless %}
@@ -67,7 +68,6 @@
       </div>
     </div>
   </section>
-  <div id="zoom-container"></div>
 </div>
 
 {% include 'related-products' %}
