@@ -147,20 +147,24 @@ Site.Product = {
       });
 
     } else {
+      // viewport is mobile width
 
+      // remove min-height for product gallery holder
       _this.$productGallery.removeClass('min-height');
+      // reset image holder dimensions
       $('.product-gallery-image-holder').width('auto').height('auto');
-      _this.getFixedHeaderDimensions();
-      _this.toggleFixed();
+      // unbind zooming
       _this.destroyZoom();
-
+      // unbind toggleFixed() on scroll
       $(window).off('scroll');
-
     }
   },
 
   getFixedHeaderDimensions: function() {
     var _this = this;
+
+    // get gallery and header dimensions for
+    // toggling / positioning fixed header
 
     _this.galleryHeight = _this.$productGallery.outerHeight(true);
     _this.galleryOffset = _this.$productGallery.offset().top;
