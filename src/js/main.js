@@ -210,7 +210,7 @@ Site.Product = {
       $(this).height('auto').width('auto');
 
       // get image dimensions
-      var $imgElem = $(this).find('.product-gallery-image');
+      var $imgElem = $(this).find('.product-gallery-image'),
         imgHeight = $imgElem.height(),
         imgWidth = $imgElem.width();
 
