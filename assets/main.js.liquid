@@ -87,7 +87,7 @@ Site.Product = {
   init: function() {
     var _this = this;
 
-    _this.$container = $('.container'); // used by toggleFixed() on scroll
+    _this.$container = $('#product-container'); // used by toggleFixed() on scroll
 
     _this.$productHeader = $('#product-header');
     _this.$productGallery = $('#product-gallery');
@@ -113,6 +113,8 @@ Site.Product = {
 
     if (_this.windowWidth >= _this.minWidth) {
       // window is wider than minimum width (720px) for fixed header layout
+
+      _this.containerWidth = _this.$container.width();
 
       if (!_this.loadedImages) {
         // bind imagesLoaded
@@ -174,8 +176,6 @@ Site.Product = {
     var _this = this;
 
     var windowScroll = $(window).scrollTop();
-
-    var containerWidth = _this.$container.width();
 
     if ((windowScroll + _this.galleryOffset + _this.headerHeight) <= (_this.galleryHeight + _this.galleryOffset)) {
       // fixed header isn't at the bottom of the product gallery holder yet
@@ -261,7 +261,7 @@ Site.Product = {
   destroyZoom: function() {
     // unbind zooming
     $('.product-gallery-image-holder').trigger('zoom.destroy');
-  },
+  }
 }
 
 jQuery(document).ready(function () {
