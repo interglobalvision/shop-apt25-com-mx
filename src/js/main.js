@@ -81,22 +81,28 @@ Site.Header = {
 };
 
 Site.Product = {
-  minWidth: 720,
+  minWidth: 720, // minWidth for fixed header layout
+  numberRelatedToPick: 4, // number of related products to show
   init: function() {
     var _this = this;
+
+    _this.$container = $('.container'); // used by toggleFixed() on scroll
 
     _this.$productHeader = $('#product-header');
     _this.$productGallery = $('#product-gallery');
 
     _this.$zoomContainer = $('#zoom-container');
 
+    // imagesLoaded hasn't finished yet
     _this.loadedImages = false;
 
     if (_this.$productGallery.length) {
+      // We have product images, so we do the fancy layout
       _this.handleLayout();
     }
 
     if ($('#related-products').length) {
+      // Pick a few Related Products to display
       _this.pickRelated();
     }
   },
@@ -104,22 +110,31 @@ Site.Product = {
   handleLayout: function() {
     var _this = this;
 
-    _this.$container = $('.container');
-
     _this.windowWidth = $(window).width();
 
     if (_this.windowWidth >= _this.minWidth) {
+      // window is wider than minimum width (720px) for fixed header layout
 
       if (!_this.loadedImages) {
+        // bind imagesLoaded
         _this.$productGallery.imagesLoaded( function() {
+          // remove min-height for product gallery holder
           _this.$productGallery.removeClass('min-height');
+          // size image holder to fit image size
           _this.sizeImageHolder();
+          // get dimensions for toggleFixed()
           _this.getFixedHeaderDimensions();
+          // toggle fixed header
           _this.toggleFixed();
+          // init product image zooming
           _this.bindZoom();
+          // images are loaded
           _this.loadedImages = true;
         });
       } else {
+        // on window resize
+        // if images are already loaded
+        // do the layout again
         _this.sizeImageHolder();
         _this.getFixedHeaderDimensions();
         _this.toggleFixed();
@@ -127,6 +142,7 @@ Site.Product = {
       }
 
       $(window).on('scroll', function() {
+        // toggle fixed header on scroll
         _this.toggleFixed();
       });
 
@@ -159,28 +175,44 @@ Site.Product = {
     var containerWidth = _this.$container.width();
 
     if ((windowScroll + _this.galleryOffset + _this.headerHeight) <= (_this.galleryHeight + _this.galleryOffset)) {
+      // fixed header isn't at the bottom of the product gallery holder yet
+
+      // keep header fixed
       _this.$productHeader.removeClass('bottom');
+      // position fixed header
       _this.$productHeader.css('margin-right', ((_this.windowWidth - containerWidth) / 2) + 'px');
     } else {
+      // fixed header is at the bottom of the product gallery
+
+      // position header absolute
       _this.$productHeader.addClass('bottom');
+      // reset fixed header positioning
       _this.$productHeader.css('margin-right', 0);
     }
   },
 
   pickRelated: function() {
-    $('.related-products-item').pick(4);
+    var _this = this;
 
+    // show some related product items
+    $('.related-products-item').pick(_this.numberRelatedToPick);
+    // show related products container
     $('#related-products').removeClass('u-hidden');
   },
 
   sizeImageHolder: function() {
+    // size each image holder to fit image
+
     $('.product-gallery-image-holder').each(function() {
+      // clear holder height and width
       $(this).height('auto').width('auto');
 
+      // get image dimensions
       var $imgElem = $(this).find('.product-gallery-image');
         imgHeight = $imgElem.height(),
         imgWidth = $imgElem.width();
 
+      // apply image dimensions to holder
       $(this).height(imgHeight).width(imgWidth);
     });
   },
@@ -191,13 +223,16 @@ Site.Product = {
     $('.product-gallery-image-holder').each(function(){
       // Each image in gallery
 
+      // each image holder has a zoom container element
       var $zoomContainer = $(this).children('.zoom-container');
 
       var imgWidth = $(this).width();
       var imgOffset = $(this).offset();
 
+      // how much are we zooming?
       var zoomMagnitude = 1.5;
 
+      // zoom container positioning magic DO NOT fuck with (*blessings*)
       var zoomWidth = imgWidth * (zoomMagnitude * 2);
       var zoomLeft = (imgOffset.left - ((zoomWidth - imgWidth) / 2));
 
@@ -207,7 +242,7 @@ Site.Product = {
         'left': zoomLeft + 'px',
       });
 
-      // Zoom
+      // Bind zooming
       $(this).zoom({
         target: $zoomContainer,
         on: 'grab',
@@ -224,6 +259,7 @@ Site.Product = {
   },
 
   destroyZoom: function() {
+    // unbind zooming
     $('.product-gallery-image-holder').trigger('zoom.destroy');
   },
 }
