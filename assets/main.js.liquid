@@ -83,6 +83,7 @@ Site.Header = {
 Site.Product = {
   minWidth: 720, // minWidth for fixed header layout
   numberRelatedToPick: 4, // number of related products to show
+  zoomMagnitude: 1.5, // how much are we zooming?
   init: function() {
     var _this = this;
 
@@ -231,11 +232,8 @@ Site.Product = {
       var imgWidth = $(this).width();
       var imgOffset = $(this).offset();
 
-      // how much are we zooming?
-      var zoomMagnitude = 1.5;
-
       // zoom container positioning magic DO NOT fuck with (*blessings*)
-      var zoomWidth = imgWidth * (zoomMagnitude * 2);
+      var zoomWidth = imgWidth * (_this.zoomMagnitude * 2);
       var zoomLeft = (imgOffset.left - ((zoomWidth - imgWidth) / 2));
 
       // Center zoom container on image
@@ -254,7 +252,7 @@ Site.Product = {
         onZoomOut: function() {
           $(this).parent('.zoom-container').removeClass('show');
         },
-        magnify: zoomMagnitude,
+        magnify: _this.zoomMagnitude,
       });
 
     });
