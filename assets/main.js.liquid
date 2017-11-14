@@ -119,6 +119,9 @@ Site.Product = {
       if (!_this.loadedImages) {
         // bind imagesLoaded
         _this.$productGallery.imagesLoaded( function() {
+          // images are loaded
+          _this.loadedImages = true;
+
           // remove min-height for product gallery holder
           _this.$productGallery.removeClass('min-height');
           // size image holder to fit image size
@@ -129,8 +132,6 @@ Site.Product = {
           _this.toggleFixed();
           // init product image zooming
           _this.bindZoom();
-          // images are loaded
-          _this.loadedImages = true;
         });
       } else {
         // on window resize
@@ -191,6 +192,11 @@ Site.Product = {
       _this.$productHeader.addClass('bottom');
       // reset fixed header positioning
       _this.$productHeader.css('margin-right', 0);
+    }
+
+    // show product header if still hidden
+    if (_this.loadedImages && !_this.$productHeader.hasClass('show')) {
+      _this.$productHeader.addClass('show');
     }
   },
 

@@ -2338,11 +2338,20 @@ html,
   }
   #product-header {
     position: fixed;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
   }
   #product-header.bottom {
     position: absolute;
     bottom: 0;
     margin-right: 0;
+  }
+  #product-header.show {
+    -ms-filter: none;
+    -webkit-filter: none;
+            filter: none;
+    opacity: 1;
   }
   .product-gallery-item {
     text-align: right;
