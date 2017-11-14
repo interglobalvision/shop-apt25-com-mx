@@ -91,8 +91,6 @@ Site.Product = {
     _this.$productHeader = $('#product-header');
     _this.$productGallery = $('#product-gallery');
 
-    _this.$zoomContainer = $('#zoom-container');
-
     // imagesLoaded hasn't finished yet
     _this.loadedImages = false;
 
