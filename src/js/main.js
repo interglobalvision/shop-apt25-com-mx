@@ -132,6 +132,11 @@ Site.Product = {
           _this.toggleFixed();
           // init product image zooming
           _this.bindZoom();
+
+          // show product header if still hidden
+          if (!_this.$productHeader.hasClass('show')) {
+            _this.$productHeader.addClass('show');
+          }
         });
       } else {
         // on window resize
@@ -153,6 +158,8 @@ Site.Product = {
 
       // remove min-height for product gallery holder
       _this.$productGallery.removeClass('min-height');
+      // remove fixed product header margin
+      _this.$productHeader.css('margin-right', 0);
       // reset image holder dimensions
       $('.product-gallery-image-holder').width('auto').height('auto');
       // unbind zooming
@@ -192,11 +199,6 @@ Site.Product = {
       _this.$productHeader.addClass('bottom');
       // reset fixed header positioning
       _this.$productHeader.css('margin-right', 0);
-    }
-
-    // show product header if still hidden
-    if (_this.loadedImages && !_this.$productHeader.hasClass('show')) {
-      _this.$productHeader.addClass('show');
     }
   },
 
