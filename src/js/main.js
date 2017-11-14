@@ -183,7 +183,7 @@ Site.Product = {
       // keep header fixed
       _this.$productHeader.removeClass('bottom');
       // position fixed header
-      _this.$productHeader.css('margin-right', ((_this.windowWidth - containerWidth) / 2) + 'px');
+      _this.$productHeader.css('margin-right', ((_this.windowWidth - _this.containerWidth) / 2) + 'px');
     } else {
       // fixed header is at the bottom of the product gallery
 
