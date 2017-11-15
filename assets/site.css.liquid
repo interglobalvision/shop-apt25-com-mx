@@ -1280,18 +1280,19 @@ html,
 .nav-cart-link {
   position: relative;
 }
-.nav-cart-count {
+.nav-cart-count-holder {
   position: absolute;
   border: 2px solid #000;
   background-color: #fff;
   bottom: -0.8em;
-  margin-left: 1.8em;
+  margin-left: 2em;
   width: 1.7em;
   height: 1.7em;
   border-radius: 1.7em;
   text-align: center;
+  z-index: 100;
 }
-.nav-cart-count div {
+.nav-cart-count-holder .nav-cart-count-text {
   width: auto;
   height: auto;
   margin-top: 0.3em;
@@ -1488,6 +1489,9 @@ html,
 }
 #footer-social .grid-item:not(:last-child) img.social-icon {
   margin-right: 9px;
+}
+#footer-nav {
+  display: none;
 }
 @media screen and (min-width: 500px) {
   .container {
@@ -2325,6 +2329,26 @@ html,
   .margin-bottom-section {
     margin-bottom: 84px;
   }
+  .nav-item-holder {
+    position: relative;
+    display: block;
+  }
+  .nav-item-holder:hover .nav-item-border {
+    -webkit-animation: spinX 0.5s infinite linear;
+    animation: spinX 0.5s infinite linear;
+  }
+  .nav-item-holder:hover .nav-cart-count-holder {
+    -webkit-animation: spinZ 0.5s infinite linear;
+    animation: spinZ 0.5s infinite linear;
+  }
+  .nav-item-border {
+    position: absolute;
+    stroke-width: 2px;
+    stroke: #000;
+    width: 100%;
+    height: 5px;
+    fill: none;
+  }
   .feed-products-wrapper {
     margin-bottom: 0;
   }
@@ -2395,6 +2419,105 @@ html,
   #footer-social .grid-item:not(:last-child) img.social-icon {
     margin-right: 12px;
   }
+  #footer-nav {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+@-webkit-keyframes spinX {
+    0% {
+      -webkit-transform: rotateX(0deg);
+      -ms-transform: rotateX(0deg);
+      transform: rotateX(0deg);
+    }
+    50% {
+      -webkit-transform: rotateX(180deg);
+      -ms-transform: rotateX(180deg);
+      transform: rotateX(180deg);
+    }
+    100% {
+      -webkit-transform: rotateX(360deg);
+      -ms-transform: rotateX(360deg);
+      transform: rotateX(360deg);
+    }
+}
+@keyframes spinX {
+    0% {
+      -webkit-transform: rotateX(0deg);
+      -ms-transform: rotateX(0deg);
+      transform: rotateX(0deg);
+    }
+    50% {
+      -webkit-transform: rotateX(180deg);
+      -ms-transform: rotateX(180deg);
+      transform: rotateX(180deg);
+    }
+    100% {
+      -webkit-transform: rotateX(360deg);
+      -ms-transform: rotateX(360deg);
+      transform: rotateX(360deg);
+    }
+}
+@-webkit-keyframes spinZ {
+    0% {
+      -webkit-transform: rotateZ(0deg);
+      -ms-transform: rotateZ(0deg);
+      transform: rotateZ(0deg);
+    }
+    50% {
+      -webkit-transform: rotateZ(180deg);
+      -ms-transform: rotateZ(180deg);
+      transform: rotateZ(180deg);
+    }
+    100% {
+      -webkit-transform: rotateZ(360deg);
+      -ms-transform: rotateZ(360deg);
+      transform: rotateZ(360deg);
+    }
+}
+@keyframes spinZ {
+    0% {
+      -webkit-transform: rotateZ(0deg);
+      -ms-transform: rotateZ(0deg);
+      transform: rotateZ(0deg);
+    }
+    50% {
+      -webkit-transform: rotateZ(180deg);
+      -ms-transform: rotateZ(180deg);
+      transform: rotateZ(180deg);
+    }
+    100% {
+      -webkit-transform: rotateZ(360deg);
+      -ms-transform: rotateZ(360deg);
+      transform: rotateZ(360deg);
+    }
+}
+@-webkit-keyframes blink {
+    0% {
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+      filter: alpha(opacity=0);
+      opacity: 0;
+    }
+    50% {
+      -ms-filter: none;
+      -webkit-filter: none;
+              filter: none;
+      opacity: 1;
+    }
+}
+@keyframes blink {
+    0% {
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+      filter: alpha(opacity=0);
+      opacity: 0;
+    }
+    50% {
+      -ms-filter: none;
+      -webkit-filter: none;
+              filter: none;
+      opacity: 1;
+    }
+}
 }
 @media screen and (min-width: 1024px) {
   .container {
@@ -2861,6 +2984,9 @@ html,
   .margin-bottom-section {
     margin-bottom: 112px;
   }
+  .nav-item-border {
+    height: 6px;
+  }
   .feed-article-holder .feed-article-item:not(:last-child) {
     margin-bottom: 32px;
   }
@@ -3258,6 +3384,9 @@ html,
   }
   .font-size-micro {
     font-size: 5.7px;
+  }
+  .nav-item-border {
+    height: 7px;
   }
   #product-header.fixed {
     margin-right: 24px;

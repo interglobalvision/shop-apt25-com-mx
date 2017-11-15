@@ -29,6 +29,45 @@ $nav-height = 44px
 .margin-bottom-section
   margin-bottom: $margin-mid
 
+.nav-item-holder
+  position: relative
+  display: block
+  &:hover
+    .nav-item-border
+      animation: spinX .5s infinite linear
+    .nav-cart-count-holder
+      animation: spinZ .5s infinite linear
+
+.nav-item-border
+  position: absolute
+  stroke-width: 2px
+  stroke: $color-black
+  width: 100%
+  height: 5px
+  fill: none
+
+@keyframes spinX
+  0%
+    transform: rotateX(0deg)
+  50%
+    transform: rotateX(180deg)
+  100%
+    transform: rotateX(360deg)
+
+@keyframes spinZ
+  0%
+    transform: rotateZ(0deg)
+  50%
+    transform: rotateZ(180deg)
+  100%
+    transform: rotateZ(360deg)
+
+@keyframes blink
+  0%
+    opacity: 0
+  50%
+    opacity: 1
+
 // ******************************************************
 
 // INDEX
@@ -98,3 +137,6 @@ $nav-height = 44px
   .grid-item:not(:last-child)
     img.social-icon
       margin-right: $margin-tiny
+
+#footer-nav
+  display: flex
