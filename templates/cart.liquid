@@ -16,7 +16,7 @@
             </a>
           </div>
           <div class="grid-item item-s-7 item-m-6">
-            <div class="item remove margin-bottom-tiny"><a href="/cart/change/{{item.variant.id}}?quantity=0"><img class="icon-remove" src="{{ 'icon-remove.svg' | asset_url }}"></a></div>
+            <div class="item remove margin-bottom-tiny"><a href="/cart/change/{{item.variant.id}}?quantity=0"><img class="icon-remove" src="{{ 'icon-remove.svg' | asset_url }}" title="Remove Item"></a></div>
             <div class="item title margin-bottom-micro"><a href="{{ item.product.url }}">{{ item.title }}</a></div>
             <div class="font-bold margin-bottom-micro font-size-mid">{{ item.vendor }}</div>
             <div>
@@ -32,7 +32,7 @@
 
       <div class="grid-row margin-bottom-small margin-top-small">
         <div class="grid-item item-s-4 offset-s-2 item-m-6 offset-m-3 item-l-2 offset-l-3 grid-row">
-          <input class="button form-element item-s-12" type="submit" id="update-cart" name="update" value="Update"  />
+          <input class="button form-element item-s-12" type="submit" id="update-cart" name="update" value="Update" title="Update Cart" />
         </div>
         <div class="grid-item item-s-6 item-m-3 item-l-6 text-align-right font-bold">Subtotal: {{ cart.total_price | money }}</div>
       </div>
