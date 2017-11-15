@@ -1,3 +1,10 @@
+$header-height = 148px
+$nav-height = 44px
+
+// ******************************************************
+
+// HEADER
+
 #header
   padding-bottom: $margin-small
   .logo
@@ -49,6 +56,39 @@
 
 .feed-life-item:not(:last-of-type)
   margin-bottom: 0
+
+// ******************************************************
+
+// PRODUCT
+
+#product-gallery-holder
+  order: 0
+
+#product-gallery
+  display: block
+  margin-top: calc(-($header-height - $nav-height))
+  &.min-height
+    min-height: calc('100vh - ' + ($header-height - $nav-height))
+
+#product-header
+  position: fixed
+  opacity: 0
+  &.bottom
+    position: absolute
+    bottom: 0
+    margin-right: 0
+  &.show
+    opacity: 1
+
+.product-gallery-item
+  text-align: right
+
+.product-gallery-image
+  max-height: calc('100vh - ' + ($nav-height + $margin-small))
+  width: auto
+
+.product-gallery-image-holder
+  cursor: zoom-in
 
 // ******************************************************
 

@@ -80,7 +80,7 @@ $transition-duration = 200ms
 
 .nav-cart-link
   position: relative
-  
+
 .nav-cart-count
   position: absolute
   border: $border-style
@@ -197,6 +197,56 @@ $transition-duration = 200ms
 
 // ******************************************************
 
+// PRODUCT
+
+#product-gallery-holder
+  order: 1
+
+#product-gallery
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: center
+
+.form-element
+  appearance: none
+  text-align: center
+  text-align-last: center
+  border: $border-style
+  padding: ($margin-micro / 2) 0
+  border-radius: 0
+  background-color: $color-white
+  box-sizing: content-box
+
+.zoom-container
+  position: fixed
+  z-index: 1000
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  pointer-events: none
+  opacity: 0
+  transition: opacity $transition-duration
+  &.show
+    opacity: 1
+    cursor: zoom-in
+    pointer-events: all
+
+.product-gallery-item
+  text-align: center
+
+.product-gallery-image-holder
+  display: inline-block
+  &.fixed
+    position: fixed
+    z-index: 1000
+    top: 0
+    width: 70vw
+    height: 100vh
+
+// ******************************************************
+ 
 // FOOTER
 
 #footer

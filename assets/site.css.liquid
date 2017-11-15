@@ -1411,6 +1411,75 @@ html,
   max-width: 25px;
   max-height: 25px;
 }
+#product-gallery-holder {
+  -webkit-order: 1;
+  -ms-order: 1;
+  -ms-flex-order: 1;
+      order: 1;
+}
+#product-gallery {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: center;
+  -ms-justify-content: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+.form-element {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: center;
+  -moz-text-align-last: center;
+       text-align-last: center;
+  border: 2px solid #000;
+  padding: 3px 0;
+  border-radius: 0;
+  background-color: #fff;
+  box-sizing: content-box;
+}
+.zoom-container {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.zoom-container.show {
+  -ms-filter: none;
+  -webkit-filter: none;
+          filter: none;
+  opacity: 1;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+  pointer-events: all;
+}
+.product-gallery-item {
+  text-align: center;
+}
+.product-gallery-image-holder {
+  display: inline-block;
+}
+.product-gallery-image-holder.fixed {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 70vw;
+  height: 100vh;
+}
 #footer {
   border-top: 2px solid #000;
 }
@@ -2282,6 +2351,47 @@ html,
   .feed-life-item:not(:last-of-type) {
     margin-bottom: 0;
   }
+  #product-gallery-holder {
+    -webkit-order: 0;
+    -ms-order: 0;
+    -ms-flex-order: 0;
+        order: 0;
+  }
+  #product-gallery {
+    display: block;
+    margin-top: calc(-104px);
+  }
+  #product-gallery.min-height {
+    min-height: calc(100vh - 104px);
+  }
+  #product-header {
+    position: fixed;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+  }
+  #product-header.bottom {
+    position: absolute;
+    bottom: 0;
+    margin-right: 0;
+  }
+  #product-header.show {
+    -ms-filter: none;
+    -webkit-filter: none;
+            filter: none;
+    opacity: 1;
+  }
+  .product-gallery-item {
+    text-align: right;
+  }
+  .product-gallery-image {
+    max-height: calc(100vh - 68px);
+    width: auto;
+  }
+  .product-gallery-image-holder {
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in;
+  }
   #footer-social .grid-item:not(:last-child) img.social-icon {
     margin-right: 12px;
   }
@@ -2758,6 +2868,15 @@ html,
     width: calc(100% - 64px);
     left: 32px;
   }
+  #product-header.fixed {
+    margin-right: 16px;
+  }
+  #product-gallery {
+    margin-top: calc(-142px);
+  }
+  .product-gallery-image {
+    max-height: calc(100vh - 86px);
+  }
   #footer-social .grid-item:not(:last-child) img.social-icon {
     margin-right: 16px;
   }
@@ -3140,6 +3259,9 @@ html,
   .font-size-micro {
     font-size: 5.7px;
   }
+  #product-header.fixed {
+    margin-right: 24px;
+  }
 }
 @media screen and (min-width: 1440px) {
   .container {
@@ -3519,6 +3641,9 @@ html,
   .font-size-micro {
     font-size: 6.3px;
   }
+  #product-header.fixed {
+    margin-right: 32px;
+  }
 }
 @media screen and (min-width: 1800px) {
   .container {
@@ -3875,5 +4000,8 @@ html,
     -webkit-column-count: 4;
     -moz-column-count: 4;
     column-count: 4;
+  }
+  #product-header.fixed {
+    margin-right: 40px;
   }
 }

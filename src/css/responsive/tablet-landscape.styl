@@ -1,3 +1,10 @@
+$header-height = 196px
+$nav-height = 54px
+
+// ******************************************************
+
+// HEADER
+
 #header
   padding-bottom: $margin-small
   .logo
@@ -17,6 +24,20 @@
 .feed-lookbook-title
   width: calc('100% - ' + $margin-basic)
   left: ($margin-basic / 2)
+
+// ******************************************************
+
+// PRODUCT
+
+#product-header
+  &.fixed
+    margin-right: ($gutter / 2)
+
+#product-gallery
+  margin-top: calc(-($header-height - $nav-height))
+
+.product-gallery-image
+  max-height: calc('100vh - ' + ($nav-height + $margin-small))
 
 // ******************************************************
 
