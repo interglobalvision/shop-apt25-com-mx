@@ -7,6 +7,8 @@ $transition-duration = 200ms
 
 // ******************************************************
 
+// HEADER
+
 #admin_bar_iframe
   display: none
 
@@ -17,28 +19,6 @@ $transition-duration = 200ms
 
 #main-nav
   display: none
-  position: relative
-
-  .nav-types-holder
-    position: absolute
-    width: 100%
-
-  .nav-types
-    position: relative
-    background-color: $color-white
-    border-bottom: $border-style
-    opacity: 0
-    pointer-events: none
-    width: 80%
-    margin-left: 10%
-    text-align: center
-    &.show
-      opacity: 1
-      pointer-events: auto
-      z-index: 700
-
-    li
-      display: inline-block
 
 .mobile-nav-toggle-holder
   position: fixed
@@ -81,17 +61,18 @@ $transition-duration = 200ms
 .nav-cart-link
   position: relative
 
-.nav-cart-count
+.nav-cart-count-holder
   position: absolute
   border: $border-style
   background-color: $color-white
   bottom: -.8em
-  margin-left: 1.8em
+  margin-left: 2em
   width: 1.7em
   height: 1.7em
   border-radius: 1.7em
   text-align: center
-  div
+  z-index: 100
+  .nav-cart-count-text
     width: auto
     height: auto
     margin-top: .3em
@@ -266,6 +247,9 @@ select.form-element
   .grid-item:not(:last-child)
     img.social-icon
       margin-right: $margin-tiny
+
+#footer-nav
+  display: none
 
 // ******************************************************
 

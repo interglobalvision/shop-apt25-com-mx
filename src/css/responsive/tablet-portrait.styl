@@ -12,6 +12,29 @@ $nav-height = 44px
 
 #main-nav
   display: block
+  position: relative
+
+  .nav-types-holder
+    position: absolute
+    width: 100%
+
+  .nav-types
+    position: relative
+    background-color: $color-white
+    border-bottom: $border-style
+    pointer-events: none
+    width: 80%
+    margin-left: 10%
+    text-align: center
+    opacity: 0
+    transition: opacity .2s
+    &.show
+      opacity: 1
+      pointer-events: auto
+      z-index: 700
+
+    li
+      display: inline-block
 
 .mobile-nav-toggle-holder
   display: none
@@ -28,6 +51,43 @@ $nav-height = 44px
 
 .margin-bottom-section
   margin-bottom: $margin-mid
+
+.nav-item-holder
+  position: relative
+  display: block
+  &:hover
+    .nav-item-border
+      animation: spinX .5s infinite linear
+    .nav-cart-count-holder
+      animation: spinZ .5s infinite linear
+
+  a
+    display: block
+
+.nav-item-border
+  position: absolute
+  stroke-width: 2px
+  stroke: $color-black
+  width: 100%
+  height: 5px
+  fill: none
+  pointer-events: none
+
+@keyframes spinX
+  0%
+    transform: rotateX(0deg)
+  50%
+    transform: rotateX(180deg)
+  100%
+    transform: rotateX(360deg)
+
+@keyframes spinZ
+  0%
+    transform: rotateZ(0deg)
+  50%
+    transform: rotateZ(180deg)
+  100%
+    transform: rotateZ(360deg)
 
 // ******************************************************
 
@@ -98,6 +158,9 @@ $nav-height = 44px
   .grid-item:not(:last-child)
     img.social-icon
       margin-right: $margin-tiny
+
+#footer-nav
+  display: flex
 
 // ******************************************************
 
