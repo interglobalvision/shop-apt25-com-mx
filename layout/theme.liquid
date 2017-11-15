@@ -44,25 +44,34 @@
           <div class="grid-row justify-end padding-bottom-small">
             {% if collections.'men' != blank %}
             {% assign collection = collections.'men' %}
+            {% assign border = 'border-1.svg' %}
             {% include 'nav-collection' %}
             {% endif %}
 
             {% if collections.'women' != blank %}
             {% assign collection = collections.'women' %}
+            {% assign border = 'border-2.svg' %}
             {% include 'nav-collection' %}
             {% endif %}
 
             {% if collections.'life' != blank %}
             {% assign collection = collections.'life' %}
+            {% assign border = 'border-3.svg' %}
             {% include 'nav-collection' %}
             {% endif %}
 
-            <div class="grid-item font-bold font-condensed font-uppercase">
-              <a href="/blogs/news">Blog</a>
+            <div class="grid-item">
+              <span class="nav-item-holder">
+                <a href="/blogs/news" class="font-bold font-condensed font-uppercase">Blog</a>
+                {% include 'border-4.svg' %}
+              </span>
             </div>
 
             <div class="grid-item">
-              <a href="/cart" class="nav-cart-link">{% include 'nav-cart-count' %}<span class="font-bold font-condensed font-uppercase">Cart</span></a>
+              <span class="nav-item-holder">
+                <a href="/cart" class="nav-cart-link">{% include 'nav-cart-count' %}<span class="font-bold font-condensed font-uppercase">Cart</span></a>
+                {% include 'border-5.svg' %}
+              </span>
             </div>
 
           </div>
@@ -97,6 +106,7 @@
       <div class="container">
         <div class="grid-row">
           {% assign mobile = true %}
+          {% assign border = false %}
 
           {% if collections.'men' != blank %}
           {% assign collection = collections.'men' %}
@@ -143,28 +153,37 @@
             {% endif %}
           </div>
 
-          <nav class="grid-item item-s-12 item-m-auto no-gutter grid-row">
+          <nav id="footer-nav" class="grid-item item-s-12 item-m-auto no-gutter grid-row">
             {% if collections.'men' != blank %}
             {% assign collection = collections.'men' %}
+            {% assign border = 'border-1.svg' %}
             {% include 'nav-collection' %}
             {% endif %}
 
             {% if collections.'women' != blank %}
             {% assign collection = collections.'women' %}
+            {% assign border = 'border-2.svg' %}
             {% include 'nav-collection' %}
             {% endif %}
 
             {% if collections.'life' != blank %}
             {% assign collection = collections.'life' %}
+            {% assign border = 'border-3.svg' %}
             {% include 'nav-collection' %}
             {% endif %}
 
             <div class="grid-item">
-              <a class="font-bold font-condensed font-uppercase" href="/blogs/news">Blog</a>
+              <span class="nav-item-holder">
+                <a href="/blogs/news" class="font-bold font-condensed font-uppercase">Blog</a>
+                {% include 'border-4.svg' %}
+              </span>
             </div>
 
             <div class="grid-item">
-              <a href="/cart" class="nav-cart-link">{% include 'nav-cart-count' %}<span class="font-bold font-condensed font-uppercase">Cart</span></a>
+              <span class="nav-item-holder">
+                <a href="/cart" class="nav-cart-link">{% include 'nav-cart-count' %}<span class="font-bold font-condensed font-uppercase">Cart</span></a>
+                {% include 'border-5.svg' %}
+              </span>
             </div>
           </nav>
         </div>
