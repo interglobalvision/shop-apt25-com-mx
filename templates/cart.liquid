@@ -16,11 +16,12 @@
             </a>
           </div>
           <div class="grid-item item-s-7 item-m-6">
-            <div class="item remove"><a href="/cart/change/{{item.variant.id}}?quantity=0">X</a></div>
-            <div class="item title"><a href="{{ item.product.url }}">{{ item.title }}</a></div>
+            <div class="item remove margin-bottom-tiny"><a href="/cart/change/{{item.variant.id}}?quantity=0"><img class="icon-remove" src="{{ 'icon-remove.svg' | asset_url }}" title="Remove Item"></a></div>
+            <div class="item title margin-bottom-micro"><a href="{{ item.product.url }}">{{ item.title }}</a></div>
+            <div class="font-bold margin-bottom-micro font-size-mid">{{ item.vendor }}</div>
             <div>
-              <input type="text" size="4" pattern="[0-9]*" name="updates[{{item.variant.id}}]" id="quantity-{{ item.variant.id }}" class="quantity" value="{{ item.quantity }}" min="1" onfocus="this.select();"/>
-              X
+              <input type="text" size="4" pattern="[0-9]*" name="updates[{{item.variant.id}}]" id="quantity-{{ item.variant.id }}" class="form-element quantity" value="{{ item.quantity }}" min="1" onfocus="this.select();"/>
+              <span class="font-size-small">&emsp;X&emsp;</span>
               {{ item.price | money }}
             </div>
           </div>
@@ -29,16 +30,16 @@
         {% endfor %}
       </div>
 
-      <div class="grid-row margin-bottom-small">
-        <div class="grid-item item-s-4 offset-s-2 item-m-6 offset-m-3 item-l-6 offset-l-3">
-          <input class="button" type="submit" id="update-cart" name="update" value="Update"  />
+      <div class="grid-row margin-bottom-small margin-top-small align-items-center">
+        <div class="grid-item item-s-4 offset-s-2 item-m-6 offset-m-3 item-l-2 offset-l-3 grid-row">
+          <input class="button form-element item-s-12" type="submit" id="update-cart" name="update" value="Update" title="Update Cart" />
         </div>
-        <div class="grid-item item-s-6 item-m-3 item-l-2 text-align-right font-bold">Subtotal: {{ cart.total_price | money }}</div>
+        <div class="grid-item item-s-6 item-m-3 item-l-6 text-align-right font-bold">Subtotal: {{ cart.total_price | money }}</div>
       </div>
 
       <div class="grid-row">
-        <div class="grid-item item-s-12 item-m-6 offset-m-6 item-l-2 offset-l-9 text-align-right">
-          <input class="button" type="submit" name="checkout" value="Checkout" />
+        <div class="grid-item item-s-4 offset-s-8 item-m-6 offset-m-6 item-l-2 offset-l-9 text-align-right grid-row">
+          <input class="button form-element item-s-12" type="submit" name="checkout" value="Checkout" />
         </div>
       </div>
 
