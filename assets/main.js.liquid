@@ -14,7 +14,7 @@ Site = {
 
     if ($('body').hasClass('template-product')) {
       _this.Product.init();
-    }
+    } 
 
   },
 
@@ -50,7 +50,7 @@ Site.Header = {
   bindCollectionHover: function() {
     var _this = this;
 
-    $('.nav-collection').on('mouseenter', function() {
+    $('#header .nav-collection').on('mouseenter', function() {
       var collection = $(this).attr('data-collection');
 
       _this.hideTypes();
