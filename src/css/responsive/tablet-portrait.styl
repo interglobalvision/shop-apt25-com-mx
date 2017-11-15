@@ -12,6 +12,29 @@ $nav-height = 44px
 
 #main-nav
   display: block
+  position: relative
+
+  .nav-types-holder
+    position: absolute
+    width: 100%
+
+  .nav-types
+    position: relative
+    background-color: $color-white
+    border-bottom: $border-style
+    pointer-events: none
+    width: 80%
+    margin-left: 10%
+    text-align: center
+    opacity: 0
+    transition: opacity .5s
+    &.show
+      opacity: 1
+      pointer-events: auto
+      z-index: 700
+
+    li
+      display: inline-block
 
 .mobile-nav-toggle-holder
   display: none
@@ -65,12 +88,6 @@ $nav-height = 44px
     transform: rotateZ(180deg)
   100%
     transform: rotateZ(360deg)
-
-@keyframes blink
-  0%
-    opacity: 0
-  50%
-    opacity: 1
 
 // ******************************************************
 

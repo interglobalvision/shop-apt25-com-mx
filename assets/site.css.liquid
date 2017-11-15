@@ -1203,34 +1203,6 @@ html,
 }
 #main-nav {
   display: none;
-  position: relative;
-}
-#main-nav .nav-types-holder {
-  position: absolute;
-  width: 100%;
-}
-#main-nav .nav-types {
-  position: relative;
-  background-color: #fff;
-  border-bottom: 2px solid #000;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: alpha(opacity=0);
-  opacity: 0;
-  pointer-events: none;
-  width: 80%;
-  margin-left: 10%;
-  text-align: center;
-}
-#main-nav .nav-types.show {
-  -ms-filter: none;
-  -webkit-filter: none;
-          filter: none;
-  opacity: 1;
-  pointer-events: auto;
-  z-index: 700;
-}
-#main-nav .nav-types li {
-  display: inline-block;
 }
 .mobile-nav-toggle-holder {
   position: fixed;
@@ -2308,6 +2280,35 @@ html,
   }
   #main-nav {
     display: block;
+    position: relative;
+  }
+  #main-nav .nav-types-holder {
+    position: absolute;
+    width: 100%;
+  }
+  #main-nav .nav-types {
+    position: relative;
+    background-color: #fff;
+    border-bottom: 2px solid #000;
+    pointer-events: none;
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  #main-nav .nav-types.show {
+    -ms-filter: none;
+    -webkit-filter: none;
+            filter: none;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 700;
+  }
+  #main-nav .nav-types li {
+    display: inline-block;
   }
   .mobile-nav-toggle-holder {
     display: none;
@@ -2494,32 +2495,6 @@ html,
       -webkit-transform: rotateZ(360deg);
       -ms-transform: rotateZ(360deg);
       transform: rotateZ(360deg);
-    }
-}
-@-webkit-keyframes blink {
-    0% {
-      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-      filter: alpha(opacity=0);
-      opacity: 0;
-    }
-    50% {
-      -ms-filter: none;
-      -webkit-filter: none;
-              filter: none;
-      opacity: 1;
-    }
-}
-@keyframes blink {
-    0% {
-      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-      filter: alpha(opacity=0);
-      opacity: 0;
-    }
-    50% {
-      -ms-filter: none;
-      -webkit-filter: none;
-              filter: none;
-      opacity: 1;
     }
 }
 }
