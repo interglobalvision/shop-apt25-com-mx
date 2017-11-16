@@ -1192,6 +1192,9 @@ html,
 .container {
   max-width: 1840px;
 }
+#main-content {
+  min-height: calc(100vh - 92px);
+}
 #admin_bar_iframe {
   display: none;
 }
@@ -2298,6 +2301,9 @@ select.form-element {
   .font-size-micro {
     font-size: 4.5px;
   }
+  #main-content {
+    min-height: calc(100vh - $headerHeight);
+  }
   #header {
     padding-bottom: 24px;
   }
@@ -2985,6 +2991,9 @@ select.form-element {
   }
   .desktop-only {
     display: initial !important;
+  }
+  #main-content {
+    min-height: calc(100vh - 196px);
   }
   #header {
     padding-bottom: 32px;
