@@ -65,25 +65,10 @@
 </section>
 
 {% if paginate.pages > 1 %}
-<!-- post pagination -->
+{% include 'pagination' %}
 <nav id="pagination">
   <div class="container">
-    <div class="grid-row">
-      <div class="grid-item item-s-6">
-        {% if paginate.previous.is_link %}
-          <a href="{{ paginate.previous.url }}">
-            <img class="logo" src="{{ 'arrow-left.svg' | asset_url }}">
-          </a>
-        {% endif %}
-      </div>
-      <div class="grid-item item-s-6 text-align-right">
-        {% if paginate.next.is_link %}
-          <a href="{{ paginate.next.url }}">
-            <img class="logo" src="{{ 'arrow-right.svg' | asset_url }}">
-          </a>
-        {% endif %}
-      </div>
-    </div>
+    {% include 'pagination' %}
   </div>
 </nav>
 {% endif %}
