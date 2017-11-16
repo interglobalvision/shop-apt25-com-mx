@@ -14,7 +14,7 @@ Site = {
 
     if ($('body').hasClass('template-product')) {
       _this.Product.init();
-    } 
+    }
 
   },
 
@@ -58,6 +58,11 @@ Site.Header = {
     });
 
     $('#main-nav').on('mouseleave', function() {
+
+      _this.hideTypes();
+    });
+
+    $('.nav-item').on('mouseenter', function() {
 
       _this.hideTypes();
     });
