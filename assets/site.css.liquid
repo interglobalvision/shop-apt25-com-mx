@@ -1269,6 +1269,33 @@ html,
   height: auto;
   margin-top: 0.3em;
 }
+.nav-item-holder {
+  position: relative;
+  display: inline-block;
+}
+.nav-item-holder:hover .nav-item-border {
+  -webkit-animation: spinX 0.5s infinite linear;
+  animation: spinX 0.5s infinite linear;
+}
+.nav-item-holder:hover .nav-cart-count-holder {
+  -webkit-animation: spinZ 0.5s infinite linear;
+  animation: spinZ 0.5s infinite linear;
+}
+.nav-item-holder a {
+  display: block;
+}
+.nav-item-border {
+  position: absolute;
+  stroke-width: 2px;
+  stroke: #000;
+  width: 100%;
+  height: 5px;
+  fill: none;
+  pointer-events: none;
+}
+.nav-types-item {
+  margin-bottom: 4px;
+}
 .icon {
   height: 20px;
 }
@@ -2342,10 +2369,6 @@ select.form-element {
   .margin-bottom-section {
     margin-bottom: 84px;
   }
-  .nav-item-holder {
-    position: relative;
-    display: block;
-  }
   .nav-item-holder:hover .nav-item-border {
     -webkit-animation: spinX 0.5s infinite linear;
     animation: spinX 0.5s infinite linear;
@@ -2353,18 +2376,6 @@ select.form-element {
   .nav-item-holder:hover .nav-cart-count-holder {
     -webkit-animation: spinZ 0.5s infinite linear;
     animation: spinZ 0.5s infinite linear;
-  }
-  .nav-item-holder a {
-    display: block;
-  }
-  .nav-item-border {
-    position: absolute;
-    stroke-width: 2px;
-    stroke: #000;
-    width: 100%;
-    height: 5px;
-    fill: none;
-    pointer-events: none;
   }
   .nav-types-item {
     margin: 0 8px 12px;

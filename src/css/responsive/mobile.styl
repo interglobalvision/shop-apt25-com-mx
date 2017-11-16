@@ -77,6 +77,30 @@ $transition-duration = 200ms
     height: auto
     margin-top: .3em
 
+.nav-item-holder
+  position: relative
+  display: inline-block
+  &:hover
+    .nav-item-border
+      animation: spinX .5s infinite linear
+    .nav-cart-count-holder
+      animation: spinZ .5s infinite linear
+
+  a
+    display: block
+
+.nav-item-border
+  position: absolute
+  stroke-width: 2px
+  stroke: $color-black
+  width: 100%
+  height: 5px
+  fill: none
+  pointer-events: none
+
+.nav-types-item
+  margin-bottom: 4px
+
 // ******************************************************
 
 // ARTICLE

@@ -106,24 +106,24 @@
       <div class="container">
         <div class="grid-row">
           {% assign mobile = true %}
-          {% assign border = false %}
 
           {% if collections.'men' != blank %}
           {% assign collection = collections.'men' %}
+          {% assign border = 'border-1.svg' %}
           {% include 'nav-collection' %}
           {% endif %}
 
           {% if collections.'women' != blank %}
           {% assign collection = collections.'women' %}
+          {% assign border = 'border-2.svg' %}
           {% include 'nav-collection' %}
           {% endif %}
 
           {% if collections.'life' != blank %}
           {% assign collection = collections.'life' %}
+          {% assign border = 'border-3.svg' %}
           {% include 'nav-collection' %}
           {% endif %}
-
-          {% assign mobile = false %}
 
           <div class="grid-item item-s-6">
             <div class="padding-bottom-small">
@@ -133,6 +133,8 @@
               <a href="/blog" class="font-bold font-condensed font-uppercase">Blog</a>
             </div>
           </div>
+
+          {% assign mobile = false %}
         </div>
       </div>
     </nav>

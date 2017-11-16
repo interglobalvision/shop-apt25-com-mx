@@ -1,13 +1,11 @@
-<div class="grid-item {% if mobile == true %}item-s-6 padding-bottom-basic{% endif %}">
-  {% if mobile == true %}
-  <a href="{{ collection.url }}" class="nav-collection font-bold font-condensed font-uppercase" {% if mobile != true %}data-collection="{{ collection.handle }}"{% endif %}>{{ collection.title }}</a>
-  {% include 'nav-types' %}
-  {% else %}
+<div class="grid-item {% if mobile == true %}item-s-6{% endif %}">
   <span class="nav-item-holder">
-    <a href="{{ collection.url }}" class="nav-collection font-bold font-condensed font-uppercase" {% if mobile != true %}data-collection="{{ collection.handle }}"{% endif %}>{{ collection.title }}</a>
-    {% if border %}
+    <a href="{{ collection.url }}" class="nav-collection font-bold font-condensed font-uppercase u-inline-block" {% if mobile != true %}data-collection="{{ collection.handle }}"{% endif %}>
+      {{ collection.title }}
+    </a>
     {% include border %}
-    {% endif %}
   </span>
+  {% if mobile == true %}
+  {% include 'nav-types' %}
   {% endif %}
 </div>
