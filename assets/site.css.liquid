@@ -1192,6 +1192,9 @@ html,
 .container {
   max-width: 1840px;
 }
+#main-content {
+  min-height: calc(100vh - 92px);
+}
 #admin_bar_iframe {
   display: none;
 }
@@ -1491,6 +1494,9 @@ select.form-element {
   width: 70vw;
   height: 100vh;
 }
+.related-products-item {
+  font-size: 0;
+}
 #footer {
   border-top: 2px solid #000;
 }
@@ -1505,6 +1511,17 @@ select.form-element {
 }
 .icon-remove {
   width: 10px;
+}
+.pagination-arrow {
+  width: 72px;
+}
+.pagination-arrow polyline {
+  fill: #000;
+}
+.pagination-arrow path {
+  stroke-width: 2px;
+  stroke: #000;
+  fill: none;
 }
 @media screen and (min-width: 500px) {
   .container {
@@ -2313,6 +2330,9 @@ select.form-element {
   .font-size-micro {
     font-size: 4.5px;
   }
+  #main-content {
+    min-height: calc(100vh - $headerHeight);
+  }
   #header {
     padding-bottom: 24px;
   }
@@ -2459,6 +2479,9 @@ select.form-element {
   }
   .icon-remove {
     width: 11px;
+  }
+  .pagination-arrow {
+    width: 84px;
   }
 @-webkit-keyframes spinX {
     0% {
@@ -2985,6 +3008,9 @@ select.form-element {
   .desktop-only {
     display: initial !important;
   }
+  #main-content {
+    min-height: calc(100vh - 196px);
+  }
   #header {
     padding-bottom: 32px;
   }
@@ -3021,6 +3047,9 @@ select.form-element {
   }
   .icon-remove {
     width: 12px;
+  }
+  .pagination-arrow {
+    width: 112px;
   }
 }
 @media screen and (min-width: 1280px) {

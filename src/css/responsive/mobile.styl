@@ -5,6 +5,9 @@ $transition-duration = 200ms
 .container
   max-width: 1840px
 
+#main-content
+  min-height: calc('100vh - ' + $header-height)
+
 // ******************************************************
 
 // HEADER
@@ -259,6 +262,9 @@ select.form-element
     width: 70vw
     height: 100vh
 
+.related-products-item
+  font-size: 0
+
 // ******************************************************
 
 // FOOTER
@@ -282,3 +288,16 @@ select.form-element
 
 .icon-remove
   width: 10px
+
+// ******************************************************
+
+// COLLECTION
+
+.pagination-arrow
+  width: 72px
+  polyline
+    fill: $color-black
+  path
+    stroke-width: 2px
+    stroke: $color-black
+    fill: none
