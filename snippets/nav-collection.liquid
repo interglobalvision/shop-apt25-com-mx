@@ -1,6 +1,6 @@
 <div class="grid-item {% if mobile == true %}item-s-6 padding-bottom-basic{% endif %}">
   {% if mobile == true %}
-  <a href="{{ collection.url }}" class="nav-collection font-bold font-condensed font-uppercase" {% if mobile != true %}data-collection="{{ collection.handle }}"{% endif %}>{{ collection.title }}</a>
+  <a href="{{ collection.url }}" {% if mobile != true %}data-collection="{{ collection.handle }}" class="nav-collection{% else %}class="nav-item{% endif %} font-bold font-condensed font-uppercase">{{ collection.title }}</a>
   {% include 'nav-types' %}
   {% else %}
   <span class="nav-item-holder">
