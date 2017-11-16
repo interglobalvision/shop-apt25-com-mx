@@ -61,6 +61,11 @@ Site.Header = {
 
       _this.hideTypes();
     });
+
+    $('.nav-item').on('mouseenter', function() {
+
+      _this.hideTypes();
+    });
   },
 
   showTypes: function(collection) {
