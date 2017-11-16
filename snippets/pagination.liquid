@@ -1,0 +1,12 @@
+<div class="grid-row margin-top-basic">
+  <div class="grid-item item-s-6">
+  {% if paginate.previous.is_link %}
+    <a href="{{ paginate.previous.url }}">{% include 'arrow-left.svg' %}</a>
+  {% endif %}
+  </div>
+  <div class="grid-item item-s-6 text-align-right">
+  {% if paginate.next.is_link %}
+    <a href="{{ paginate.next.url }}">{% include 'arrow-right.svg' %}</a>
+  {% endif %}
+  </div>
+</div>
