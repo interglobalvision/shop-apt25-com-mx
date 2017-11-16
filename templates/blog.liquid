@@ -28,10 +28,10 @@
           {% endif %}
           <div class="grid-row justify-center">
             <div class="grid-item item-s-12 item-m-6 item-l-4 item-xl-3">
-              <h2>
+              <h2 class="font-size-mid font-bold">
                 <a href="{{ article.url }}">{{ article.title }}</a>
               </h2>
-              <span class="date">{{ article.published_at | date: '%b %e, %Y' }}</span>
+              <span class="date font-size-small font-condensed">{{ article.published_at | date: '%b %e, %Y' }}</span>
             </div>
             <div class="grid-item item-s-12 item-m-6 item-l-4 item-xl-3">
               <p>{{ article.excerpt }}{{ dash }}<a href="{{ blog.url }}"><img class="blog-icon" src="{{ 'icon-look.svg' | asset_url }}"></a></p>
@@ -50,11 +50,11 @@
             </div>
             {% endif %}
             <div class="grid-item item-s-12 item-m-6 item-l-4 item-xl-3">
-              <span class="date">{{ article.published_at | date: '%b %e, %Y' }}</span>
-              <h2 class="margin-bottom-tiny">
+              <h2 class="font-size-mid font-bold">
                 <a href="{{ article.url }}">{{ article.title }}</a>
               </h2>
-              <p class="margin-bottom-tiny">{{ article.excerpt }}{{ dash }}<img class="blog-icon" src="{{ 'icon-news.svg' | asset_url }}"></p>
+              <span class="date font-size-small font-condensed margin-bottom-tiny">{{ article.published_at | date: '%b %e, %Y' }}</span>
+              <p class="margin-bottom-tiny">{{ article.excerpt }}{{ dash }}<img class="blog-icon pin" src="{{ 'icon-news.svg' | asset_url }}"></p>
             </div>
           </div>
         </article>
