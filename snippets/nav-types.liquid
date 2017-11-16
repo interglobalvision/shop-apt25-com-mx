@@ -1,8 +1,8 @@
 {% if collection.all_types.size != 0 %}
 <div class="nav-types-holder">
-  <ul class="nav-types {% if mobile == true %}padding-top-small{% else %}padding-bottom-small{% endif %}" {% if mobile != true %}data-collection="{{ collection.handle }}"{% endif %}>
+  <ul class="nav-types {% if mobile == true %}padding-top-small{% else %}padding-bottom-tiny{% endif %}" {% if mobile != true %}data-collection="{{ collection.handle }}"{% endif %}>
     {% for product_type in collection.all_types %}
-    <li><a href="{{ collection.url }}/{{ product_type | handle }}">{{ product_type }}</a></li>
+    <li class="nav-types-item"><a href="{{ collection.url }}/{{ product_type | handle }}">{{ product_type }}</a></li>
     {% endfor %}
   </ul>
 </div>
