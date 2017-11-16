@@ -245,6 +245,8 @@ Site.Product = {
       var imgWidth = $(this).width();
       var imgOffset = $(this).offset();
 
+      var zoomImgUrl = $(this).attr('data-zoom');
+
       // zoom container positioning magic DO NOT fuck with (*blessings*)
       var zoomWidth = imgWidth * (_this.zoomMagnitude * 2);
       var zoomLeft = (imgOffset.left - ((zoomWidth - imgWidth) / 2));
@@ -259,13 +261,13 @@ Site.Product = {
       $(this).zoom({
         target: $zoomContainer,
         on: 'grab',
+        url: zoomImgUrl,
         onZoomIn: function() {
           $(this).parent('.zoom-container').addClass('show');
         },
         onZoomOut: function() {
           $(this).parent('.zoom-container').removeClass('show');
         },
-        magnify: _this.zoomMagnitude,
       });
 
     });
