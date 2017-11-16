@@ -15,7 +15,7 @@
   {% capture related_items %}
     {% for product in collection.products %}
       {% unless product.handle == current_product.handle %}
-        <div class="related-products-item grid-item item-s-3 text-align-center">
+        <div class="related-products-item grid-item item-s-5 item-m-3 item-l-2 text-align-center">
           <a href="{{ product.url }}">
             <img src="{{ product.featured_image | product_img_url: '300x' }}" alt="{{ product.title | escape }}" />
           </a>
@@ -24,7 +24,7 @@
     {% endfor %}
   {% endcapture %}
 
-  <section id="related-products" class="u-hidden">
+  <section id="related-products" class="u-hidden margin-top-large">
     <div class="container">
       <div class="grid-row justify-center">
         {{ related_items }}
