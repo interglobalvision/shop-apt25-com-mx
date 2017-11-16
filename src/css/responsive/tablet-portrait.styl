@@ -56,25 +56,11 @@ $nav-height = 44px
   margin-bottom: $margin-mid
 
 .nav-item-holder
-  position: relative
-  display: block
   &:hover
     .nav-item-border
       animation: spinX .5s infinite linear
     .nav-cart-count-holder
       animation: spinZ .5s infinite linear
-
-  a
-    display: block
-
-.nav-item-border
-  position: absolute
-  stroke-width: 2px
-  stroke: $color-black
-  width: 100%
-  height: 5px
-  fill: none
-  pointer-events: none
 
 @keyframes spinX
   0%
@@ -91,6 +77,9 @@ $nav-height = 44px
     transform: rotateZ(180deg)
   100%
     transform: rotateZ(360deg)
+
+.nav-types-item
+  margin: 0 $margin-micro $margin-tiny
 
 // ******************************************************
 
