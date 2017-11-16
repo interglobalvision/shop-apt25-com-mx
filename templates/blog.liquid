@@ -9,8 +9,8 @@
         <article class="grid-item item-s-12 no-gutter margin-bottom-mid">
           {% if article.image %}
           {% assign image = article.image %}
-          <div class="grid-row justify-center">
-            <div class="grid-item item-s-12 item-l-9 item-xl-7 text-align-center">
+          <div class="grid-row justify-center margin-bottom-tiny">
+            <div class="grid-item item-s-12 item-m-9 item-xl-7 text-align-center">
               <a href="{{ article.url }}">
                 <img alt="{{ article.title | escape }}"
                 src="{{ image.src | img_url: '479x200', crop: 'center' }}"
@@ -27,13 +27,13 @@
           </div>
           {% endif %}
           <div class="grid-row justify-center">
-            <div class="grid-item item-s-12 item-m-6 item-l-4 item-xl-3">
+            <div class="grid-item item-s-12 item-sm-6 item-m-4 item-xl-3">
               <h2 class="font-size-mid font-bold">
                 <a href="{{ article.url }}">{{ article.title }}</a>
               </h2>
               <span class="date font-size-small font-condensed">{{ article.published_at | date: '%b %e, %Y' }}</span>
             </div>
-            <div class="grid-item item-s-12 item-m-6 item-l-4 item-xl-3">
+            <div class="grid-item item-s-12 item-sm-6 item-m-4 item-xl-3">
               <p>{{ article.excerpt }}{{ dash }}<a href="{{ blog.url }}"><img class="blog-icon" src="{{ 'icon-look.svg' | asset_url }}"></a></p>
             </div>
           </div>
@@ -43,13 +43,13 @@
           <div class="grid-row justify-center">
             {% if article.image %}
             {% assign image = article.image %}
-            <div class="grid-item item-s-12 item-m-6 item-l-4 item-xl-3">
+            <div class="grid-item item-s-12 item-sm-6 item-m-4 item-xl-3">
               <a href="{{ article.url }}">
                 <img class="margin-bottom-tiny" src="{{ image.src | img_url: '465x465', crop: 'center' }}" alt="{{ article.title | escape }}" />
               </a>
             </div>
             {% endif %}
-            <div class="grid-item item-s-12 item-m-6 item-l-4 item-xl-3">
+            <div class="grid-item item-s-12 item-sm-6 item-m-4 item-xl-3">
               <h2 class="font-size-mid font-bold">
                 <a href="{{ article.url }}">{{ article.title }}</a>
               </h2>
@@ -66,8 +66,10 @@
 
 {% if paginate.pages > 1 %}
 <nav id="pagination">
-  <div class="container">
-    {% include 'pagination' %}
+  <div class="container grid-row justify-center">
+    <div class="grid-item item-s-12 item-l-9 item-xl-7">
+      {% include 'pagination' %}
+    </div>
   </div>
 </nav>
 {% endif %}
