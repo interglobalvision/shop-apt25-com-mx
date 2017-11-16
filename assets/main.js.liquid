@@ -103,6 +103,8 @@ Site.Product = {
     if (_this.$productGallery.length) {
       // We have product images, so we do the fancy layout
       _this.handleLayout();
+
+      _this.$productImage = $('.product-gallery-image');
     }
 
     if ($('#related-products').length) {
@@ -264,9 +266,11 @@ Site.Product = {
         url: zoomImgUrl,
         onZoomIn: function() {
           $(this).parent('.zoom-container').addClass('show');
+          _this.$productImage.addClass('hide');
         },
         onZoomOut: function() {
           $(this).parent('.zoom-container').removeClass('show');
+          _this.$productImage.removeClass('hide');
         },
       });
 
