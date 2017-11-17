@@ -103,6 +103,7 @@ Site.Product = {
   minWidth: 720, // minWidth for fixed header layout
   numberRelatedToPick: 4, // number of related products to show
   zoomMagnitude: 1.5, // how much are we zooming?
+  zoomImgWidth: 555,
   init: function() {
     var _this = this;
 
@@ -264,7 +265,7 @@ Site.Product = {
       var zoomImgUrl = $(this).attr('data-zoom');
 
       // zoom container positioning magic DO NOT fuck with (*blessings*)
-      var zoomWidth = imgWidth * (_this.zoomMagnitude * 2);
+      var zoomWidth = _this.zoomImgWidth;
       var zoomLeft = (imgOffset.left - ((zoomWidth - imgWidth) / 2));
 
       // Center zoom container on image
