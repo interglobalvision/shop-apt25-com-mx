@@ -1,4 +1,5 @@
 {% assign current_article = article %}
+{% assign num_related = 0 %}
 
 {% capture related_articles %}
   {% for this_article in blog.articles %}
@@ -9,12 +10,13 @@
         {% unless current_tag == 'lookbook-style' %}
           {% if this_article.tags contains current_tag %}
             {% assign is_related = true %}
+            {% break %}
           {% endif %}
         {% endunless %}
       {% endfor %}
 
       {% if is_related == true %}
-        <div class="related-articles-item grid-item item-s-5 item-m-3">
+        <div class="related-articles-item grid-item item-s-6 item-m-3 margin-bottom-small">
           <a href="{{ this_article.url }}">
             <img class="margin-bottom-tiny" src="{{ this_article.image.src | img_url: '362x362', crop: 'center' }}" alt="{{ this_article.title | escape }}" />
             <h3 class="font-bold">{{ this_article.title }}</h3>
@@ -26,8 +28,13 @@
             {% endif %}
           </a>
         </div>
+        {% assign num_related = num_related | plus: 1 %}
       {% endif %}
 
+      {% if num_related == 4 %}
+        {% break %}
+      {% endif %}
+      
     {% endunless %}
   {% endfor %}
 {% endcapture %}
@@ -36,7 +43,7 @@
 
 <section id="related-articles" class="margin-top-large">
   <div class="container">
-    <div class="grid-row justify-center">
+    <div class="grid-row">
       {{ related_articles }}
     </div>
   </div>
