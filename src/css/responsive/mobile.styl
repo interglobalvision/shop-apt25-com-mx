@@ -287,15 +287,53 @@ select.form-element
 #footer
   border-top: $border-style
 
-#footer-social
+#footer-social-holder
+  margin-top: $margin-basic
   img.social-icon
     height: 1.2em
   .grid-item:not(:last-child)
     img.social-icon
       margin-right: $margin-tiny
 
+#footer-email-holder
+  margin-bottom: $margin-small
+
 #footer-nav
   display: none
+
+#mc-embedded-subscribe-form
+  button, input
+    appearance: none
+    border: 0
+    background: transparent
+    font-family: $font-sans
+
+.expand
+  display: inline-block
+  position: relative
+  input
+    width: 80px
+    transition: width .8s
+    +placeholder()
+      color: $color-black
+      font-weight: 300
+    &:focus
+      width: 200px
+      outline: 0
+  svg
+    position: absolute
+    width: 100%
+    height: 12px
+    left: 0
+    bottom: -10px
+    polyline
+      stroke-width: 1px
+      stroke: $color-black
+      fill: none
+      transition: stroke-width .8s
+    &.small-stroke
+      polyline
+        stroke-width: .8px
 
 // ******************************************************
 

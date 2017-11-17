@@ -1563,14 +1563,73 @@ select.form-element {
 #footer {
   border-top: 2px solid #000;
 }
-#footer-social img.social-icon {
+#footer-social-holder {
+  margin-top: 36px;
+}
+#footer-social-holder img.social-icon {
   height: 1.2em;
 }
-#footer-social .grid-item:not(:last-child) img.social-icon {
+#footer-social-holder .grid-item:not(:last-child) img.social-icon {
   margin-right: 9px;
+}
+#footer-email-holder {
+  margin-bottom: 18px;
 }
 #footer-nav {
   display: none;
+}
+#mc-embedded-subscribe-form button,
+#mc-embedded-subscribe-form input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.expand {
+  display: inline-block;
+  position: relative;
+}
+.expand input {
+  width: 80px;
+  transition: width 0.8s;
+}
+.expand input::-webkit-input-placeholder {
+  color: #000;
+  font-weight: 300;
+}
+.expand input:-moz-placeholder {
+  color: #000;
+  font-weight: 300;
+}
+.expand input::-moz-placeholder {
+  color: #000;
+  font-weight: 300;
+}
+.expand input:-ms-input-placeholder {
+  color: #000;
+  font-weight: 300;
+}
+.expand input:focus {
+  width: 200px;
+  outline: 0;
+}
+.expand svg {
+  position: absolute;
+  width: 100%;
+  height: 12px;
+  left: 0;
+  bottom: -10px;
+}
+.expand svg polyline {
+  stroke-width: 1px;
+  stroke: #000;
+  fill: none;
+  transition: stroke-width 0.8s;
+}
+.expand svg.small-stroke polyline {
+  stroke-width: 0.8px;
 }
 .icon-remove {
   width: 10px;
@@ -2568,8 +2627,16 @@ select.form-element {
     cursor: -webkit-zoom-in;
     cursor: zoom-in;
   }
-  #footer-social .grid-item:not(:last-child) img.social-icon {
+  #footer-social-holder {
+    margin-top: 0;
+    -ms-grid-column-align: flex-end;
+        justify-items: flex-end;
+  }
+  #footer-social-holder .grid-item:not(:last-child) img.social-icon {
     margin-right: 12px;
+  }
+  #footer-email-holder {
+    margin-bottom: 0;
   }
   #footer-nav {
     display: -webkit-flex;
@@ -2650,6 +2717,12 @@ select.form-element {
       transform: rotateZ(360deg);
     }
 }
+  .mobile-only {
+    display: none !important;
+  }
+  .desktop-only {
+    display: initial !important;
+  }
 }
 @media screen and (min-width: 1024px) {
   .container {
@@ -3137,12 +3210,6 @@ select.form-element {
   .font-size-micro {
     font-size: 5.1px;
   }
-  .mobile-only {
-    display: none !important;
-  }
-  .desktop-only {
-    display: initial !important;
-  }
   #main-content {
     min-height: calc(100vh - 196px);
   }
@@ -3177,7 +3244,7 @@ select.form-element {
   .product-gallery-image {
     max-height: calc(100vh - 86px);
   }
-  #footer-social .grid-item:not(:last-child) img.social-icon {
+  #footer-social-holder .grid-item:not(:last-child) img.social-icon {
     margin-right: 16px;
   }
   .icon-remove {
