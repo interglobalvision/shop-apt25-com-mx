@@ -16,6 +16,8 @@ Site = {
       _this.Product.init();
     }
 
+    _this.bindMailchimpInputStyle();
+
   },
 
   onResize: function() {
@@ -35,7 +37,18 @@ Site = {
     });
   },
 
-
+  bindMailchimpInputStyle: function() {
+    // shrink Mailchimp input zigzag stroke on focus
+    $(".expand input").on({
+      focusin: function() {
+        console.log('focus');
+        $(this).siblings("svg").attr("class", "small-stroke");
+      },
+      focusout: function() {
+        $(this).siblings("svg").attr("class", "");
+      }
+    });
+  },
 };
 
 Site.Header = {
