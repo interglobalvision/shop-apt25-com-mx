@@ -2,7 +2,7 @@
   <div class="container">
     <div id="footer-row" class="grid-row justify-between align-items-end">
       <div class="grid-item no-gutter item-s-12 grid-row justify-between">
-        <div class="grid-item item-s-12 item-m-auto font-bold">
+        <div class="grid-item item-s-12 item-m-4 item-l-5 font-bold">
           APARTMENT25
           {% if settings.contact_address != blank %}
             <div>
@@ -10,6 +10,12 @@
             </div>
           {% endif %}
         </div>
+
+        {% if settings.contact_email != blank %}
+        <div class="grid-item item-s-12 item-m-auto flex-grow align-self-end">
+          <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
+        </div>
+        {% endif %}
 
         <nav id="footer-nav" class="grid-item item-s-12 item-m-auto no-gutter grid-row">
           {% if collections.'men' != blank %}
@@ -60,11 +66,6 @@
         </div>
 
         <div class="grid-item item-s-12 item-m-auto flex-grow">
-        {% if settings.contact_email != blank %}
-          <div>
-            <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
-          </div>
-        {% endif %}
         {% if settings.mailchimp_action != blank %}
           <form action="{{ settings.mailchimp_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
             <div class="expand">
