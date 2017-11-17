@@ -127,6 +127,7 @@ img.social-icon
 
 #product-header
   position: fixed
+  z-index: 600
   opacity: 0
   &.bottom
     position: absolute
@@ -149,10 +150,15 @@ img.social-icon
 
 // FOOTER
 
-#footer-social
+#footer-social-holder
+  margin-top: 0
+  justify-items: flex-end
   .grid-item:not(:last-child)
     img.social-icon
       margin: 0 $margin-tiny 0 0
+
+#footer-email-holder
+  margin-bottom: 0
 
 #footer-nav
   display: flex

@@ -17,6 +17,8 @@ Site = {
       _this.Product.init();
     }
 
+    _this.bindMailchimpInputStyle();
+
   },
 
   onResize: function() {
@@ -36,7 +38,18 @@ Site = {
     });
   },
 
-
+  bindMailchimpInputStyle: function() {
+    // shrink Mailchimp input zigzag stroke on focus
+    $(".expand input").on({
+      focusin: function() {
+        console.log('focus');
+        $(this).siblings("svg").attr("class", "small-stroke");
+      },
+      focusout: function() {
+        $(this).siblings("svg").attr("class", "");
+      }
+    });
+  },
 };
 
 Site.Header = {
@@ -61,11 +74,25 @@ Site.Header = {
     $('#main-nav').on('mouseleave', function() {
 
       _this.hideTypes();
+      _this.hideSpinBorder();
     });
 
     $('.nav-item').on('mouseenter', function() {
+      var navItem = $(this).attr('data-nav-item');
 
       _this.hideTypes();
+    });
+
+    $('#header .nav-item-holder').on('mouseenter', function() {
+      _this.hideSpinBorder();
+
+      $(this).addClass('spin');
+    });
+
+    $('#header .nav-item-holder').on('mouseleave', function() {
+      if (!$('.nav-types.show').length) {
+        _this.hideSpinBorder();
+      }
     });
   },
 
@@ -84,12 +111,17 @@ Site.Header = {
       $('#mobile-nav').toggleClass('show');
     });
   },
+
+  hideSpinBorder: function() {
+    $('.nav-item-holder').removeClass('spin');
+  }
 };
 
 Site.Product = {
   minWidth: 720, // minWidth for fixed header layout
   numberRelatedToPick: 4, // number of related products to show
   zoomMagnitude: 1.5, // how much are we zooming?
+  zoomImgWidth: 555,
   init: function() {
     var _this = this;
 
@@ -251,7 +283,7 @@ Site.Product = {
       var zoomImgUrl = $(this).attr('data-zoom');
 
       // zoom container positioning magic DO NOT fuck with (*blessings*)
-      var zoomWidth = imgWidth * (_this.zoomMagnitude * 2);
+      var zoomWidth = _this.zoomImgWidth;
       var zoomLeft = (imgOffset.left - ((zoomWidth - imgWidth) / 2));
 
       // Center zoom container on image

@@ -10,7 +10,7 @@ $transition-duration = 200ms
 
 img.social-icon
   height: 1.2em
-  margin: 0 0 0 $margin-micro 
+  margin: 0 0 0 $margin-micro
 
 // ******************************************************
 
@@ -20,6 +20,8 @@ img.social-icon
   display: none
 
 #header
+  position: relative
+  z-index: 600
   padding-bottom: $margin-tiny
   .logo
     height: 70px
@@ -88,7 +90,7 @@ img.social-icon
 .nav-item-holder
   position: relative
   display: inline-block
-  &:hover
+  &.spin
     .nav-item-border
       animation: spinX .5s infinite linear
     .nav-cart-count-holder
@@ -252,7 +254,7 @@ select.form-element
 
 .zoom-container
   position: fixed
-  z-index: 1000
+  z-index: 500
   top: 0
   left: 0
   width: 100vw
@@ -270,12 +272,6 @@ select.form-element
 
 .product-gallery-image-holder
   display: inline-block
-  &.fixed
-    position: fixed
-    z-index: 1000
-    top: 0
-    width: 70vw
-    height: 100vh
 
 .product-gallery-image
   opacity: 1
@@ -291,15 +287,58 @@ select.form-element
 // FOOTER
 
 #footer
+  background-color: $color-white
+  position: relative
+  z-index: 600
   border-top: $border-style
 
-#footer-social
+#footer-social-holder
+  margin-top: $margin-basic
+  img.social-icon
+    height: 1.2em
   .grid-item:not(:last-child)
     img.social-icon
-      margin: 0 $margin-tiny 0 0
+      margin: 0 $margin-tiny 0 0 
+
+#footer-email-holder
+  margin-bottom: $margin-small
 
 #footer-nav
   display: none
+
+#mc-embedded-subscribe-form
+  button, input
+    appearance: none
+    border: 0
+    background: transparent
+    font-family: $font-sans
+
+.expand
+  display: inline-block
+  position: relative
+  input
+    width: 80px
+    transition: width .8s
+    +placeholder()
+      color: $color-black
+      font-weight: 300
+    &:focus
+      width: 200px
+      outline: 0
+  svg
+    position: absolute
+    width: 100%
+    height: 12px
+    left: 0
+    bottom: -10px
+    polyline
+      stroke-width: 1px
+      stroke: $color-black
+      fill: none
+      transition: stroke-width .8s
+    &.small-stroke
+      polyline
+        stroke-width: .8px
 
 // ******************************************************
 

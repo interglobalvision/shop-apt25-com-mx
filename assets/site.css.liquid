@@ -1239,6 +1239,8 @@ img.social-icon {
   display: none;
 }
 #header {
+  position: relative;
+  z-index: 600;
   padding-bottom: 9px;
 }
 #header .logo {
@@ -1318,11 +1320,11 @@ img.social-icon {
   position: relative;
   display: inline-block;
 }
-.nav-item-holder:hover .nav-item-border {
+.nav-item-holder.spin .nav-item-border {
   -webkit-animation: spinX 0.5s infinite linear;
   animation: spinX 0.5s infinite linear;
 }
-.nav-item-holder:hover .nav-cart-count-holder {
+.nav-item-holder.spin .nav-cart-count-holder {
   -webkit-animation: spinZ 0.5s infinite linear;
   animation: spinZ 0.5s infinite linear;
 }
@@ -1519,7 +1521,7 @@ select.form-element {
 }
 .zoom-container {
   position: fixed;
-  z-index: 1000;
+  z-index: 500;
   top: 0;
   left: 0;
   width: 100vw;
@@ -1545,13 +1547,6 @@ select.form-element {
 .product-gallery-image-holder {
   display: inline-block;
 }
-.product-gallery-image-holder.fixed {
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  width: 70vw;
-  height: 100vh;
-}
 .product-gallery-image {
   -ms-filter: none;
   -webkit-filter: none;
@@ -1568,13 +1563,78 @@ select.form-element {
   font-size: 0;
 }
 #footer {
+  background-color: #fff;
+  position: relative;
+  z-index: 600;
   border-top: 2px solid #000;
 }
-#footer-social .grid-item:not(:last-child) img.social-icon {
+#footer-social-holder {
+  margin-top: 36px;
+}
+#footer-social-holder img.social-icon {
+  height: 1.2em;
+}
+#footer-social-holder .grid-item:not(:last-child) img.social-icon {
   margin: 0 9px 0 0;
+}
+#footer-email-holder {
+  margin-bottom: 18px;
 }
 #footer-nav {
   display: none;
+}
+#mc-embedded-subscribe-form button,
+#mc-embedded-subscribe-form input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.expand {
+  display: inline-block;
+  position: relative;
+}
+.expand input {
+  width: 80px;
+  transition: width 0.8s;
+}
+.expand input::-webkit-input-placeholder {
+  color: #000;
+  font-weight: 300;
+}
+.expand input:-moz-placeholder {
+  color: #000;
+  font-weight: 300;
+}
+.expand input::-moz-placeholder {
+  color: #000;
+  font-weight: 300;
+}
+.expand input:-ms-input-placeholder {
+  color: #000;
+  font-weight: 300;
+}
+.expand input:focus {
+  width: 200px;
+  outline: 0;
+}
+.expand svg {
+  position: absolute;
+  width: 100%;
+  height: 12px;
+  left: 0;
+  bottom: -10px;
+}
+.expand svg polyline {
+  stroke-width: 1px;
+  stroke: #000;
+  fill: none;
+  transition: stroke-width 0.8s;
+}
+.expand svg.small-stroke polyline {
+  stroke-width: 0.8px;
 }
 .icon-remove {
   width: 10px;
@@ -2549,6 +2609,7 @@ select.form-element {
   }
   #product-header {
     position: fixed;
+    z-index: 600;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
     opacity: 0;
@@ -2575,8 +2636,16 @@ select.form-element {
     cursor: -webkit-zoom-in;
     cursor: zoom-in;
   }
-  #footer-social .grid-item:not(:last-child) img.social-icon {
+  #footer-social-holder {
+    margin-top: 0;
+    -ms-grid-column-align: flex-end;
+        justify-items: flex-end;
+  }
+  #footer-social-holder .grid-item:not(:last-child) img.social-icon {
     margin: 0 12px 0 0;
+  }
+  #footer-email-holder {
+    margin-bottom: 0;
   }
   #footer-nav {
     display: -webkit-flex;
@@ -2657,6 +2726,12 @@ select.form-element {
       transform: rotateZ(360deg);
     }
 }
+  .mobile-only {
+    display: none !important;
+  }
+  .desktop-only {
+    display: initial !important;
+  }
 }
 @media screen and (min-width: 1024px) {
   .container {
@@ -3144,12 +3219,6 @@ select.form-element {
   .font-size-micro {
     font-size: 5.1px;
   }
-  .mobile-only {
-    display: none !important;
-  }
-  .desktop-only {
-    display: initial !important;
-  }
   #main-content {
     min-height: calc(100vh - 196px);
   }
@@ -3187,7 +3256,7 @@ select.form-element {
   .product-gallery-image {
     max-height: calc(100vh - 86px);
   }
-  #footer-social .grid-item:not(:last-child) img.social-icon {
+  #footer-social-holder .grid-item:not(:last-child) img.social-icon {
     margin: 0 16px 0 0;
   }
   .icon-remove {
