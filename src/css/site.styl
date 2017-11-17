@@ -152,6 +152,12 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
 
   @import 'responsive/tablet-portrait'
 
+  .mobile-only
+    display: none !important
+
+  .desktop-only
+    display: initial !important
+
 @media screen and (min-width: 1024px)
 
   $gutter = 32px
@@ -176,12 +182,6 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
   font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny, $font-size-micro)
-
-  .mobile-only
-    display: none !important
-
-  .desktop-only
-    display: initial !important
 
   @import 'responsive/tablet-landscape'
 
