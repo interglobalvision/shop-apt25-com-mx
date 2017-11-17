@@ -60,11 +60,25 @@ Site.Header = {
     $('#main-nav').on('mouseleave', function() {
 
       _this.hideTypes();
+      _this.hideSpinBorder();
     });
 
     $('.nav-item').on('mouseenter', function() {
+      var navItem = $(this).attr('data-nav-item');
 
       _this.hideTypes();
+    });
+
+    $('#header .nav-item-holder').on('mouseenter', function() {
+      _this.hideSpinBorder();
+
+      $(this).addClass('spin');
+    });
+
+    $('#header .nav-item-holder').on('mouseleave', function() {
+      if (!$('.nav-types.show').length) {
+        _this.hideSpinBorder();
+      }
     });
   },
 
@@ -83,6 +97,10 @@ Site.Header = {
       $('#mobile-nav').toggleClass('show');
     });
   },
+
+  hideSpinBorder: function() {
+    $('.nav-item-holder').removeClass('spin');
+  }
 };
 
 Site.Product = {
