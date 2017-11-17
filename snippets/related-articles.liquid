@@ -6,11 +6,11 @@
     {% unless this_article.handle == current_article.handle %}
 
       {% for current_tag in current_article.tags %}
-        {% for this_tag in this_article.tags %}
-          {% if this_tag.handle == current_tag.handle %}
+        {% unless current_tag == 'lookbook-style' %}
+          {% if this_article.tags contains current_tag %}
             {% assign is_related = true %}
           {% endif %}
-        {% endfor %}
+        {% endunless %}
       {% endfor %}
 
       {% if is_related == true %}
