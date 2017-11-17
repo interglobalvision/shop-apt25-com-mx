@@ -112,6 +112,13 @@ $transition-duration = 200ms
 .icon
   height: 20px
 
+.lookbook-image
+  opacity: 0
+  transition: opacity  $transition-duration
+
+  &.show-image
+    opacity: 1
+
 @media screen and (orientation: landscape)
  .collection-product-item
    flex-basis: calc(100% / 3)
@@ -201,8 +208,10 @@ $transition-duration = 200ms
 // BLOG
 
 .blog-icon
-  max-width: 25px
-  max-height: 25px
+  max-height: 1em
+  max-width: 1em
+  &.pin
+    margin-bottom: -.2em
 
 // ******************************************************
 
@@ -261,6 +270,12 @@ select.form-element
     top: 0
     width: 70vw
     height: 100vh
+
+.product-gallery-image
+  opacity: 1
+  transition: opacity $transition-duration
+  &.hide
+    opacity: 0
 
 .related-products-item
   font-size: 0

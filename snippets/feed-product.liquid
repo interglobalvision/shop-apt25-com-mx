@@ -1,4 +1,4 @@
-{% assign image = product.featured_image %}
+{% assign image = product.images[1] %}
 
 <a href="{{ product.url }}">
   <img src="{{ image.src | img_url: '240x' }}" alt="{{ product.title | escape }}"
@@ -12,5 +12,8 @@
 
   <div class="font-bold font-size-basic">{{ product.vendor }}</div>
 
-  <h2 class="u-inline-block">{{ product.title }}</h2> &mdash;{% if product.compare_at_price > product.price %} <span class="u-inline-block font-line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</span>{% endif %} <span class="u-inline-block">{{ product.price | money_without_trailing_zeros }}</span>
+  <h2 class="u-inline-block">{{ product.title }}</h2>
+  <div>
+    {% if product.compare_at_price > product.price %} <span class="u-inline-block font-line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</span>{% endif %} <span class="u-inline-block">{{ product.price | money_without_trailing_zeros }}</span>
+  </div>
 </a>
