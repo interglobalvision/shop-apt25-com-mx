@@ -11,8 +11,21 @@
           {% endif %}
         </div>
 
+        <div class="grid-item item-s-12 mobile-only margin-bottom-tiny">
+        {% if settings.hours_week != blank %}
+          <div>
+            {{ settings.hours_week }}{% if settings.hours_weekend != blank %}, {% endif %}
+          </div>
+        {% endif %}
+        {% if settings.hours_weekend != blank %}
+          <div>
+            {{ settings.hours_weekend }}
+          </div>
+        {% endif %}
+        </div>
+
         {% if settings.contact_email != blank %}
-        <div class="grid-item item-s-12 item-m-auto flex-grow align-self-end">
+        <div id="footer-email-holder" class="grid-item item-s-12 item-m-auto flex-grow align-self-end">
           <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
         </div>
         {% endif %}
@@ -52,7 +65,7 @@
         </nav>
       </div>
 
-        <div class="grid-item item-s-12 item-m-4 item-l-5">
+        <div class="grid-item item-s-12 item-m-4 item-l-5 desktop-only">
         {% if settings.hours_week != blank %}
           <div>
             {{ settings.hours_week }}{% if settings.hours_weekend != blank %}, {% endif %}
@@ -83,7 +96,7 @@
         {% endif %}
         </div>
 
-        <div id="footer-social" class="grid-item item-s-12 item-m-auto grid-row justify-end align-items-end no-wrap">
+        <div id="footer-social-holder" class="grid-item item-s-12 item-m-auto grid-row align-items-end no-wrap">
           {% if settings.social_facebook != blank %}
           <div class="grid-item no-gutter">
             <a href="{{ settings.social_facebook }}"><img class="social-icon" src="{{ 'icon-facebook.svg' | asset_url }}"></a>

@@ -272,12 +272,16 @@ select.form-element
 #footer
   border-top: $border-style
 
-#footer-social
+#footer-social-holder
+  margin-top: $margin-basic
   img.social-icon
     height: 1.2em
   .grid-item:not(:last-child)
     img.social-icon
       margin-right: $margin-tiny
+
+#footer-email-holder
+  margin-bottom: $margin-small
 
 #footer-nav
   display: none
@@ -286,6 +290,7 @@ select.form-element
   button, input
     appearance: none
     border: 0
+    background: transparent
 
 .expand
   display: inline-block
