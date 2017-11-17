@@ -1,0 +1,45 @@
+{% assign current_article = article %}
+
+{% capture related_articles %}
+  {% for this_article in blog.articles %}
+    {% assign is_related = false %}
+    {% unless this_article.handle == current_article.handle %}
+
+      {% for current_tag in current_article.tags %}
+        {% for this_tag in this_article.tags %}
+          {% if this_tag.handle == current_tag.handle %}
+            {% assign is_related = true %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+
+      {% if is_related == true %}
+        <div class="related-articles-item grid-item item-s-5 item-m-3">
+          <a href="{{ this_article.url }}">
+            <img class="margin-bottom-tiny" src="{{ this_article.image.src | img_url: '362x362', crop: 'center' }}" alt="{{ this_article.title | escape }}" />
+            <h3 class="font-bold">{{ this_article.title }}</h3>
+            <span class="date font-size-small font-condensed">{{ article.published_at | date: '%b %e, %Y' }}{{ dash }}</span>
+            {% if article.tags contains 'lookbook' %}
+              <img class="blog-icon eye" src="{{ 'eye.svg' | asset_url }}">
+            {% else %}
+              <img class="blog-icon tack" src="{{ 'thumb-tack.svg' | asset_url }}">
+            {% endif %}
+          </a>
+        </div>
+      {% endif %}
+
+    {% endunless %}
+  {% endfor %}
+{% endcapture %}
+
+{% if related_articles != blank %}
+
+<section id="related-articles" class="margin-top-large">
+  <div class="container">
+    <div class="grid-row justify-center">
+      {{ related_articles }}
+    </div>
+  </div>
+</section>
+
+{% endif %}

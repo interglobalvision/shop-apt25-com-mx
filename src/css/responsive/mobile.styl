@@ -8,6 +8,10 @@ $transition-duration = 200ms
 #main-content
   min-height: calc('100vh - ' + $header-height)
 
+img.social-icon
+  height: 1.2em
+  margin: 0 0 0 $margin-micro
+
 // ******************************************************
 
 // HEADER
@@ -210,7 +214,9 @@ $transition-duration = 200ms
 .blog-icon
   max-height: 1em
   max-width: 1em
-  &.pin
+  &.eye
+    margin-bottom: -.1em
+  &.tack
     margin-bottom: -.2em
 
 // ******************************************************
@@ -288,11 +294,9 @@ select.form-element
   border-top: $border-style
 
 #footer-social
-  img.social-icon
-    height: 1.2em
   .grid-item:not(:last-child)
     img.social-icon
-      margin-right: $margin-tiny
+      margin: 0 $margin-tiny 0 0
 
 #footer-nav
   display: none

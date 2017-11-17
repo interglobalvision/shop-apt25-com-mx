@@ -3,17 +3,17 @@
 <article class="container">
   <div class="grid-row justify-center">
     <div class="grid-item offset-m-1 item-s-12 item-m-6">
-      <div class="single-post-details margin-bottom-small">
-        <span class="date">{{ article.published_at | date: '%b %e, %Y' }}</span>
-        <h1 class="article-title margin-bottom-small">
+      <div class="single-post-details margin-bottom-basic">
+        <span class="date font-size-small font-condensed">{{ article.published_at | date: '%b %e, %Y' }}</span>
+        <h1 class="article-title margin-bottom-small font-size-extra font-bold">
           {{ article.title }}
         </h1>
         <p>
           {{ article.excerpt }}{{ dash }}
           {% if article.tags contains 'lookbook' %}
-            <img class="icon" src="{{ 'eye.svg' | asset_url }}">
+            <img class="blog-icon eye" src="{{ 'eye.svg' | asset_url }}">
           {% else %}
-            <img class="icon" src="{{ 'thumb-tack.svg' | asset_url }}">
+            <img class="blog-icon tack" src="{{ 'thumb-tack.svg' | asset_url }}">
           {% endif %}
         </p>
       </div>
@@ -75,17 +75,19 @@
   <div class="grid-row justify-center">
     <div class="single-post-footer grid-item offset-m-1 item-s-12 item-m-6">
       <p class="post-tags">
-        <span class="u-bold-cn">TAGGED: </span>
+        <span class="font-bold font-condensed">TAGGED:&emsp;</span>
         {% for tag in article.tags %}
           <a href="{{ blog.url }}/tagged/{{ tag }}" rel="tag">{{ tag }}</a>{% if forloop.last != true %},{% endif %}
         {% endfor %}
       </p>
       <p class="post-share">
-        <span class="u-bold-cn">SHARE: </span>
-        <a href="https://twitter.com/home?status={{ article.title | url_encode }}%20via%20%40apt25mx%20{{ shop.url }}{{ article.url }}"><img class="icon" src="{{ 'twitter.svg' | asset_url }}"></a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ article.url }}"><img class="icon" src="{{ 'facebook.svg' | asset_url }}"></a>
+        <span class="font-bold font-condensed">SHARE:&emsp;</span>
+        <a href="https://twitter.com/home?status={{ article.title | url_encode }}%20via%20%40apt25mx%20{{ shop.url }}{{ article.url }}"><img class="social-icon" src="{{ 'icon-twitter.svg' | asset_url }}"></a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ article.url }}"><img class="social-icon" src="{{ 'icon-facebook.svg' | asset_url }}"></a>
       </p>
     </div>
   </div>
+
+  {% include 'related-articles' %}
 
 </article>
