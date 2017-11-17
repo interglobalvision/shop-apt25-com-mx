@@ -112,6 +112,13 @@ $transition-duration = 200ms
 .icon
   height: 20px
 
+.lookbook-image
+  opacity: 0
+  transition: opacity  $transition-duration
+
+  &.show-image
+    opacity: 1
+
 @media screen and (orientation: landscape)
  .collection-product-item
    flex-basis: calc(100% / 3)
