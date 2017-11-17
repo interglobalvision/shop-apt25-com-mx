@@ -1,0 +1,102 @@
+<footer id="footer" class="padding-top-small padding-bottom-small margin-top-basic">
+  <div class="container">
+    <div id="footer-row" class="grid-row justify-between align-items-end">
+      <div class="grid-item no-gutter item-s-12 grid-row justify-between">
+        <div class="grid-item item-s-12 item-m-auto font-bold">
+          APARTMENT25
+          {% if settings.contact_address != blank %}
+            <div>
+              {{ settings.contact_address }}
+            </div>
+          {% endif %}
+        </div>
+
+        <nav id="footer-nav" class="grid-item item-s-12 item-m-auto no-gutter grid-row">
+          {% if collections.'men' != blank %}
+          {% assign collection = collections.'men' %}
+          {% assign border = 'border-1.svg' %}
+          {% include 'nav-collection' %}
+          {% endif %}
+
+          {% if collections.'women' != blank %}
+          {% assign collection = collections.'women' %}
+          {% assign border = 'border-2.svg' %}
+          {% include 'nav-collection' %}
+          {% endif %}
+
+          {% if collections.'life' != blank %}
+          {% assign collection = collections.'life' %}
+          {% assign border = 'border-3.svg' %}
+          {% include 'nav-collection' %}
+          {% endif %}
+
+          <div class="grid-item">
+            <span class="nav-item-holder">
+              <a href="/blogs/news" class="font-bold font-condensed font-uppercase">Blog</a>
+              {% include 'border-4.svg' %}
+            </span>
+          </div>
+
+          <div class="grid-item">
+            <span class="nav-item-holder">
+              <a href="/cart" class="nav-cart-link">{% include 'nav-cart-count' %}<span class="font-bold font-condensed font-uppercase">Cart</span></a>
+              {% include 'border-5.svg' %}
+            </span>
+          </div>
+        </nav>
+      </div>
+
+        <div class="grid-item item-s-12 item-m-4 item-l-5">
+        {% if settings.hours_week != blank %}
+          <div>
+            {{ settings.hours_week }}{% if settings.hours_weekend != blank %}, {% endif %}
+          </div>
+        {% endif %}
+        {% if settings.hours_weekend != blank %}
+          <div>
+            {{ settings.hours_weekend }}
+          </div>
+        {% endif %}
+        </div>
+
+        <div class="grid-item item-s-12 item-m-auto flex-grow">
+        {% if settings.contact_email != blank %}
+          <div>
+            <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
+          </div>
+        {% endif %}
+        {% if settings.mailchimp_action != blank %}
+          <form action="{{ settings.mailchimp_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+            <input placeholder="your email address" type="email" name="EMAIL" id="mce-EMAIL">
+
+            {%if settings.mailchimp_hidden != blank %}
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="{{ settings.mailchimp_hidden }}" tabindex="-1" value=""></div>
+            {% endif %}
+
+            <button type="submit" class="font-uppercase font-bold">Subscribe</button>
+          </form>
+        {% endif %}
+        </div>
+
+        <div id="footer-social" class="grid-item item-s-12 item-m-auto grid-row justify-end align-items-end no-wrap">
+          {% if settings.social_facebook != blank %}
+          <div class="grid-item no-gutter">
+            <a href="{{ settings.social_facebook }}"><img class="social-icon" src="{{ 'icon-facebook.svg' | asset_url }}"></a>
+          </div>
+          {% endif %}
+          {% if settings.social_twitter != blank %}
+          <div class="grid-item no-gutter">
+            <a href="https://twitter.com/{{ settings.social_twitter }}"><img class="social-icon" src="{{ 'icon-twitter.svg' | asset_url }}"></a>
+          </div>
+          {% endif %}
+          {% if settings.social_instagram != blank %}
+          <div class="grid-item no-gutter">
+            <a href="https://instagram.com/{{ settings.social_instagram }}"><img class="social-icon" src="{{ 'icon-instagram.svg' | asset_url }}"></a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>

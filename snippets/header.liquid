@@ -1,0 +1,115 @@
+<header id="header" class="padding-top-tiny padding-bottom-tiny">
+  <h1 class="u-visuallyhidden">{{ shop.name }}</h1>
+  <div class="container">
+    <div class="grid-row justify-between align-items-start">
+      <div class="grid-item">
+        <a href="/"><img class="logo" src="{{ 'apt25-logo.svg' | asset_url }}"></a>
+      </div>
+      <div class="mobile-nav-toggle-holder">
+        <div class="container">
+          <div class="grid-row padding-top-tiny justify-end">
+            <div class="grid-item">
+              <div class="js-menu-toggle u-pointer font-bold font-condensed font-uppercase">Menu</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav id="main-nav" class="grid-item no-gutter flex-grow">
+        <div class="grid-row justify-end padding-bottom-small">
+          {% if collections.'men' != blank %}
+          {% assign collection = collections.'men' %}
+          {% assign border = 'border-1.svg' %}
+          {% include 'nav-collection' %}
+          {% endif %}
+
+          {% if collections.'women' != blank %}
+          {% assign collection = collections.'women' %}
+          {% assign border = 'border-2.svg' %}
+          {% include 'nav-collection' %}
+          {% endif %}
+
+          {% if collections.'life' != blank %}
+          {% assign collection = collections.'life' %}
+          {% assign border = 'border-3.svg' %}
+          {% include 'nav-collection' %}
+          {% endif %}
+
+          <div class="grid-item">
+            <span class="nav-item-holder">
+              <a href="/blogs/news" class="nav-item font-bold font-condensed font-uppercase">Blog</a>
+              {% include 'border-4.svg' %}
+            </span>
+          </div>
+
+          <div class="grid-item">
+            <span class="nav-item-holder">
+              <a href="/cart" class="nav-item nav-cart-link">{% include 'nav-cart-count' %}<span class="font-bold font-condensed font-uppercase">Cart</span></a>
+              {% include 'border-5.svg' %}
+            </span>
+          </div>
+
+        </div>
+
+        {% if collections.'men' != blank %}
+        {% assign collection = collections.'men' %}
+        {% include 'nav-types' %}
+        {% endif %}
+
+        {% if collections.'women' != blank %}
+        {% assign collection = collections.'women' %}
+        {% include 'nav-types' %}
+        {% endif %}
+
+        {% if collections.'life' != blank %}
+        {% assign collection = collections.'life' %}
+        {% include 'nav-types' %}
+        {% endif %}
+      </nav>
+    </div>
+  </div>
+  <nav id="mobile-nav">
+    <div class="mobile-nav-toggle-holder">
+      <div class="container">
+        <div class="grid-row padding-top-tiny justify-end">
+          <div class="grid-item">
+            <div class="js-menu-toggle u-pointer font-bold font-condensed font-uppercase">Close</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="grid-row">
+        {% assign mobile = true %}
+
+        {% if collections.'men' != blank %}
+        {% assign collection = collections.'men' %}
+        {% assign border = 'border-1.svg' %}
+        {% include 'nav-collection' %}
+        {% endif %}
+
+        {% if collections.'women' != blank %}
+        {% assign collection = collections.'women' %}
+        {% assign border = 'border-2.svg' %}
+        {% include 'nav-collection' %}
+        {% endif %}
+
+        {% if collections.'life' != blank %}
+        {% assign collection = collections.'life' %}
+        {% assign border = 'border-3.svg' %}
+        {% include 'nav-collection' %}
+        {% endif %}
+
+        <div class="grid-item item-s-6">
+          <div class="padding-bottom-small">
+            <a href="/cart" class="nav-cart-link">{% include 'nav-cart-count' %}<span class="font-bold font-condensed font-uppercase">Cart</span></a>
+          </div>
+          <div>
+            <a href="/blog" class="font-bold font-condensed font-uppercase">Blog</a>
+          </div>
+        </div>
+
+        {% assign mobile = false %}
+      </div>
+    </div>
+  </nav>
+</header>
