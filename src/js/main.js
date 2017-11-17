@@ -11,6 +11,7 @@ Site = {
     });
 
     _this.Header.init();
+    _this.BlogImages.init();
 
     if ($('body').hasClass('template-product')) {
       _this.Product.init();
@@ -281,6 +282,71 @@ Site.Product = {
     // unbind zooming
     $('.product-gallery-image-holder').trigger('zoom.destroy');
   }
+}
+
+Site.BlogImages = {
+  sizes: [
+    0,
+    'basic',
+    'mid',
+    'large',
+  ],
+
+  init: function() {
+    var _this = this;
+
+    _this.$images = $('.lookbook-image');
+
+    // Check if in single
+    if(_this.$images.length) {
+
+      _this.$images.each(function() {
+        var $image = $(this);
+        // Check if image is already loaded
+
+        if ($image.prop('complete')) {
+          _this.arrangeImage(this);
+        } else {
+          // Bind load image
+          $image.bind('load', function() {
+            _this.arrangeImage(this);
+          });
+        }
+      });
+    }
+  },
+
+  arrangeImage: function(image) {
+    var _this = this;
+
+    var $image = $(image);
+    var $parent = $(image).parent();
+
+    // Check image aspect
+    if (image.width > image.height) { // Landspcape
+      var rand = _this.getRandomInt(1,3);
+
+      if(rand) {
+        $image.addClass('padding-left-' + _this.sizes[rand]);
+      }
+
+      $parent.removeClass('item-m-6');
+
+    } else { // Portrait
+      var rand = _this.getRandomInt(0,3);
+
+      if(rand) {
+        $image.addClass('padding-top-' + _this.sizes[rand]);
+      }
+
+    }
+
+    $image.addClass('show-image');
+  },
+
+  getRandomInt: function(min,max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  },
 }
 
 jQuery(document).ready(function () {
