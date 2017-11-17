@@ -16,6 +16,8 @@ $transition-duration = 200ms
   display: none
 
 #header
+  position: relative
+  z-index: 600
   padding-bottom: $margin-tiny
   .logo
     height: 70px
@@ -111,6 +113,13 @@ $transition-duration = 200ms
 
 .icon
   height: 20px
+
+.lookbook-image
+  opacity: 0
+  transition: opacity  $transition-duration
+
+  &.show-image
+    opacity: 1
 
 @media screen and (orientation: landscape)
  .collection-product-item
@@ -239,7 +248,7 @@ select.form-element
 
 .zoom-container
   position: fixed
-  z-index: 1000
+  z-index: 500
   top: 0
   left: 0
   width: 100vw
@@ -257,12 +266,6 @@ select.form-element
 
 .product-gallery-image-holder
   display: inline-block
-  &.fixed
-    position: fixed
-    z-index: 1000
-    top: 0
-    width: 70vw
-    height: 100vh
 
 .product-gallery-image
   opacity: 1
@@ -278,17 +281,58 @@ select.form-element
 // FOOTER
 
 #footer
+  background-color: $color-white
+  position: relative
+  z-index: 600
   border-top: $border-style
 
-#footer-social
+#footer-social-holder
+  margin-top: $margin-basic
   img.social-icon
     height: 1.2em
   .grid-item:not(:last-child)
     img.social-icon
       margin-right: $margin-tiny
 
+#footer-email-holder
+  margin-bottom: $margin-small
+
 #footer-nav
   display: none
+
+#mc-embedded-subscribe-form
+  button, input
+    appearance: none
+    border: 0
+    background: transparent
+    font-family: $font-sans
+
+.expand
+  display: inline-block
+  position: relative
+  input
+    width: 80px
+    transition: width .8s
+    +placeholder()
+      color: $color-black
+      font-weight: 300
+    &:focus
+      width: 200px
+      outline: 0
+  svg
+    position: absolute
+    width: 100%
+    height: 12px
+    left: 0
+    bottom: -10px
+    polyline
+      stroke-width: 1px
+      stroke: $color-black
+      fill: none
+      transition: stroke-width .8s
+    &.small-stroke
+      polyline
+        stroke-width: .8px
 
 // ******************************************************
 
