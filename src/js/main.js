@@ -285,13 +285,6 @@ Site.Product = {
 }
 
 Site.BlogImages = {
-  sizes: [
-    0,
-    'basic',
-    'mid',
-    'large',
-  ],
-
   init: function() {
     var _this = this;
 
@@ -302,41 +295,45 @@ Site.BlogImages = {
 
       _this.$images.each(function() {
         var $image = $(this);
-        // Check if image is already loaded
 
+        // Check if image is already loaded
         if ($image.prop('complete')) {
-          _this.arrangeImage(this);
+          _this.spaceImage(this);
         } else {
           // Bind load image
           $image.bind('load', function() {
-            _this.arrangeImage(this);
+            _this.spaceImage(this);
           });
         }
       });
     }
   },
 
-  arrangeImage: function(image) {
+  spaceImage: function(image) {
     var _this = this;
 
     var $image = $(image);
-    var $parent = $(image).parent();
 
-    // Check image aspect
+    // Check image aspect ratio
     if (image.width > image.height) { // Landspcape
-      var rand = _this.getRandomInt(1,3);
 
-      if(rand) {
-        $image.addClass('padding-left-' + _this.sizes[rand]);
-      }
+      // Get random size
+      var size = _this.getRandomElement(['basic','mid','large']);
 
-      $parent.removeClass('item-m-6');
+      // Add spacing
+      $image.addClass('padding-left-' + size);
+
+      // Remove item-m-6 so it takes its own full-width lane
+      $(image).parent().removeClass('item-m-6');
 
     } else { // Portrait
-      var rand = _this.getRandomInt(0,3);
 
-      if(rand) {
-        $image.addClass('padding-top-' + _this.sizes[rand]);
+      // Get random size (or false)
+      var size = _this.getRandomElement([false,'basic','mid','large']);
+
+      if(size) {
+        // Add spacing
+        $image.addClass('padding-top-' + size);
       }
 
     }
@@ -344,8 +341,8 @@ Site.BlogImages = {
     $image.addClass('show-image');
   },
 
-  getRandomInt: function(min,max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  getRandomElement: function(items) {
+    return items[Math.floor(Math.random() * items.length)];
   },
 }
 
