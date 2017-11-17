@@ -282,6 +282,37 @@ select.form-element
 #footer-nav
   display: none
 
+#mc-embedded-subscribe-form
+  button, input
+    appearance: none
+    border: 0
+
+.expand
+  display: inline-block
+  position: relative
+  input
+    width: 80px
+    transition: width .8s
+    +placeholder()
+      color: $color-black
+    &:focus
+      width: 200px
+      outline: 0
+  svg
+    position: absolute
+    width: 100%
+    height: 12px
+    left: 0
+    bottom: -10px
+    polyline
+      stroke-width: 1px
+      stroke: $color-black
+      fill: none
+      transition: stroke-width .8s
+    &.small-stroke
+      polyline
+        stroke-width: .8px
+
 // ******************************************************
 
 // CART

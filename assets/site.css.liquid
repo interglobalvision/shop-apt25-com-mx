@@ -1509,6 +1509,53 @@ select.form-element {
 #footer-nav {
   display: none;
 }
+#mc-embedded-subscribe-form button,
+#mc-embedded-subscribe-form input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+}
+.expand {
+  display: inline-block;
+  position: relative;
+}
+.expand input {
+  width: 80px;
+  transition: width 0.8s;
+}
+.expand input::-webkit-input-placeholder {
+  color: #000;
+}
+.expand input:-moz-placeholder {
+  color: #000;
+}
+.expand input::-moz-placeholder {
+  color: #000;
+}
+.expand input:-ms-input-placeholder {
+  color: #000;
+}
+.expand input:focus {
+  width: 200px;
+  outline: 0;
+}
+.expand svg {
+  position: absolute;
+  width: 100%;
+  height: 12px;
+  left: 0;
+  bottom: -10px;
+}
+.expand svg polyline {
+  stroke-width: 1px;
+  stroke: #000;
+  fill: none;
+  transition: stroke-width 0.8s;
+}
+.expand svg.small-stroke polyline {
+  stroke-width: 0.8px;
+}
 .icon-remove {
   width: 10px;
 }
