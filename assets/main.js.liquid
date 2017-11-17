@@ -11,10 +11,13 @@ Site = {
     });
 
     _this.Header.init();
+    _this.BlogImages.init();
 
     if ($('body').hasClass('template-product')) {
       _this.Product.init();
     }
+
+    _this.bindMailchimpInputStyle();
 
   },
 
@@ -35,7 +38,18 @@ Site = {
     });
   },
 
-
+  bindMailchimpInputStyle: function() {
+    // shrink Mailchimp input zigzag stroke on focus
+    $(".expand input").on({
+      focusin: function() {
+        console.log('focus');
+        $(this).siblings("svg").attr("class", "small-stroke");
+      },
+      focusout: function() {
+        $(this).siblings("svg").attr("class", "");
+      }
+    });
+  },
 };
 
 Site.Header = {
@@ -107,6 +121,7 @@ Site.Product = {
   minWidth: 720, // minWidth for fixed header layout
   numberRelatedToPick: 4, // number of related products to show
   zoomMagnitude: 1.5, // how much are we zooming?
+  zoomImgWidth: 555,
   init: function() {
     var _this = this;
 
@@ -268,7 +283,7 @@ Site.Product = {
       var zoomImgUrl = $(this).attr('data-zoom');
 
       // zoom container positioning magic DO NOT fuck with (*blessings*)
-      var zoomWidth = imgWidth * (_this.zoomMagnitude * 2);
+      var zoomWidth = _this.zoomImgWidth;
       var zoomLeft = (imgOffset.left - ((zoomWidth - imgWidth) / 2));
 
       // Center zoom container on image
@@ -299,6 +314,68 @@ Site.Product = {
     // unbind zooming
     $('.product-gallery-image-holder').trigger('zoom.destroy');
   }
+}
+
+Site.BlogImages = {
+  init: function() {
+    var _this = this;
+
+    _this.$images = $('.lookbook-image');
+
+    // Check if in single
+    if(_this.$images.length) {
+
+      _this.$images.each(function() {
+        var $image = $(this);
+
+        // Check if image is already loaded
+        if ($image.prop('complete')) {
+          _this.spaceImage(this);
+        } else {
+          // Bind load image
+          $image.bind('load', function() {
+            _this.spaceImage(this);
+          });
+        }
+      });
+    }
+  },
+
+  spaceImage: function(image) {
+    var _this = this;
+
+    var $image = $(image);
+
+    // Check image aspect ratio
+    if (image.width > image.height) { // Landspcape
+
+      // Get random size
+      var size = _this.getRandomElement(['basic','mid','large']);
+
+      // Add spacing
+      $image.addClass('padding-left-' + size);
+
+      // Remove item-m-6 so it takes its own full-width lane
+      $(image).parent().removeClass('item-m-6');
+
+    } else { // Portrait
+
+      // Get random size (or false)
+      var size = _this.getRandomElement([false,'basic','mid','large']);
+
+      if(size) {
+        // Add spacing
+        $image.addClass('padding-top-' + size);
+      }
+
+    }
+
+    $image.addClass('show-image');
+  },
+
+  getRandomElement: function(items) {
+    return items[Math.floor(Math.random() * items.length)];
+  },
 }
 
 jQuery(document).ready(function () {

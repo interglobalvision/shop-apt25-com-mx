@@ -25,7 +25,7 @@
     {% comment %} LOOKBOOK {% endcomment %}
     {% if article.tags contains 'lookbook' %}
 
-      <div class="grid-item item-s-12 item-m-9">
+      <div class="grid-item grid-row justify-end item-s-12 item-m-9">
 
         {% comment %} Get the paragraphs as an array, we would use it 4 outputing only the ones without images {% endcomment %}
         {% assign paragraphs = article.content | split: '<p>' %}
@@ -40,7 +40,9 @@
           {% comment %} Iterate thru all images {% endcomment %}
           {% for i in (1..gallery-size) %}
             {% assign src = gallery-src[i] | split: '"' | first  %}
-            <img class="lookbook-image" src="{{src}}">
+            <div class="grid-item item-s-12 item-m-6 margin-bottom-mid">
+              <img class="lookbook-image" src="{{src}}">
+            </div>
           {% endfor %}
 
           {% comment %} Iterate thru all paragraphs {% endcomment %}
