@@ -16,6 +16,8 @@ $transition-duration = 200ms
   display: none
 
 #header
+  position: relative
+  z-index: 600
   padding-bottom: $margin-tiny
   .logo
     height: 70px
@@ -239,7 +241,7 @@ select.form-element
 
 .zoom-container
   position: fixed
-  z-index: 1000
+  z-index: 500
   top: 0
   left: 0
   width: 100vw
@@ -257,12 +259,6 @@ select.form-element
 
 .product-gallery-image-holder
   display: inline-block
-  &.fixed
-    position: fixed
-    z-index: 1000
-    top: 0
-    width: 70vw
-    height: 100vh
 
 .product-gallery-image
   opacity: 1
@@ -278,6 +274,9 @@ select.form-element
 // FOOTER
 
 #footer
+  background-color: $color-white
+  position: relative
+  z-index: 600
   border-top: $border-style
 
 #footer-social
