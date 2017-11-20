@@ -1231,6 +1231,10 @@ html,
 #main-content {
   min-height: calc(100vh - 92px);
 }
+img.social-icon {
+  height: 1.2em;
+  margin: 0 0 0 6px;
+}
 #admin_bar_iframe {
   display: none;
 }
@@ -1466,7 +1470,10 @@ html,
   max-height: 1em;
   max-width: 1em;
 }
-.blog-icon.pin {
+.blog-icon.eye {
+  margin-bottom: -0.1em;
+}
+.blog-icon.tack {
   margin-bottom: -0.2em;
 }
 #product-gallery-holder {
@@ -1568,7 +1575,7 @@ select.form-element {
   height: 1.2em;
 }
 #footer-social-holder .grid-item:not(:last-child) img.social-icon {
-  margin-right: 9px;
+  margin: 0 9px 0 0;
 }
 #footer-email-holder {
   margin-bottom: 18px;
@@ -2469,7 +2476,7 @@ select.form-element {
     font-size: 15px;
   }
   .font-size-extra {
-    font-size: 30px;
+    font-size: 27px;
   }
   .font-size-large {
     font-size: 22.5px;
@@ -2488,6 +2495,9 @@ select.form-element {
   }
   #main-content {
     min-height: calc(100vh - $headerHeight);
+  }
+  img.social-icon {
+    margin: 0 0 0 8px;
   }
   #header {
     padding-bottom: 24px;
@@ -2632,7 +2642,7 @@ select.form-element {
         justify-items: flex-end;
   }
   #footer-social-holder .grid-item:not(:last-child) img.social-icon {
-    margin-right: 12px;
+    margin: 0 12px 0 0;
   }
   #footer-email-holder {
     margin-bottom: 0;
@@ -2647,6 +2657,12 @@ select.form-element {
   }
   .pagination-arrow {
     width: 84px;
+  }
+  #related-articles .grid-row {
+    -webkit-justify-content: center;
+    -ms-justify-content: center;
+    -ms-flex-pack: center;
+        justify-content: center;
   }
 @-webkit-keyframes spinX {
     0% {
@@ -3192,7 +3208,7 @@ select.form-element {
     font-size: 17px;
   }
   .font-size-extra {
-    font-size: 34px;
+    font-size: 30.6px;
   }
   .font-size-large {
     font-size: 25.5px;
@@ -3211,6 +3227,9 @@ select.form-element {
   }
   #main-content {
     min-height: calc(100vh - 196px);
+  }
+  img.social-icon {
+    margin: 0 0 0 10.666666666666666px;
   }
   #header {
     padding-bottom: 32px;
@@ -3244,7 +3263,7 @@ select.form-element {
     max-height: calc(100vh - 86px);
   }
   #footer-social-holder .grid-item:not(:last-child) img.social-icon {
-    margin-right: 16px;
+    margin: 0 16px 0 0;
   }
   .icon-remove {
     width: 12px;
@@ -3614,7 +3633,7 @@ select.form-element {
     font-size: 19px;
   }
   .font-size-extra {
-    font-size: 38px;
+    font-size: 34.2px;
   }
   .font-size-large {
     font-size: 28.5px;
@@ -3999,7 +4018,7 @@ select.form-element {
     font-size: 21px;
   }
   .font-size-extra {
-    font-size: 42px;
+    font-size: 37.800000000000004px;
   }
   .font-size-large {
     font-size: 31.5px;

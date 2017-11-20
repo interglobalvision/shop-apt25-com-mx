@@ -4,6 +4,9 @@ $nav-height = 44px
 #main-content
   min-height: calc('100vh - ' + $headerHeight)
 
+img.social-icon
+  margin: 0 0 0 $margin-micro
+
 // ******************************************************
 
 // HEADER
@@ -152,7 +155,7 @@ $nav-height = 44px
   justify-items: flex-end
   .grid-item:not(:last-child)
     img.social-icon
-      margin-right: $margin-tiny
+      margin: 0 $margin-tiny 0 0
 
 #footer-email-holder
   margin-bottom: 0
@@ -173,3 +176,11 @@ $nav-height = 44px
 
 .pagination-arrow
   width: 84px
+
+// ******************************************************
+
+// ARTICLE
+
+#related-articles
+  .grid-row
+    justify-content: center
