@@ -5,60 +5,29 @@
   <div class="container">
     <div class="grid-row">
       {% for article in blog.articles %}
-        {% if article.tags contains 'lookbook' %}
-        <article class="grid-item item-s-12 no-gutter margin-bottom-mid">
+        <article class="grid-item item-s-12 item-sm-6 item-m-4 item-xl-3 margin-bottom-basic">
           {% if article.image %}
           {% assign image = article.image %}
-          <div class="grid-row justify-center margin-bottom-tiny">
-            <div class="grid-item item-s-12 item-m-9 item-xl-7 text-align-center">
-              <a href="{{ article.url }}">
-                <img alt="{{ article.title | escape }}"
-                src="{{ image.src | img_url: '479x200', crop: 'center' }}"
-
-                srcset="{{ image.src | img_url: '479x200', crop: 'center' }} 479w
-                {% if image.width >= 744 %},{{ image.src | img_url: '744x310', crop: 'center' }} 744w{% endif %}
-                {% if image.width >= 1026 %},{{ image.src | img_url: '1026x426', crop: 'center' }} 1026w{% endif %}
-                "
-
-                width="{{ image.width }}"
-                />
-              </a>
-            </div>
+          <div>
+            <a href="{{ article.url }}">
+              <img class="margin-bottom-tiny" src="{{ image.src | img_url: '465x465', crop: 'center' }}" alt="{{ article.title | escape }}" />
+            </a>
           </div>
           {% endif %}
-          <div class="grid-row justify-center">
-            <div class="grid-item item-s-12 item-sm-6 item-m-4 item-xl-3">
-              <h2 class="font-size-mid font-bold">
-                <a href="{{ article.url }}">{{ article.title }}</a>
-              </h2>
-              <span class="date font-size-small font-condensed">{{ article.published_at | date: '%b %e, %Y' }}</span>
-            </div>
-            <div class="grid-item item-s-12 item-sm-6 item-m-4 item-xl-3">
-              <p>{{ article.excerpt }}{{ dash }}<a href="{{ blog.url }}"><img class="blog-icon eye" src="{{ 'icon-look.svg' | asset_url }}"></a></p>
-            </div>
+          <div>
+            <h2 class="font-size-mid font-bold">
+              <a href="{{ article.url }}">{{ article.title }}</a>
+            </h2>
+            <span class="date font-size-small font-condensed">{{ article.published_at | date: '%b %e, %Y' }}</span>
+            <p class="margin-top-micro margin-bottom-tiny">{{ article.excerpt }}{{ dash }}
+              {% if article.tags contains 'lookbook' %}
+                <img class="blog-icon eye" src="{{ 'icon-look.svg' | asset_url }}">
+              {% else %}
+                <img class="blog-icon tack" src="{{ 'icon-news.svg' | asset_url }}">
+              {% endif %}
+            </p>
           </div>
         </article>
-        {% else %}
-        <article class="grid-item item-s-12 no-gutter margin-bottom-mid">
-          <div class="grid-row justify-center">
-            {% if article.image %}
-            {% assign image = article.image %}
-            <div class="grid-item item-s-12 item-sm-6 item-m-4 item-xl-3">
-              <a href="{{ article.url }}">
-                <img class="margin-bottom-tiny" src="{{ image.src | img_url: '465x465', crop: 'center' }}" alt="{{ article.title | escape }}" />
-              </a>
-            </div>
-            {% endif %}
-            <div class="grid-item item-s-12 item-sm-6 item-m-4 item-xl-3">
-              <h2 class="font-size-mid font-bold">
-                <a href="{{ article.url }}">{{ article.title }}</a>
-              </h2>
-              <span class="date font-size-small font-condensed">{{ article.published_at | date: '%b %e, %Y' }}</span>
-              <p class="margin-top-micro margin-bottom-tiny">{{ article.excerpt }}{{ dash }}<img class="blog-icon tack" src="{{ 'icon-news.svg' | asset_url }}"></p>
-            </div>
-          </div>
-        </article>
-        {% endif %}
       {% endfor %}
     </div>
   </div>
