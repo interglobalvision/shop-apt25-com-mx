@@ -28,10 +28,14 @@
       <div class="grid-item item-s-12 item-m-6 item-xl-5 offset-xl-1 no-gutter" id="product-header-holder">
         <header id="product-header">
           <div class="grid-row margin-bottom-small align-items-end">
-            <div class="grid-item item-s-7 grid-column">
+            <div class="grid-item item-s-12">
               <h2 class="u-inline-block margin-bottom-tiny">{{ product.title }}</h2>
+            </div>
+            <div class="grid-item item-s-7 grid-column">
               <div class="font-bold margin-bottom-tiny font-size-large">{{ product.vendor }}</div>
-              <div>{{ product.price | money_without_trailing_zeros }}</div>
+              <div>
+                <span id="variant-price">{{ product.price | money_without_trailing_zeros }}</span> <span id="variant-compare" class="price-compare">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+              </div>
             </div>
 
             <div class="grid-item item-s-5">
@@ -43,7 +47,7 @@
                   <select id="product-select" name="id" class="form-element margin-bottom-tiny item-s-12">
                   {% for variant in product.variants %}
                     {% if variant.available == true %}
-                    <option value="{{variant.id}}"> {{ variant.title }}</option>
+                    <option value="{{variant.id}}" data-price="{{ variant.price  | money_without_trailing_zeros }}"  data-compare="{{ variant.compare_at_price  | money_without_trailing_zeros }}"> {{ variant.title }}</option>
                     {% else %}
                     <option disabled="disabled"> {{ variant.title }} - sold out!</option>
                     {% endif %}
