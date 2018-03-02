@@ -144,6 +144,16 @@ Site.Product = {
       // Pick a few Related Products to display
       _this.pickRelated();
     }
+
+    var variantSelect = $('#product-select');
+
+    if (variantSelect.length) {
+      _this.updatePrice(variantSelect[0]);
+
+      variantSelect.on('change', function() {
+        _this.updatePrice(variantSelect[0]);
+      });
+    }
   },
 
   handleLayout: function() {
@@ -313,6 +323,15 @@ Site.Product = {
   destroyZoom: function() {
     // unbind zooming
     $('.product-gallery-image-holder').trigger('zoom.destroy');
+  },
+
+  updatePrice: function(select) {
+    var option = select.options[select.selectedIndex];
+    var price = option.dataset.price;
+    var comparePrice = option.dataset.compare;
+
+    $('#variant-price').text(price);
+    $('#variant-compare').text(comparePrice);
   }
 }
 
