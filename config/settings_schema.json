@@ -45,18 +45,43 @@
     "settings": [
       {
         "type": "text",
+        "label": "Store",
+        "id": "store"
+      },
+      {
+        "type": "text",
         "label": "Address",
-        "id": "contact_address"
+        "id": "contact_address_1"
       },
       {
         "type": "text",
         "label": "Hours Week",
-        "id": "hours_week"
+        "id": "hours_week_1"
       },
       {
         "type": "text",
         "label": "Hours Weekend",
-        "id": "hours_weekend"
+        "id": "hours_weekend_1"
+      },
+      {
+        "type": "text",
+        "label": "Store 2",
+        "id": "store_2"
+      },
+      {
+        "type": "text",
+        "label": "Address 2",
+        "id": "contact_address_2"
+      },
+      {
+        "type": "text",
+        "label": "Hours Week 2",
+        "id": "hours_week_2"
+      },
+      {
+        "type": "text",
+        "label": "Hours Weekend 2",
+        "id": "hours_weekend_2"
       },
       {
         "type": "text",
