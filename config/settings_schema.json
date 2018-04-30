@@ -45,11 +45,6 @@
     "settings": [
       {
         "type": "text",
-        "label": "Store",
-        "id": "store"
-      },
-      {
-        "type": "text",
         "label": "Address",
         "id": "contact_address_1"
       },
@@ -62,11 +57,6 @@
         "type": "text",
         "label": "Hours Weekend",
         "id": "hours_weekend_1"
-      },
-      {
-        "type": "text",
-        "label": "Store 2",
-        "id": "store_2"
       },
       {
         "type": "text",

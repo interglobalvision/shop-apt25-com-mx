@@ -1,38 +1,10 @@
 <footer id="footer" class="padding-top-small padding-bottom-basic margin-top-basic">
   <div class="container">
-    <div id="footer-row" class="grid-row justify-between align-items-end">
-      <div class="grid-item no-gutter item-s-12 grid-row justify-between">
-        <div class="grid-item item-s-12 item-m-4 item-l-5 font-bold">
-          {% if settings.store != blank %}
-              {{ settings.store }}
-          {% endif %}
-          {% if settings.contact_address != blank %}
-            <div>
-              {{ settings.contact_address }}
-            </div>
-          {% endif %}
-        </div>
+    <div id="footer-row" class="grid-row justify-between">
+      <div class="grid-item no-gutter item-s-12 grid-row justify-between margin-bottom-tiny">
+        <div class="grid-item font-bold">APARTMENT25</div>
 
-        <div class="grid-item item-s-12 mobile-only margin-bottom-tiny">
-        {% if settings.hours_week != blank %}
-          <div>
-            {{ settings.hours_week }}{% if settings.hours_weekend != blank %}, {% endif %}
-          </div>
-        {% endif %}
-        {% if settings.hours_weekend != blank %}
-          <div>
-            {{ settings.hours_weekend }}
-          </div>
-        {% endif %}
-        </div>
-
-        {% if settings.contact_email != blank %}
-        <div id="footer-email-holder" class="grid-item item-s-12 item-m-auto flex-grow align-self-end">
-          <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
-        </div>
-        {% endif %}
-
-        <nav id="footer-nav" class="grid-item item-s-12 item-m-auto no-gutter grid-row">
+        <nav id="footer-nav" class="grid-item no-gutter grid-row">
           {% if collections.'men' != blank %}
           {% assign collection = collections.'men' %}
           {% assign border = 'border-1.svg' %}
@@ -67,20 +39,46 @@
         </nav>
       </div>
 
-        <div class="grid-item item-s-12 item-m-4 item-l-5 desktop-only">
-        {% if settings.hours_week != blank %}
-          <div>
-            {{ settings.hours_week }}{% if settings.hours_weekend != blank %}, {% endif %}
-          </div>
-        {% endif %}
-        {% if settings.hours_weekend != blank %}
-          <div>
-            {{ settings.hours_weekend }}
-          </div>
-        {% endif %}
+      <div class="grid-item item-s-12 item-m-auto margin-bottom-tiny">
+      {% if settings.contact_address_1 != blank %}
+        <div class="font-bold">
+          {{ settings.contact_address_1 }}
         </div>
+      {% endif %}
+      {% if settings.hours_week_1 != blank %}
+        <div>
+          {{ settings.hours_week_1 }}
+        </div>
+      {% endif %}
+      {% if settings.hours_weekend_1 != blank %}
+        <div>
+          {{ settings.hours_weekend_1 }}
+        </div>
+      {% endif %}
+      </div>
 
-        <div class="grid-item item-s-12 item-m-auto flex-grow">
+      {% if settings.contact_address_2 != blank %}
+      <div class="grid-item item-s-12 item-m-auto margin-bottom-tiny">
+        <div class="font-bold">
+          {{ settings.contact_address_2 }}
+        </div>
+      {% if settings.hours_week_2 != blank %}
+        <div>
+          {{ settings.hours_week_2 }}
+        </div>
+      {% endif %}
+      {% if settings.hours_weekend_2 != blank %}
+        <div>
+          {{ settings.hours_weekend_2 }}
+        </div>
+      {% endif %}
+      </div>
+      {% endif %}
+
+      {% if settings.contact_email != blank %}
+      <div id="footer-email-holder" class="grid-item item-s-12 item-m-auto flex-grow grid-column justify-between margin-bottom-tiny">
+        <a href="mailto:{{ settings.contact_email }}" class="margin-bottom-tiny">{{ settings.contact_email }}</a>
+
         {% if settings.mailchimp_action != blank %}
           <form action="{{ settings.mailchimp_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
             <div class="expand">
@@ -96,27 +94,21 @@
             <button type="submit" class="font-uppercase font-bold font-condensed">Subscribe</button>
           </form>
         {% endif %}
-        </div>
+      </div>
+      {% endif %}
 
-        <div id="footer-social-holder" class="grid-item item-s-12 item-m-auto grid-row align-items-end no-wrap">
-          {% if settings.social_facebook != blank %}
-          <div class="grid-item no-gutter">
-            <a href="{{ settings.social_facebook }}"><img class="social-icon" src="{{ 'icon-facebook.svg' | asset_url }}"></a>
-          </div>
-          {% endif %}
-          {% if settings.social_twitter != blank %}
-          <div class="grid-item no-gutter">
-            <a href="https://twitter.com/{{ settings.social_twitter }}"><img class="social-icon" src="{{ 'icon-twitter.svg' | asset_url }}"></a>
-          </div>
-          {% endif %}
-          {% if settings.social_instagram != blank %}
-          <div class="grid-item no-gutter">
-            <a href="https://instagram.com/{{ settings.social_instagram }}"><img class="social-icon" src="{{ 'icon-instagram.svg' | asset_url }}"></a>
-          </div>
-          {% endif %}
-        </div>
+      <div id="footer-social-holder" class="grid-item item-s-12 item-m-auto grid-row align-items-end no-wrap padding-top-tiny">
+        {% if settings.social_facebook != blank %}
+          <a href="{{ settings.social_facebook }}"><img class="social-icon" src="{{ 'icon-facebook.svg' | asset_url }}"></a>
+        {% endif %}
+        {% if settings.social_twitter != blank %}
+          <a href="https://twitter.com/{{ settings.social_twitter }}"><img class="social-icon" src="{{ 'icon-twitter.svg' | asset_url }}"></a>
+        {% endif %}
+        {% if settings.social_instagram != blank %}
+          <a href="https://instagram.com/{{ settings.social_instagram }}"><img class="social-icon" src="{{ 'icon-instagram.svg' | asset_url }}"></a>
+        {% endif %}
       </div>
 
-    </div>
+    </div><!-- close #footer-row -->
   </div>
 </footer>
