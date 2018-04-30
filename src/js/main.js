@@ -305,7 +305,7 @@ Site.Product = {
       // Bind zooming
       $(this).zoom({
         target: $zoomContainer,
-        on: 'grab',
+        on: 'click',
         url: zoomImgUrl,
         onZoomIn: function() {
           $(this).parent('.zoom-container').addClass('show');
