@@ -1374,6 +1374,18 @@ img.social-icon {
     max-width: 50%;
   }
 }
+.article-content iframe {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.article-content iframe.show {
+  -ms-filter: none;
+  -webkit-filter: none;
+          filter: none;
+  opacity: 1;
+}
 #feed-banner {
   position: relative;
   overflow: hidden;

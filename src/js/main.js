@@ -12,6 +12,7 @@ Site = {
 
     _this.Header.init();
     _this.BlogImages.init();
+    _this.wrapResponsiveVideos();
 
     if ($('body').hasClass('template-product')) {
       _this.Product.init();
@@ -35,6 +36,19 @@ Site = {
       var string = $(this).html();
       string = string.replace(/ ([^ ]*)$/,'&nbsp;$1');
       $(this).html(string);
+    });
+  },
+
+  wrapResponsiveVideos: function() {
+    $('.article-content iframe').each( function(key, element) {
+      var src = element.src;
+
+      // Check if it's a vime or youtube embed
+      if(src.startsWith('https://player.vimeo.com/video/') || src.startsWith('https://www.youtube.com/embed/')) {
+        $(this).wrap('<div class="u-video-embed-container"></div>');
+      }
+
+      $(element).addClass('show');
     });
   },
 
