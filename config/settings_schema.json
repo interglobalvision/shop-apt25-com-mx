@@ -50,6 +50,11 @@
       },
       {
         "type": "text",
+        "label": "Google Maps",
+        "id": "contact_address_1_map"
+      },
+      {
+        "type": "text",
         "label": "Hours Week",
         "id": "hours_week_1"
       },
@@ -62,6 +67,11 @@
         "type": "text",
         "label": "Address 2",
         "id": "contact_address_2"
+      },
+      {
+        "type": "text",
+        "label": "Google Maps",
+        "id": "contact_address_2_map"
       },
       {
         "type": "text",
