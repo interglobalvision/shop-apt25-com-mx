@@ -112,10 +112,16 @@ Site.Header = {
 
   showTypes: function(collection) {
     $('.nav-collection[data-collection="' + collection + '"]').addClass('active');
-    $('.nav-types[data-collection="' + collection + '"]').addClass('show');
+    var $collectionNav = $('.nav-types[data-collection="' + collection + '"]');
+
+    if($collectionNav.length > 0) {
+      $collectionNav.addClass('show');
+      $('#main-nav').addClass('show-collection');
+    }
   },
 
   hideTypes: function(collection) {
+    $('#main-nav').removeClass('show-collection');
     $('.nav-collection.active').addClass('active');
     $('.nav-types.show').removeClass('show');
   },
